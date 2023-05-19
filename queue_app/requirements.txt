@@ -1,0 +1,6 @@
+Flask
+requests
+pandas
+numpy
+pyyaml
+# tornado==4.5.3
