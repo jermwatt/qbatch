@@ -1,8 +1,7 @@
-# from processor_app import app
-# from activate_process import activate
 from flask import Flask
-import yaml
 import subprocess
+import yaml
+
 
 def create_app():
     app = Flask(__name__)
@@ -16,12 +15,12 @@ def create_app():
     # with open('/usr/src/configs/quick_batch.yaml', "r") as yaml_file:
     #     config = yaml.safe_load(yaml_file)
 
-    # app.path_to_feed = config["data"]["input"]["path_to_input"]
-    # app.feed_rate = config["data"]["input"]["feed_rate"]
-    # app.save_location = config["data"]["output"]["path_to_output"]
+    # # extract required params
+    # app.path_to_feed = config["queue_app"]["path_to_feed"]
+    # app.save_location = config["queue_app"]["save_location"
 
     # report startup success to terminal
-    print(f'processor_app running on container {app.container_id} has started',
+    print(f'controller_app running on container {app.container_id} has started',
         flush=True)
     
     return app
@@ -29,5 +28,4 @@ def create_app():
 
 if __name__ == '__main__':
     app = create_app()
-    # activate(app)
     app.run(host='0.0.0.0', debug=False, port=80, threaded=True)

@@ -3,6 +3,11 @@ from flask import jsonify, request
 import queue
 
 
+@app.route('/', methods=['GET'])
+def index():
+    return 'hello world'
+
+
 @app.route('/send_object_paths', methods=['GET'])
 def send_object_paths():
     # feeder queue

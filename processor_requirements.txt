@@ -1,9 +1,1 @@
-boto3
-whisper
-scikit-learn
-python-dotenv
-pydub
-torch
-torchvision 
-torchaudio
-transformers
+numpy
