@@ -17,11 +17,12 @@ app.container_id = container_id
 with open('/usr/src/configs/quick_batch.yaml', "r") as yaml_file:
     config = yaml.safe_load(yaml_file)
 
-app.path_to_feed = config["queue_app"]["path_to_feed"]
-app.save_location = config["queue_app"]["save_location"]
+app.path_to_feed = config["data"]["input"]["path_to_input"]
+app.feed_rate = config["data"]["input"]["feed_rate"]
+app.save_location = config["data"]["output"]["path_to_output"]
 
 # report startup success to terminal
-print('processor_app running on container {app.container_id} has started', 
+print('processor_app running on container {app.container_id} has started',
       flush=True)
 
 # prevent circular imports for api connections

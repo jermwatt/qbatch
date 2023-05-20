@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "quick_batch"
+version = "0.1.0"
+description = ""
+authors = ["Jeremy Watt <jermwatt@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+docker = "^6.1.2"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.23.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
