@@ -2,7 +2,6 @@ from flask import jsonify
 import requests
 import sys
 import json
-import node_data_processor
 import processor
 
 
