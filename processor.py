@@ -10,5 +10,9 @@ def processor(app):
             # turn ever other character upper case
             data = ''.join([data[i].upper() if i % 2 == 0 else data[i].lower() for i in range(len(data))])
             print(data)
-            time.sleep(5)
 
+            # save to output file
+            with open(app.path_to_output + '/' + file_path.split('/')[-1], 'w') as f:
+                f.write(data)
+
+            time.sleep(5)

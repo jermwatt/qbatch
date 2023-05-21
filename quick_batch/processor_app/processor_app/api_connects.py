@@ -45,7 +45,7 @@ def request_object_paths(app):
         else:
             # feeder queue is empty
             print('feeder queue is empty!', flush=True)
-            print('shutting down...', flush=True))
+            print('shutting down...', flush=True)
             sys.exit(0)
 
     except Exception as e:
