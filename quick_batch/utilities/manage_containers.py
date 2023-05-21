@@ -21,7 +21,7 @@ def create_network(client):
 @log_exceptions
 def startup_queue_app(client, config_path, input_path):
     queue_container = client.containers.run(
-        'quick_batch_queue_app',
+        image='quick_batch_queue_app',
         network='quick_batch_network',
         detach=True,
         name='queue_app',
@@ -47,7 +47,7 @@ def startup_queue_app(client, config_path, input_path):
 def startup_processor_app(client, config_path, input_path, output_path):
     # start processor_app docker container with interactive terminal
     processor_container = client.containers.run(
-        'quick_batch_processor_app',
+        image='quick_batch_processor_app',
         network='quick_batch_network',
         detach=True,
         name='processor_app',
