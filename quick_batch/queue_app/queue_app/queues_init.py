@@ -88,16 +88,13 @@ def create_queues(app):
     app.wip_queue = queue.Queue()
 
     # load up queue with organized_paths
+    feed_counter = 0
     for item in organized_datapaths:
         app.feeder_queue.put("'" + item + "'")
+        feed_counter += 1
 
     # init queue counters
-    app.feed_queue_length = len(organized_datapaths)
+    app.feed_queue_length = feed_counter
+    app.original_feed_queue_length = feed_counter
     app.wip_queue_length = 0
     app.done_queue_length = 0
-
-    print('original queue length = ',
-          app.feed_queue_length,
-          flush=True)
-
-    print('first datapoint:', organized_datapaths[0], flush=True)

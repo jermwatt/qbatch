@@ -2,7 +2,6 @@ from flask import jsonify
 import requests
 import sys
 import json
-import processor
 
 
 def retrieval_check(app, data):
@@ -19,29 +18,6 @@ def retrieval_check(app, data):
         app.receipt_data['retrieval_message'] = 'SUCCESS: processer \
             exited properly'
         return False
-
-
-def process(app):
-    try:
-        # run processor on current input datapoint
-        result = process(app)
-
-        # send success
-        if result:
-            app.receipt_data['processor_message'] = \
-                             'SUCCESS PROCESSING:' + str(app.input_data)
-        else:
-            app.receipt_data['processor_message'] = \
-                             'FAILURE PROCESSING:' + str(app.input_data)
-
-    except Exception as e:
-        print('failure for datapint', app.input_data, flush=True)
-        print(e, flush=True)
-
-        # send receipt of successful processing to logger
-        app.receipt_data['processor_message'] = \
-            'FAILURE PROCESSING (EXCEPTION):' + str(app.input_data)
-        app.receipt_data['processor_exception'] = str(e)
 
 
 def request_object_paths(app):
@@ -65,7 +41,7 @@ def request_object_paths(app):
         checkval = retrieval_check(app, data)
         if checkval:
             # process
-            app.file_paths_to_process = data
+            app.file_paths_to_process = data['object_paths']
         else:
             # feeder queue is empty
             # ping log to report exit
@@ -79,7 +55,7 @@ def request_object_paths(app):
         app.receipt_data['retrieval_message'] = 'FAILURE RETRIEVAL'
         app.receipt_data['retrieval_exception'] = str(e)
         print(app.receipt_data, flush=True)
-        send_done_report(app)
+        # send_done_report(app)
 
         # fail out - restart and collect the next datapoint from the queue
         sys.exit(1)
@@ -87,7 +63,7 @@ def request_object_paths(app):
 
 # post done back to queue_app
 def send_done_report(app):
-    data = {'data': str(app.file_paths_to_process)}
+    data = {'paths_complete': app.file_paths_to_process}
     data = json.dumps(data)
 
     # create post_address

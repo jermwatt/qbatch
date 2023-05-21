@@ -1,7 +1,22 @@
 import sys
 import api_connects
-import os
 import processor
+
+
+def processor_wrapper(processor, app):
+    try:
+        processor.processor(app)
+        app.success = True
+        app.receipt_data['processor_message'] = \
+            'SUCCESS PROCESSING:' + str(app.file_paths_to_process)
+    except Exception as e:
+        app.success = False
+        print('failure for object paths', app.file_paths_to_process,
+              flush=True)
+        print(e, flush=True)
+        app.receipt_data['processor_message'] = \
+            'FAILURE PROCESSING (EXCEPTION):' + str(app.input_data)
+        app.receipt_data['processor_exception'] = str(e)
 
 
 def activate(app):
@@ -14,17 +29,25 @@ def activate(app):
     while lifetime > 0:
         # get next batch of file paths
         api_connects.request_object_paths(app)
-        print('RETRIEVED: with', str(app.input_data), flush=True)
         print('RETRIEVED: with', str(app.file_paths_to_process), flush=True)
 
         # process each file path
-        processor.processor(app)
+        processor_wrapper(processor, app)
 
         # update lifetime
         lifetime -= 1
 
         # print progress
-        print('FINISHED: with', str(app.input_data), flush=True)
+        print('FINISHED: with', str(app.file_paths_to_process), flush=True)
+        
+        if app.success:
+            # send report to queue_app
+            api_connects.send_done_report(app)
+            
+            # reset success flag
+            app.success = False
+
+
 
     # if reaching the lifetime end signal to orchestator
     # that a new container be built

@@ -1,6 +1,7 @@
 from queue_app import app
 from flask import jsonify, request
 import queue
+import json
 
 
 @app.route('/', methods=['GET'])
@@ -27,7 +28,6 @@ def send_object_paths():
 
             # update counters
             app.wip_queue_length += 1
-            app.feed_queue_length -= 1
 
         return jsonify({'object_paths': object_paths,
                         'queue_message': f"{app.feed_queue_length} objects "
@@ -50,27 +50,29 @@ def send_object_paths():
 def done_from_processor():
     # grab new datapoint from post
     try:
+        # receive request
+        data = request.get_data()
+
         # get datapoint from request
-        data = request.json['data']
-
-        # update done queue
-        app.done_queue.put("'" + data + "'")
-
-        # update wip queue
-        updated_queue = queue.Queue()
-        while not app.wip_queue.empty():
-            item = app.wip_queue.get()
-            if item not in data:
-                updated_queue.put(item)
-
-        # replace existing wip qeue
-        app.wip_queue = updated_queue
+        data = json.loads(data)["paths_complete"]
 
         # update counters
         for d in data:
             app.feed_queue_length -= 1
             app.done_queue_length += 1
             app.wip_queue_length -= 1
+            app.done_queue.put("'" + d + "'")
+
+        # update wip queue
+        updated_queue = queue.Queue()
+        while not app.wip_queue.empty():
+            d = app.wip_queue.get()
+            if d.replace('"', '').replace("'", '') not in data:
+                print(d, flush=True)
+                updated_queue.put("'" + d + "'")
+
+        # replace existing wip qeue
+        app.wip_queue = updated_queue
 
         return jsonify("200")
     except Exception as e:
@@ -80,7 +82,9 @@ def done_from_processor():
 
 @app.route('/current_queue_lengths', methods=['GET'])
 def current_queue_lengths():
-    return jsonify({'feed_queue_length': app.feed_queue_length,
+    return jsonify({"original_feed_queue_length":
+                    app.original_feed_queue_length,
+                    'feed_queue_length': app.feed_queue_length,
                     'wip_queue_length': app.wip_queue_length,
                     'done_queue_length': app.done_queue_length})
 

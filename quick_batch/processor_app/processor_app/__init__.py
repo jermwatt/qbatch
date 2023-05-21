@@ -26,6 +26,9 @@ def create_app():
     app.path_to_output = '/my_data/output'
     app.feed_rate = config["apps"]["feed_rate"]
 
+    # boolean to indicate if most recent app processing was successful
+    app.success = False
+
     # report startup success to terminal
     print(f'processor_app running on container \
         {app.container_id} has started', flush=True)
