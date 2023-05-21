@@ -44,10 +44,8 @@ def request_object_paths(app):
             app.file_paths_to_process = data['object_paths']
         else:
             # feeder queue is empty
-            # ping log to report exit
-            # send_done_report(app)
-
-            # exit
+            print('feeder queue is empty!', flush=True)
+            print('shutting down...', flush=True))
             sys.exit(0)
 
     except Exception as e:
