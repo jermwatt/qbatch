@@ -8,7 +8,8 @@ import processor
 def retrieval_check(app, data):
     if len(data['object_paths']) > 0:
         # update log
-        app.receipt_data['retrieval_message'] = 'SUCCESS RETRIEVAL:' + data
+        app.receipt_data['retrieval_message'] = 'SUCCESS RETRIEVAL:' + \
+         str(data['object_paths'])
 
         # attach received data to app
         app.input_data = data
@@ -54,7 +55,7 @@ def request_object_paths(app):
     # retrieve next filename to process from api feeder container
     try:
         # hit get address
-        get_address = 'http://' + 'queue_app' + ':80/send_object_paths'
+        get_address = 'http://queue_app:80/send_object_paths'
         datapackage = requests.get(get_address, verify=False, timeout=600)
         
         # unpack data

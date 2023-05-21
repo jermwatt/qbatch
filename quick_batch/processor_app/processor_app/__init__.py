@@ -33,5 +33,5 @@ def create_app():
     return app
 
 app = create_app()
-# from activate_process import activate
-# activate(app)
+from activate_process import activate
+activate(app)

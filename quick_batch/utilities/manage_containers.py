@@ -14,7 +14,8 @@ def remove_all_containers(client):
 # create docker network
 @log_exceptions
 def create_network(client):
-    client.networks.create('quick_batch_network', driver='bridge')
+    if 'quick_batch_network' not in [network.name for network in client.networks.list()]:
+        client.networks.create('quick_batch_network', driver='bridge')
 
 # start queue_app docker container with interactive terminal
 @log_exceptions
@@ -63,7 +64,7 @@ def startup_processor_app(client, config_path, input_path, output_path):
             output_path:
             {'bind': '/my_data/output', 'mode': 'rw'},
             base_directory + '/processor.py':
-            {'bind': '/my_processor/processor.py', 'mode': 'ro'},
+            {'bind': '/processor_app/processor.py', 'mode': 'ro'},
         },
         command='python /processor_app/run.py'
         )
