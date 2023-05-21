@@ -1,4 +1,6 @@
 import os
+import queue
+import copy
 from os.path import isfile, join
 from os import listdir
 from subprocess import run
@@ -70,10 +72,10 @@ def create_queues(app):
         print('sorting filenames by line-length in descending order!',
               flush=True)
         organized_sizes, organized_datapaths = \
-            dataqueue_organizer.get_length_ordered_filenames(app.path_to_feed)
+            load_object_paths_inorder(app.path_to_feed)
     else:
         print('loading in filenames as they present themselves!', flush=True)
-        organized_datapaths = dataqueue_organizer.path_loader(app.path_to_feed)
+        organized_datapaths = load_object_paths(app.path_to_feed)
 
     print('done loading in filenames!', flush=True)
 

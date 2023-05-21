@@ -1,6 +1,7 @@
 import fire
 from utilities import param_checks
 from utilities import docker_setup
+from utilities import manage_containers
 
 
 def main(config="",
@@ -17,7 +18,9 @@ def main(config="",
     docker_setup.build_queue_image(client)
     docker_setup.build_controller_image(client)
     
-    # startup containers
+    # startup queue container
+    queue_container = manage_containers.\
+        startup_queue_app(client, config)
     
     
     

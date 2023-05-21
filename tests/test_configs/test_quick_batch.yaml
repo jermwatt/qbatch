@@ -5,9 +5,10 @@ data:
   output:
     path_to_output: /Users/wattjer/Desktop/quick_batch/tests/test_data/output_data
     
-queue:
+apps:
   feed_rate: 1
-  order_files: False
+  queue:
+    order_files: False
 
 processor: 
   max_processors:

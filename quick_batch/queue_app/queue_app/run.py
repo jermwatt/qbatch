@@ -9,39 +9,36 @@ import sys
 
 def create_app():
     app = Flask(__name__)
-    
+
     # Configure logging
     app.logger.addHandler(logging.StreamHandler(sys.stdout))
     app.logger.setLevel(logging.DEBUG)
-    
 
     # attach container id
     container_id = subprocess.Popen('hostname', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()[0]
     container_id = eval(str(container_id)).decode('utf-8').strip('\n')
     app.container_id = container_id
 
-   
-    # # import config variables
-    # with open('/usr/src/configs/quick_batch.yaml', "r") as yaml_file:
-    #     config = yaml.safe_load(yaml_file)
+    # import config variables
+    with open('/my_app/config.yaml', "r") as yaml_file:
+        config = yaml.safe_load(yaml_file)
 
+    # extract required params
+    app.path_to_feed = config["data"]["input"]["path_to_input"]
+    app.file_type = config["data"]["input"]["file_type"]
+    app.feed_rate = config["apps"]["feed_rate"]
+    app.order_files = config["apps"]["queue"]["order_files"]
+    app.empty_trigger = 0
 
-        # # extract required params
-        # app.path_to_feed = config["data"]["input"]["path_to_input"]
-        # app.file_type = config["data"]["input"]["file_type"]
-        # app.order_files = config["data"]["input"]["order_files"]
-        # app.feed_rate = config["data"]["input"]["feed_rate"]
-        # app.empty_trigger = 0
+    # instantiate queues
+    queues_init.create_queues(app)
 
-
-        # # instantiate queues
-        # queues_init.create_queues(app)
-
-
+    # print out organized_datapaths for debugging
+    print(f'organized_datapaths: {app.organized_datapaths}', flush=True)
 
     # report startup success to terminal
     print(f'queue_app running on container {app.container_id} has started', flush=True)
-    
+
     return app
 
 
