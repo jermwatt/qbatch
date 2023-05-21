@@ -7,12 +7,14 @@ def processor(app):
         with open(file_path, 'r') as f:
             data = f.read()
 
-            # turn ever other character upper case
-            data = ''.join([data[i].upper() if i % 2 == 0 else data[i].lower() for i in range(len(data))])
+            # transform text - turn ever other character upper case
+            data = ''.join([data[i].upper() if i % 2 == 0 else data[i].lower()
+                            for i in range(len(data))])
             print(data)
 
             # save to output file
-            with open(app.path_to_output + '/' + file_path.split('/')[-1], 'w') as f:
+            with open(app.path_to_output + '/' +
+                      file_path.split('/')[-1], 'w') as f:
                 f.write(data)
 
-            time.sleep(5)
+            time.sleep(15)
