@@ -1,0 +1,13 @@
+data:
+  input: 
+    path_to_input: /Users/wattjer/Desktop/quick_batch/tests/test_data/input_data
+    file_type: .txt
+  output:
+    path_to_output: /Users/wattjer/Desktop/quick_batch/tests/test_data/output_data
+    
+queue:
+  feed_rate: 1
+  order_files: False
+
+processor: 
+  max_processors:
