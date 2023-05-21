@@ -1,8 +1,8 @@
-# from processor_app import app
-# from activate_process import activate
 from flask import Flask
 import yaml
 import subprocess
+from activate_process import activate
+
 
 def create_app():
     app = Flask(__name__)
@@ -30,5 +30,5 @@ def create_app():
 
 if __name__ == '__main__':
     app = create_app()
-    # activate(app)
+    activate(app)
     app.run(host='0.0.0.0', debug=False, port=80, threaded=True)

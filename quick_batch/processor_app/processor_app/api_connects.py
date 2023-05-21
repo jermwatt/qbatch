@@ -6,6 +6,7 @@ import processor
 
 
 def retrieval_check(app, data):
+    print(data, flush=True)
     if 'feeder queue is empty' not in str(data):
         # update log
         app.receipt_data['retrieval_message'] = 'SUCCESS RETRIEVAL:' + data
@@ -44,6 +45,7 @@ def process(app):
 
 def request_object_paths(app):
     # seed receipt for report to logger
+    app.receipt_data = {}
     app.receipt_data['retrieval_message'] = ''
     app.receipt_data['retrieval_exception'] = ''
     app.receipt_data['processor_message'] = ''
@@ -62,11 +64,11 @@ def request_object_paths(app):
         checkval = retrieval_check(app, data)
         if checkval:
             # process
-            node_data_processor.process(app)
+            app.file_paths_to_process = data
         else:
             # feeder queue is empty
             # ping log to report exit
-            send_done_report(app)
+            # send_done_report(app)
 
             # exit
             sys.exit(0)
@@ -75,6 +77,7 @@ def request_object_paths(app):
         # send report to queue_app
         app.receipt_data['retrieval_message'] = 'FAILURE RETRIEVAL'
         app.receipt_data['retrieval_exception'] = str(e)
+        print(app.receipt_data, flush=True)
         send_done_report(app)
 
         # fail out - restart and collect the next datapoint from the queue
@@ -83,7 +86,7 @@ def request_object_paths(app):
 
 # post done back to queue_app
 def send_done_report(app):
-    data = {'data': str(app.input_data)}
+    data = {'data': str(app.file_paths_to_process)}
     data = json.dumps(data)
 
     # create post_address

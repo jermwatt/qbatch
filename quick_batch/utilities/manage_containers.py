@@ -45,7 +45,7 @@ def startup_processor_app(client, config_path, input_path, output_path):
         name='processor_app',
         tty=True,
         stdin_open=True,
-        ports={'81/tcp': 81},
+        ports={'80/tcp': None},
         volumes={
             processor_path + '/processor_app':
             {'bind': '/my_app', 'mode': 'ro'},
@@ -56,7 +56,7 @@ def startup_processor_app(client, config_path, input_path, output_path):
             output_path:
             {'bind': '/my_data/output', 'mode': 'rw'},
             base_directory + '/processor.py':
-            {'bind': '/my_app/processor.py', 'mode': 'ro'},
+            {'bind': '/my_processor/processor.py', 'mode': 'ro'},
         },
         command='python /my_app/run.py'
         )
