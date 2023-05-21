@@ -92,7 +92,7 @@ def create_queues(app):
         app.feeder_queue.put("'" + item + "'")
 
     # init queue counters
-    app.feed_queue_length = copy.deepcopy(str(len(app.feeder_queue.queue)))
+    app.feed_queue_length = len(organized_datapaths)
     app.wip_queue_length = 0
     app.done_queue_length = 0
 

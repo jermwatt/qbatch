@@ -6,8 +6,7 @@ import processor
 
 
 def retrieval_check(app, data):
-    print(data, flush=True)
-    if 'feeder queue is empty' not in str(data):
+    if len(data['object_paths']) > 0:
         # update log
         app.receipt_data['retrieval_message'] = 'SUCCESS RETRIEVAL:' + data
 
@@ -16,7 +15,8 @@ def retrieval_check(app, data):
         return True
     else:
         # ping log to report exit
-        app.receipt_data['retrieval_message'] = 'SUCCESS: processer exited properly'
+        app.receipt_data['retrieval_message'] = 'SUCCESS: processer \
+            exited properly'
         return False
 
 

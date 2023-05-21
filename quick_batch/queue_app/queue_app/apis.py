@@ -4,8 +4,11 @@ import queue
 
 
 @app.route('/', methods=['GET'])
-def index():
-    return 'hello world'
+def home():
+    return jsonify({'object_paths': [],
+                    'queue_message': f"{app.feed_queue_length} objects "
+                                     f"remaining in feeder queue"
+                    })
 
 
 @app.route('/send_object_paths', methods=['GET'])
@@ -17,7 +20,7 @@ def send_object_paths():
         for i in range(app.feed_rate):
             # collect next path
             next_path = app.feeder_queue.get()
-            object_paths.append(next_path)
+            object_paths.append(next_path.replace('"', '').replace("'", ''))
 
             # update wip queue
             app.wip_queue.put(next_path)
@@ -26,16 +29,20 @@ def send_object_paths():
             app.wip_queue_length += 1
             app.feed_queue_length -= 1
 
-        return jsonify({'object_paths': object_paths})
+        return jsonify({'object_paths': object_paths,
+                        'queue_message': f"{app.feed_queue_length} objects "
+                                         f"remaining in feeder queue"
+                        })
     else:
-        if app.empty_trigger == 0: 
+        if app.empty_trigger == 0:
             app.empty_trigger += 1
 
             # send empty queue message to container log
             print('feeder queue is empty', flush=True)
 
         # return news to requester
-        return 'feeder queue is empty'
+        return jsonify({'object_paths': [],
+                        'feed_queue_length': 0})
 
 
 # receive message from processor of completion

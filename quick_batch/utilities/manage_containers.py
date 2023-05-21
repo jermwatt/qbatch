@@ -11,11 +11,17 @@ def remove_all_containers(client):
         container.remove(force=True)
 
 
+# create docker network
+@log_exceptions
+def create_network(client):
+    client.networks.create('quick_batch_network', driver='bridge')
+
 # start queue_app docker container with interactive terminal
 @log_exceptions
 def startup_queue_app(client, config_path, input_path):
     queue_container = client.containers.run(
         'quick_batch_queue_app',
+        network='quick_batch_network',
         detach=True,
         name='queue_app',
         tty=True,
@@ -41,6 +47,7 @@ def startup_processor_app(client, config_path, input_path, output_path):
     # start processor_app docker container with interactive terminal
     processor_container = client.containers.run(
         'quick_batch_processor_app',
+        network='quick_batch_network',
         detach=True,
         name='processor_app',
         tty=True,

@@ -21,6 +21,9 @@ def main(config="",
     # kill current containers
     manage_containers.remove_all_containers(client)
     
+    # create network
+    manage_containers.create_network(client)
+    
     # startup queue container
     queue_container = manage_containers.\
         startup_queue_app(client, config, input_path)
