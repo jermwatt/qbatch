@@ -20,11 +20,11 @@ def create_app():
     app.container_id = container_id
 
     # import config variables
-    with open('/my_app/config.yaml', "r") as yaml_file:
+    with open('/my_configs/queue_config.yaml', "r") as yaml_file:
         config = yaml.safe_load(yaml_file)
 
     # extract required params
-    app.path_to_feed = config["data"]["input"]["path_to_input"]
+    app.path_to_feed = '/my_data/input'
     app.file_type = config["data"]["input"]["file_type"]
     app.feed_rate = config["apps"]["feed_rate"]
     app.order_files = config["apps"]["queue"]["order_files"]
@@ -37,7 +37,8 @@ def create_app():
     print(f'organized_datapaths: {app.organized_datapaths}', flush=True)
 
     # report startup success to terminal
-    print(f'queue_app running on container {app.container_id} has started', flush=True)
+    print(f'queue_app running on container {app.container_id} has started',
+          flush=True)
 
     return app
 

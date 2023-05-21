@@ -1,11 +1,20 @@
 from utilities import base_directory, processor_path, controller_path, \
     queue_path
 from .progress_logger import log_exceptions
+import os 
+
+
+# remove all docker containers
+@log_exceptions
+def remove_all_containers(client):
+    for container in client.containers.list(all=True):
+        container.remove(force=True)
 
 
 # start queue_app docker container with interactive terminal
 @log_exceptions
-def startup_queue_app(client, config_path):
+def startup_queue_app(client, config_path, input_path, output_path):
+    print(config_path)
     queue_container = client.containers.run(
         'quick_batch_queue_app',
         detach=True,
@@ -14,10 +23,14 @@ def startup_queue_app(client, config_path):
         stdin_open=True,
         ports={'80/tcp': 80},
         volumes={
-            queue_path:
-            {'bind': '/my_app', 'mode': 'rw'},
+            queue_path + '/queue_app':
+            {'bind': '/my_app', 'mode': 'ro'},
             config_path:
-            {'bind': '/my_app/config.yaml', 'mode': 'rw'},
+            {'bind': '/my_configs/queue_config.yaml', 'mode': 'ro'},
+            input_path:
+            {'bind': '/my_data/input', 'mode': 'ro'},
+            output_path:
+            {'bind': '/my_data/output', 'mode': 'ro'}
         },
         command='python /my_app/run.py'
         )

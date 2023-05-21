@@ -9,8 +9,8 @@ def check_config_data_paths(config_path):
         config = yaml.safe_load(yaml_file)
 
     # check that data paths in config file entries are valid
-    input_path = config["data"]["input"]["path_to_input"]
-    output_path = config["data"]["output"]["path_to_output"]
+    input_path = config["data"]["input"]["machine_path"]
+    output_path = config["data"]["output"]["machine_path"]
 
     # check that input path exists
     if not os.path.isdir(input_path):
@@ -34,6 +34,8 @@ def check_config_data_paths(config_path):
         print("SUCCESS: config input path is not empty")
         files = os.listdir(input_path)
         print(f"SUCCESS: files in input path: {files}")
+        
+    return input_path, output_path
 
 
 def check_files(config_path, processor_path):
@@ -52,4 +54,5 @@ def check_files(config_path, processor_path):
         print("SUCCESS: processor_path file exists")
         
     # check config data paths
-    check_config_data_paths(config_path)
+    input_path, output_path = check_config_data_paths(config_path)
+    return input_path, output_path

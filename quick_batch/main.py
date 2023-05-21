@@ -8,7 +8,7 @@ def main(config="",
          processor=""):
 
     # check that input files exist
-    param_checks.check_files(config, processor)
+    input_path, output_path = param_checks.check_files(config, processor)
 
     # create docker client
     client = docker_setup.create_client()
@@ -18,9 +18,12 @@ def main(config="",
     docker_setup.build_queue_image(client)
     docker_setup.build_controller_image(client)
     
+    # kill current containers
+    manage_containers.remove_all_containers(client)
+    
     # startup queue container
     queue_container = manage_containers.\
-        startup_queue_app(client, config)
+        startup_queue_app(client, config, input_path, output_path)
     
     
     
