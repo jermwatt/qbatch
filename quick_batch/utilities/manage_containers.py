@@ -23,13 +23,13 @@ def startup_queue_app(client, config_path, input_path):
         ports={'80/tcp': 80},
         volumes={
             queue_path + '/queue_app':
-            {'bind': '/my_app', 'mode': 'ro'},
+            {'bind': '/queue_app', 'mode': 'ro'},
             config_path:
             {'bind': '/my_configs/config.yaml', 'mode': 'ro'},
             input_path:
             {'bind': '/my_data/input', 'mode': 'ro'}
         },
-        command='python /my_app/run.py'
+        command='python /queue_app/run.py'
         )
 
     return queue_container
@@ -48,7 +48,7 @@ def startup_processor_app(client, config_path, input_path, output_path):
         ports={'80/tcp': None},
         volumes={
             processor_path + '/processor_app':
-            {'bind': '/my_app', 'mode': 'ro'},
+            {'bind': '/processor_app', 'mode': 'ro'},
             config_path:
             {'bind': '/my_configs/config.yaml', 'mode': 'ro'},
             input_path:
@@ -58,7 +58,7 @@ def startup_processor_app(client, config_path, input_path, output_path):
             base_directory + '/processor.py':
             {'bind': '/my_processor/processor.py', 'mode': 'ro'},
         },
-        command='python /my_app/run.py'
+        command='python /processor_app/run.py'
         )
 
     return processor_container

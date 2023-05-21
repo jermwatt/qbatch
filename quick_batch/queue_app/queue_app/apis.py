@@ -1,4 +1,4 @@
-import app
+from queue_app import app
 from flask import jsonify, request
 import queue
 
