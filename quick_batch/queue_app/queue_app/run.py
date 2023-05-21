@@ -20,7 +20,7 @@ def create_app():
     app.container_id = container_id
 
     # import config variables
-    with open('/my_configs/queue_config.yaml', "r") as yaml_file:
+    with open('/my_configs/config.yaml', "r") as yaml_file:
         config = yaml.safe_load(yaml_file)
 
     # extract required params

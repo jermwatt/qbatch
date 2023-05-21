@@ -23,7 +23,7 @@ def main(config="",
     
     # startup queue container
     queue_container = manage_containers.\
-        startup_queue_app(client, config, input_path, output_path)
+        startup_queue_app(client, config, input_path)
     
     
     

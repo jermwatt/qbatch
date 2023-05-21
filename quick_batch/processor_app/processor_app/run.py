@@ -12,18 +12,19 @@ def create_app():
     container_id = eval(str(container_id)).decode('utf-8').strip('\n')
     app.container_id = container_id
 
-    # # import config variables
-    # with open('/usr/src/configs/quick_batch.yaml', "r") as yaml_file:
-    #     config = yaml.safe_load(yaml_file)
+    # import config variables
+    with open('/my_configs/config.yaml', "r") as yaml_file:
+        config = yaml.safe_load(yaml_file)
 
-    # app.path_to_feed = config["data"]["input"]["path_to_input"]
-    # app.feed_rate = config["data"]["input"]["feed_rate"]
-    # app.save_location = config["data"]["output"]["path_to_output"]
+    # extract required params
+    app.path_to_feed = '/my_data/input'
+    app.path_to_output = '/my_data/output'
+    app.feed_rate = config["apps"]["feed_rate"]
 
     # report startup success to terminal
-    print(f'processor_app running on container {app.container_id} has started',
-        flush=True)
-    
+    print(f'processor_app running on container \
+        {app.container_id} has started', flush=True)
+
     return app
 
 

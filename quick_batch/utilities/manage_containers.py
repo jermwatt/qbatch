@@ -13,8 +13,7 @@ def remove_all_containers(client):
 
 # start queue_app docker container with interactive terminal
 @log_exceptions
-def startup_queue_app(client, config_path, input_path, output_path):
-    print(config_path)
+def startup_queue_app(client, config_path, input_path):
     queue_container = client.containers.run(
         'quick_batch_queue_app',
         detach=True,
@@ -26,13 +25,40 @@ def startup_queue_app(client, config_path, input_path, output_path):
             queue_path + '/queue_app':
             {'bind': '/my_app', 'mode': 'ro'},
             config_path:
-            {'bind': '/my_configs/queue_config.yaml', 'mode': 'ro'},
+            {'bind': '/my_configs/config.yaml', 'mode': 'ro'},
             input_path:
-            {'bind': '/my_data/input', 'mode': 'ro'},
-            output_path:
-            {'bind': '/my_data/output', 'mode': 'ro'}
+            {'bind': '/my_data/input', 'mode': 'ro'}
         },
         command='python /my_app/run.py'
         )
 
     return queue_container
+
+
+# start queue_app docker container with interactive terminal
+@log_exceptions
+def startup_processor_app(client, config_path, input_path, output_path):
+    # start processor_app docker container with interactive terminal
+    processor_container = client.containers.run(
+        'quick_batch_processor_app',
+        detach=True,
+        name='processor_app',
+        tty=True,
+        stdin_open=True,
+        ports={'81/tcp': 81},
+        volumes={
+            processor_path + '/processor_app':
+            {'bind': '/my_app', 'mode': 'ro'},
+            config_path:
+            {'bind': '/my_configs/config.yaml', 'mode': 'ro'},
+            input_path:
+            {'bind': '/my_data/input', 'mode': 'ro'},
+            output_path:
+            {'bind': '/my_data/output', 'mode': 'rw'},
+            base_directory + '/processor.py':
+            {'bind': '/my_app/processor.py', 'mode': 'ro'},
+        },
+        command='python /my_app/run.py'
+        )
+
+    return processor_container
