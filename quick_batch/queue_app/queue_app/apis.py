@@ -1,30 +1,31 @@
 from queue_app import app
 from flask import jsonify, request
-import queue
 import json
 
 
+# receive message from feeder of completion
 @app.route('/', methods=['GET'])
-def home():
-    return jsonify({'object_paths': [],
-                    'queue_message': f"{app.feed_queue_length} objects "
-                                     f"remaining in feeder queue"
-                    })
+def current_queue_lengths():
+    return jsonify({"original_feed_queue_length":
+                    app.original_feed_queue_length,
+                    'feed_queue_length': app.feed_queue_length,
+                    'wip_queue_length': app.wip_queue_length,
+                    'done_queue_length': app.done_queue_length})
 
 
 @app.route('/send_object_paths', methods=['GET'])
 def send_object_paths():
     # feeder queue
-    if not app.feeder_queue.empty():
+    if not len(app.feeder_queue) == 0:
         # get next object data paths
         object_paths = []
         for i in range(app.feed_rate):
             # collect next path
-            next_path = app.feeder_queue.get()
-            object_paths.append(next_path.replace('"', '').replace("'", ''))
+            next_path = app.feeder_queue.popleft()
+            object_paths.append(next_path)  #next_path.replace('"', '').replace("'", ''))
 
             # update wip queue
-            app.wip_queue.put(next_path)
+            app.wip_queue.append(next_path)
 
             # update counters
             app.wip_queue_length += 1
@@ -61,29 +62,25 @@ def done_from_processor():
             app.feed_queue_length -= 1
             app.done_queue_length += 1
             app.wip_queue_length -= 1
-            app.done_queue.put("'" + d + "'")
+            app.done_queue.append(d)  #("'" + d + "'")
 
         # update wip queue
-        updated_queue = queue.Queue()
-        while not app.wip_queue.empty():
-            d = app.wip_queue.get()
-            if d.replace('"', '').replace("'", '') not in data:
-                print(d, flush=True)
-                updated_queue.put("'" + d + "'")
+        app.wip_queue = list(set(app.wip_queue) - set(data))
+        app.wip_queue_length = len(app.wip_queue)         
+
+        # # update wip queue
+        # updated_queue = queue.Queue()
+        # while not app.wip_queue.empty():
+        #     d = app.wip_queue.get()
+        #     if d.replace('"', '').replace("'", '') not in data:
+        #         print(d, flush=True)
+        #         updated_queue.put("'" + d + "'")
 
         # replace existing wip qeue
-        app.wip_queue = updated_queue
+        # app.wip_queue = updated_queue
 
         return jsonify("200")
     except Exception as e:
         print(e, flush=True)
         return jsonify("400")
 
-
-@app.route('/current_queue_lengths', methods=['GET'])
-def current_queue_lengths():
-    return jsonify({"original_feed_queue_length":
-                    app.original_feed_queue_length,
-                    'feed_queue_length': app.feed_queue_length,
-                    'wip_queue_length': app.wip_queue_length,
-                    'done_queue_length': app.done_queue_length})

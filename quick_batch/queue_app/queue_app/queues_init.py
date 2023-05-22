@@ -1,6 +1,5 @@
 import os
-import queue
-import copy
+from collections import deque
 from os.path import isfile, join
 from os import listdir
 from subprocess import run
@@ -83,15 +82,19 @@ def create_queues(app):
     app.organized_sizes = organized_sizes
 
     # create queues for feeder, done, and wip
-    app.feeder_queue = queue.Queue()
-    app.done_queue = queue.Queue()
-    app.wip_queue = queue.Queue()
+    app.feeder_queue = deque()
+    app.done_queue = deque()
+    app.wip_queue = []
+    app.failed_queue = []  # to add
 
     # load up queue with organized_paths
     feed_counter = 0
     for item in organized_datapaths:
-        app.feeder_queue.put("'" + item + "'")
+        app.feeder_queue.append(item)
         feed_counter += 1
+
+    print('done loading feeder queue!', flush=True)
+    print(app.feeder_queue, flush=True)
 
     # init queue counters
     app.feed_queue_length = feed_counter
