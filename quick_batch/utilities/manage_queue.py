@@ -1,9 +1,34 @@
 import json
 import time
+import sys
 from .progress_logger import log_exceptions
 from .manage_containers import remove_all_containers
 from .manage_networks import remove_network
 from .manage_services import remove_all_services
+
+
+@log_exceptions
+# monitor number of containers in queue_app service, return if greater than 0
+def monitor_queue_app_containers(client):
+    # set 5 minute timeout
+    timeout = time.time() + 60 * 5
+
+    # run check_queue_app_containers until timeout
+    while True and time.time() < timeout:
+        # Get the list of running containers for the service
+        queue_app_containers = client.containers.list(filters={'label': 'com.docker.swarm.service.name=queue_app'})
+        if len(queue_app_containers) > 0:
+            print("SUCCESS: queue_app service is running.")
+            return
+        else:
+            print("queue_app service is not running yet...")
+        time.sleep(5)
+
+        if time.time() > timeout:
+            print("FAILURE: queue_app service did not start within 5 minutes.")
+            sys.exit(1)
+            break
+    return
 
 
 @log_exceptions

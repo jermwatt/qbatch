@@ -12,6 +12,7 @@ from utilities.manage_networks import create_network
 from utilities.manage_services import create_queue_service
 from utilities.manage_services import create_processor_service
 from .progress_logger import log_exceptions
+from utilities.manage_queue import monitor_queue_app_containers
 
 
 @log_exceptions
@@ -68,6 +69,7 @@ def setup_workspace(client,
     queue_service = create_queue_service(client,
                                          config,
                                          input_path)
+    monitor_queue_app_containers(client)
     time.sleep(10)
 
     # create processor service

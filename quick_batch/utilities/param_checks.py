@@ -78,10 +78,10 @@ def check_processor(processor):
 
         # Check if it is a function
         if inspect.isfunction(processor_func):
-            print(f"The module '{module_name}' does contain a function named 'processor'.", end='')
+            print(f"SUCCESS: The module '{module_name}' does contain a function named 'processor'.")
         else:
-            print(f"The module '{module_name}' does NOT contain a function named 'processor'.", end='')
+            print(f"FAILURE: The module '{module_name}' does NOT contain a function named 'processor'.")
             sys.exit(1)
     else:
-        print(f"The module '{module_name}' does NOT contain a function named 'processor'.", end='')
+        print(f"FAILURE: The module '{module_name}' does NOT contain a function named 'processor'.")
         sys.exit(1)
