@@ -14,7 +14,11 @@ def create():
     app.logger.setLevel(logging.DEBUG)
 
     # attach container id
-    container_id = subprocess.Popen('hostname', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()[0]
+    container_id = subprocess.Popen('hostname',
+                                    shell=True,
+                                    stdout=subprocess.PIPE, 
+                                    stderr=subprocess.PIPE).communicate()[0]
+
     container_id = eval(str(container_id)).decode('utf-8').strip('\n')
     app.container_id = container_id
 
@@ -31,9 +35,6 @@ def create():
 
     # instantiate queues
     queues_init.create_queues(app)
-
-    # print out organized_datapaths for debugging
-    print(f'organized_datapaths: {app.organized_datapaths}', flush=True)
 
     # report startup success to terminal
     print(f'queue_app running on container {app.container_id} has started',

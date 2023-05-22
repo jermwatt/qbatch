@@ -12,6 +12,7 @@ from .manage_services import remove_all_services
 def monitor_queue_app_containers(client):
     # set 5 minute timeout
     timeout = time.time() + 60 * 5
+    time.sleep(5)
 
     # run check_queue_app_containers until timeout
     while True and time.time() < timeout:
@@ -21,7 +22,7 @@ def monitor_queue_app_containers(client):
             print("SUCCESS: queue_app service is running.")
             return
         else:
-            print("queue_app service is not running yet...")
+            print("WARNING: queue_app service is not running yet...")
         time.sleep(5)
 
         if time.time() > timeout:
@@ -31,7 +32,6 @@ def monitor_queue_app_containers(client):
     return
 
 
-@log_exceptions
 def get_current_queue_lengths(client):
     # Get the list of running containers for the service
     queue_app_container = client.containers.list(filters={'label': 'com.docker.swarm.service.name=queue_app'})
@@ -49,14 +49,19 @@ def get_current_queue_lengths(client):
 
 
 # watch feed_queue_length, when it reaches 0, stop the processor service
+@log_exceptions
 def monitor_queue(client):
     time.sleep(5)
     while True:
         response = get_current_queue_lengths(client)
         feed_queue_length = response['feed_queue_length']
-        print(feed_queue_length, flush=True)
-        if feed_queue_length == 0:
 
+        # print current feed_queue_length
+        print('current feed_queue_length: ', feed_queue_length, flush=True)
+
+        # check if feed_queue_length is 0
+        if feed_queue_length == 0:
+            print('SUCCESS: feed_queue_length is 0, stopping services...', flush=True)
             remove_all_services(client)
             remove_all_containers(client)
             remove_network(client)

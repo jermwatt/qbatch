@@ -2,13 +2,18 @@
 import docker
 from .progress_logger import log_exceptions
 from utilities import processor_path, \
-    queue_path, base_directory
+    queue_path
 
 
 @log_exceptions
 def remove_service(client, service_name):
     if service_name in [service.name for service in client.services.list()]:
+        # remove service 
         client.services.get(service_name).remove()
+
+        # remove containers associated with service 
+        for container in client.containers.list(filters={'label': 'com.docker.swarm.service.name=' + service_name}):
+            container.remove()
 
 
 @log_exceptions

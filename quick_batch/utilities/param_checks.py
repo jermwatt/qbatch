@@ -36,8 +36,8 @@ def check_config_data_paths(config_path):
         sys.exit(1)
     else:
         print("SUCCESS: config input path is not empty")
-        files = os.listdir(input_path)
-        print(f"SUCCESS: files in input path: {files}")
+        # files = os.listdir(input_path)
+        # print(f"SUCCESS: files in input path: {files}")
 
     return input_path, output_path
 
