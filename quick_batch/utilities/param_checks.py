@@ -1,8 +1,12 @@
 import sys
 import os
+import inspect
 import yaml
+import importlib.util
+from .progress_logger import log_exceptions
 
 
+@log_exceptions
 def check_config_data_paths(config_path):
     # import config variables
     with open(config_path, "r") as yaml_file:
@@ -34,10 +38,11 @@ def check_config_data_paths(config_path):
         print("SUCCESS: config input path is not empty")
         files = os.listdir(input_path)
         print(f"SUCCESS: files in input path: {files}")
-        
+
     return input_path, output_path
 
 
+@log_exceptions
 def check_files(config_path, processor_path):
     # check if file exists
     if not os.path.isfile(config_path):
@@ -52,7 +57,31 @@ def check_files(config_path, processor_path):
         sys.exit(1)
     else:
         print("SUCCESS: processor_path file exists")
-        
-    # check config data paths
-    input_path, output_path = check_config_data_paths(config_path)
-    return input_path, output_path
+
+
+# check to make sure processor.py is valid
+# for now - that it contains a function named 'processor'
+@log_exceptions
+def check_processor(processor):
+    # Module name to check for
+    module_name = 'processor'
+
+    # Load the module dynamically
+    spec = importlib.util.spec_from_file_location(module_name, processor)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    # Check if the 'processor' function is defined in the module
+    if 'processor' in dir(module):
+        # Get the 'processor' function object
+        processor_func = getattr(module, 'processor')
+
+        # Check if it is a function
+        if inspect.isfunction(processor_func):
+            print(f"The module '{module_name}' does contain a function named 'processor'.", end='')
+        else:
+            print(f"The module '{module_name}' does NOT contain a function named 'processor'.", end='')
+            sys.exit(1)
+    else:
+        print(f"The module '{module_name}' does NOT contain a function named 'processor'.", end='')
+        sys.exit(1)

@@ -2,7 +2,7 @@ import shutil
 import os
 import docker
 from .progress_logger import log_exceptions
-from utilities import base_directory, processor_path, controller_path, \
+from utilities import base_directory, processor_path, \
     queue_path
 
 
@@ -33,11 +33,4 @@ def build_processor_image(client):
 def build_queue_image(client):
     # create docker image for queue app - including user defined requirements
     client.images.build(path=queue_path, tag='quick_batch_queue_app',
-                        quiet=False)
-
-
-@log_exceptions
-def build_controller_image(client):
-    # create docker image for queue app - including user defined requirements
-    client.images.build(path=controller_path, tag='quick_batch_controller_app',
                         quiet=False)

@@ -1,36 +1,30 @@
 import fire
-from utilities import param_checks
-from utilities import manage_images
-from utilities import manage_containers
+from utilities.manage_setup import setup_client
+from utilities.manage_setup import reset_workspace
+from utilities.manage_setup import setup_workspace
+from utilities.manage_queue import monitor_queue
 
 
 def main(config="",
          processor=""):
+    # setup
+    client, input_path, output_path = setup_client(config, processor)
 
-    # check that input files exist
-    input_path, output_path = param_checks.check_files(config, processor)
+    # reset workspace
+    reset_workspace(client)
 
-    # create docker client
-    client = manage_images.create_client()
+    # create workspace
+    queue_service, processor_service = setup_workspace(client,
+                                                       config,
+                                                       processor,
+                                                       input_path,
+                                                       output_path)
 
-    # build images
-    manage_images.build_processor_image(client)
-    manage_images.build_queue_image(client)
-    manage_images.build_controller_image(client)
+    # scale up processor service
+    processor_service.scale(2)
 
-    # kill current containers
-    manage_containers.remove_all_containers(client)
-
-    # create network
-    manage_containers.create_network(client)
-
-    # startup queue container
-    queue_container = manage_containers.\
-        startup_queue_app(client, config, input_path)
-
-    # startup processor container
-    processor_container = manage_containers.\
-        startup_processor_app(client, config, input_path, output_path)
+    # monitor queue
+    monitor_queue(client)
 
 
 if __name__ == '__main__':

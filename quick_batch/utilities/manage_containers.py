@@ -1,7 +1,6 @@
-from utilities import base_directory, processor_path, controller_path, \
+from utilities import base_directory, processor_path, \
     queue_path
 from .progress_logger import log_exceptions
-import os 
 
 
 # remove all docker containers
@@ -11,15 +10,9 @@ def remove_all_containers(client):
         container.remove(force=True)
 
 
-# create docker network
-@log_exceptions
-def create_network(client):
-    if 'quick_batch_network' not in [network.name for network in client.networks.list()]:
-        client.networks.create('quick_batch_network', driver='bridge')
-
 # start queue_app docker container with interactive terminal
 @log_exceptions
-def startup_queue_app(client, config_path, input_path):
+def startup_queue_app_container(client, config_path, input_path):
     queue_container = client.containers.run(
         image='quick_batch_queue_app',
         network='quick_batch_network',

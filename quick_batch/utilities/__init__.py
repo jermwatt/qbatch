@@ -10,9 +10,10 @@ sys.path.append(base_directory)
 
 # define paths to each app dockerfile location
 processor_path = os.path.join(base_directory, 'quick_batch', 'processor_app')
-controller_path = os.path.join(base_directory, 'quick_batch', 'controller_app')
 queue_path = os.path.join(base_directory, 'quick_batch', 'queue_app')
 
+
+
+
 print(f"processor_path: {processor_path}")
-print(f"controller_path: {controller_path}")
 print(f"queue_path: {queue_path}")
