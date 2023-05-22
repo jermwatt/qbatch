@@ -61,7 +61,8 @@ def monitor_queue(client):
 
         # check if feed_queue_length is 0
         if feed_queue_length == 0:
-            print('SUCCESS: feed_queue_length is 0, stopping services...', flush=True)
+            print('SUCCESS: feed_queue_length is 0, stopping services...',
+                  flush=True)
             remove_all_services(client)
             remove_all_containers(client)
             remove_network(client)
