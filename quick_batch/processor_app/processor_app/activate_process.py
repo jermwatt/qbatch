@@ -1,6 +1,7 @@
 import sys
 import api_connects
-import processor
+sys.path.append('..')
+from custom_processor import processor
 
 
 def processor_wrapper(processor, app):
