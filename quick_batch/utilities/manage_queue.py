@@ -4,7 +4,6 @@ import sys
 from .manage_containers import remove_all_containers
 from .manage_networks import remove_network
 from .manage_services import remove_all_services
-# from .progress_logger import log_exceptions
 from utilities import log_exceptions
 
 

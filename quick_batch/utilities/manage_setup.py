@@ -1,6 +1,7 @@
 import time
 from utilities import log_exceptions
 from utilities import manage_images
+from utilities.param_checks import setup_logger
 from utilities.param_checks import check_config
 from utilities.param_checks import check_config_data_paths
 from utilities.param_checks import check_processor
@@ -13,11 +14,13 @@ from utilities.manage_networks import create_network
 from utilities.manage_services import create_queue_service
 from utilities.manage_services import create_processor_service
 from utilities.manage_queue import monitor_queue_app_containers
-# from .progress_logger import log_exceptions
 
 
 @log_exceptions
 def setup_client(config):
+    # setup logger
+    logger = setup_logger(config)
+
     # check that input files exist
     check_config(config)
 
@@ -35,7 +38,7 @@ def setup_client(config):
     manage_images.build_processor_image(client, requirements_path, processor)
     manage_images.build_queue_image(client)
 
-    return client, input_path, output_path, processor, num_processors
+    return client, input_path, output_path, processor, num_processors, logger
 
 
 @log_exceptions

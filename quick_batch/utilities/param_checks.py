@@ -1,11 +1,31 @@
 import sys
 import os
 import ast
-import inspect
 import yaml
-import importlib.util
-# from .progress_logger import log_exceptions
 from utilities import log_exceptions
+from utilities.manage_loggers import Logger
+
+
+def setup_logger(config):
+    # import log path
+    with open(config, "r") as yaml_file:
+        config = yaml.safe_load(yaml_file)
+    log_path = config["data"]["log"]["machine_path"]
+
+    # delete log file if it exists
+    if os.path.exists(log_path):
+        os.remove(log_path)
+
+    # instantiate log_exceptions decorator
+    logger = Logger(log_path)
+
+    # Open the log file
+    logger.open_log()
+
+    # Redirect sys.stdout to the logger
+    sys.stdout = logger
+
+    return logger
 
 
 @log_exceptions
