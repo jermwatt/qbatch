@@ -6,6 +6,7 @@ authors = ["Jeremy Watt <jermwatt@gmail.com>"]
 readme = "README.md"
 homepage = "https://github.com/jermwatt/quick_batch"
 license = "MIT"
+packages = [{include = "quick_batch"}]
 
 [tool.poetry.scripts]
 processor = "processor.main:main"
