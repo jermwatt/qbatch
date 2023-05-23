@@ -6,22 +6,16 @@ base_path = str(Path(__file__).parent.parent)
 sys.path.append(str(base_path))
 
 config_path = f'{base_path}/tests/test_configs/test_quick_batch.yaml'
-processor_path = f'{base_path}/tests/test_processors/processor.py'
 
 # delete contents of f'{base_path}/tests/test_data/output_data' but not folder
 for file_name in os.listdir(f'{base_path}/tests/test_data/output_data'):
     os.remove(f'{base_path}/tests/test_data/output_data/{file_name}')
 
-print('processor_path: ', processor_path)
-print('config_path: ', config_path)
-print('base_path: ', base_path)
-
 
 def test_quick_batch():
     # rub quick batch
     from quick_batch import main
-    main.main(config=config_path,
-              processor=processor_path)
+    main.main(config=config_path)
 
     # load in output data file names from
     # f'{base_path}/tests/test_data/output_data'

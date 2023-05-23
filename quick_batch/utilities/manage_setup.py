@@ -1,5 +1,5 @@
 import time
-from utilities.param_checks import check_files
+from utilities.param_checks import check_config
 from utilities.param_checks import check_config_data_paths
 from utilities.param_checks import check_processor
 from utilities import manage_images
@@ -16,12 +16,13 @@ from utilities.manage_queue import monitor_queue_app_containers
 
 
 @log_exceptions
-def setup_client(config, processor):
+def setup_client(config):
     # check that input files exist
-    check_files(config, processor)
+    check_config(config)
 
     # check config data paths
-    input_path, output_path = check_config_data_paths(config)
+    input_path, output_path, processor, num_processors = \
+        check_config_data_paths(config)
 
     # check processor
     check_processor(processor)
@@ -33,7 +34,7 @@ def setup_client(config, processor):
     manage_images.build_processor_image(client)
     manage_images.build_queue_image(client)
 
-    return client, input_path, output_path
+    return client, input_path, output_path, processor, num_processors
 
 
 @log_exceptions
@@ -66,17 +67,10 @@ def setup_workspace(client,
     time.sleep(5)
 
     # create queue service
-    queue_service = create_queue_service(client,
-                                         config,
-                                         input_path)
+    create_queue_service(client, config, input_path)
     monitor_queue_app_containers(client)
     time.sleep(10)
 
     # create processor service
-    processor_service = create_processor_service(client,
-                                                 config,
-                                                 input_path,
-                                                 output_path,
-                                                 processor)
-
-    return queue_service, processor_service
+    create_processor_service(client, config, input_path, output_path,
+                             processor)

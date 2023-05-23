@@ -11,4 +11,5 @@ apps:
     order_files: False
 
 processor: 
-  max_processors:
+  machine_path: /Users/wattjer/Desktop/quick_batch/tests/test_processors/processor.py
+  num_processors: 5

@@ -1,9 +1,37 @@
 
+import time
 import docker
 from .progress_logger import log_exceptions
 from utilities import processor_path, \
     queue_path
 
+
+@log_exceptions
+def scaleup_processor_service(client, num_processors):
+    # get processor_service from client
+    processor_service = client.services.get('processor_app')
+
+    # if num_processors < 5 scale up immeadiately
+    if num_processors < 5:
+        processor_service.scale(num_processors)
+        return
+    else:
+        # scale up processor service to num_processors in increments of 5
+        for i in range(5, num_processors + 1, 5):
+            # report scale update in progress
+            print(f"Scaling processor service to {i} instances...")
+
+            # update processor service scale
+            processor_service.scale(min(i, num_processors))
+            time.sleep(60)
+
+            # report update complete
+            print("...complete")
+
+            # break if i >= num_processors
+            if i >= num_processors:
+                break
+        return
 
 @log_exceptions
 def remove_service(client, service_name):
@@ -65,8 +93,7 @@ def create_queue_service(client,
     }
 
     # Create the service
-    service = client.services.create(**service_config)
-    return service
+    client.services.create(**service_config)
 
 
 @log_exceptions
@@ -125,5 +152,4 @@ def create_processor_service(client,
         # 'command': ['tail', '-f', '/dev/null'],
     }
 
-    service = client.services.create(**service_config)
-    return service
+    client.services.create(**service_config)

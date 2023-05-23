@@ -15,6 +15,15 @@ def check_config_data_paths(config_path):
     # check that data paths in config file entries are valid
     input_path = config["data"]["input"]["machine_path"]
     output_path = config["data"]["output"]["machine_path"]
+    processor_path = config["processor"]["machine_path"]
+    num_processors = config["processor"]["num_processors"]
+
+    # check that processor_path is file and exists
+    if not os.path.isfile(processor_path):
+        print("FAILURE: processor_path does not exist")
+        sys.exit(1)
+    else:
+        print("SUCCESS: processor_path exists")
 
     # check that input path exists
     if not os.path.isdir(input_path):
@@ -38,25 +47,28 @@ def check_config_data_paths(config_path):
         print("SUCCESS: config input path is not empty")
         # files = os.listdir(input_path)
         # print(f"SUCCESS: files in input path: {files}")
+        
+    # check that num_processors is int greater than 0
+    if not isinstance(num_processors, int):
+        print("FAILURE: num_processors is not an integer")
+        sys.exit(1)
+    elif num_processors <= 0:
+        print("FAILURE: num_processors is not greater than 0")
+        sys.exit(1)
+    else:
+        print("SUCCESS: num_processors is an integer greater than 0")
 
-    return input_path, output_path
+    return input_path, output_path, processor_path, num_processors
 
 
 @log_exceptions
-def check_files(config_path, processor_path):
+def check_config(config_path):
     # check if file exists
     if not os.path.isfile(config_path):
         print("FAILURE: config_path file does not exist")
         sys.exit(1)
     else:
         print("SUCCESS: config_path file exists")
-
-    # check if processor exists
-    if not os.path.isfile(processor_path):
-        print("FAILURE: processor_path file does not exist")
-        sys.exit(1)
-    else:
-        print("SUCCESS: processor_path file exists")
 
 
 # check to make sure processor.py is valid
