@@ -37,11 +37,13 @@ def scaleup_processor_service(client, num_processors):
 @log_exceptions
 def remove_service(client, service_name):
     if service_name in [service.name for service in client.services.list()]:
-        # remove service 
+        # remove service
         client.services.get(service_name).remove()
 
-        # remove containers associated with service 
-        for container in client.containers.list(filters={'label': 'com.docker.swarm.service.name=' + service_name}):
+        # remove containers associated with service
+        for container in client.containers.list(
+                filters={'label': 'com.docker.swarm.service.name=' +
+                         service_name}):
             container.remove()
 
 
@@ -53,7 +55,7 @@ def remove_all_services(client):
 
 @log_exceptions
 def create_queue_service(client,
-                         config_path, 
+                         config_path,
                          input_path):
     # remove queue_app service if it exists
     remove_service(client, 'queue_app')
@@ -89,7 +91,7 @@ def create_queue_service(client,
         'log_driver_options': {'max-size': '10m', 'max-file': '3'},
         'restart_policy': {'Condition': 'none', 'MaxAttempts': 0},
         'mounts': mounts,
-        'networks':['quick_batch_network'],
+        'networks': ['quick_batch_network'],
         'command': ['python', '/queue_app/run.py']
     }
 
@@ -148,7 +150,7 @@ def create_processor_service(client,
         'log_driver_options': {'max-size': '10m', 'max-file': '3'},
         'restart_policy': {'Condition': 'none', 'MaxAttempts': 0},
         'mounts': mounts,
-        'networks':['quick_batch_network'],
+        'networks': ['quick_batch_network'],
         'command': ['python', '/processor_app/run.py'],
         # 'command': ['tail', '-f', '/dev/null'],
     }

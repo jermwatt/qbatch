@@ -1,4 +1,3 @@
-from flask import jsonify
 import requests
 import sys
 import json
@@ -33,10 +32,10 @@ def request_object_paths(app):
         # hit get address
         get_address = 'http://queue_app:80/send_object_paths'
         datapackage = requests.get(get_address, verify=False, timeout=600)
-        
+
         # unpack data
         data = datapackage.json()
-        
+
         # check retrieval status
         checkval = retrieval_check(app, data)
         if checkval:

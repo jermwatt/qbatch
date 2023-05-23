@@ -31,6 +31,7 @@ SUCCESS: setup_workspace succeeded
 Scaling processor service to 5 instances...
 ...complete
 SUCCESS: scaleup_processor_service succeeded
+current feed_queue_length:  5
 current feed_queue_length:  0
 SUCCESS: feed_queue_length is 0, stopping services...
 SUCCESS: remove_all_services succeeded

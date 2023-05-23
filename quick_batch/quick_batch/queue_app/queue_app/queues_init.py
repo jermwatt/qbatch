@@ -26,7 +26,7 @@ def load_object_paths_inorder(path):
     for num, o in enumerate(output):
         if num > 0:
             o_strip = o.strip()
-            o_split = o_strip.split(' ')   
+            o_split = o_strip.split(' ')
             file_sizes.append(o_split[0])
             file_names.append(o_split[1])
     return file_sizes, file_names
@@ -45,7 +45,8 @@ def load_subdir_paths_inorder(path):
     command = 'du -sh ' + path + '/* --block-size=1K | sort -hr'
 
     # run command
-    output = run(command, capture_output=True,shell=True).stdout
+    output = run(command,
+                 capture_output=True, shell=True).stdout
 
     # filter command output
     output = output.decode("utf-8").split('\n')

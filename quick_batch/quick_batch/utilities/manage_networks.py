@@ -12,5 +12,6 @@ def create_network(client):
 
 @log_exceptions
 def remove_network(client):
-    if 'quick_batch_network' in [network.name for network in client.networks.list()]:
+    if 'quick_batch_network' in \
+     [network.name for network in client.networks.list()]:
         client.networks.get('quick_batch_network').remove()

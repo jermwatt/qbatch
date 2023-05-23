@@ -119,7 +119,7 @@ def check_processor(processor):
             break
 
     if processor_found:
-        print("SUCCESS: The module contains a function named 'processor'")
+        print("SUCCESS: module contains a function named 'processor'")
     else:
-        print("FAILURE: The module does not contain a function named 'processor'")
+        print("FAILURE: module does not contain a function named 'processor'")
         sys.exit(1)

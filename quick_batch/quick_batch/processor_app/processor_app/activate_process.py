@@ -1,7 +1,7 @@
 import sys
 import api_connects
 sys.path.append('..')
-from custom_processor import processor
+from custom_processor import processor # noqa 
 
 
 def processor_wrapper(processor, app):
@@ -24,7 +24,7 @@ def activate(app):
     # report startup success to terminal
     print('node has started', flush=True)
 
-    # set lifetime - number of objects this container 
+    # set lifetime - number of objects this container
     # can process before restart
     lifetime = 1000
     while lifetime > 0:
@@ -40,15 +40,13 @@ def activate(app):
 
         # print progress
         print('FINISHED: with', str(app.file_paths_to_process), flush=True)
-        
+
         if app.success:
             # send report to queue_app
             api_connects.send_done_report(app)
-            
+
             # reset success flag
             app.success = False
-
-
 
     # if reaching the lifetime end signal to orchestator
     # that a new container be built

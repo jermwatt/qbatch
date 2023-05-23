@@ -22,7 +22,7 @@ def send_object_paths():
         for i in range(app.feed_rate):
             # collect next path
             next_path = app.feeder_queue.popleft()
-            object_paths.append(next_path)  #next_path.replace('"', '').replace("'", ''))
+            object_paths.append(next_path)
 
             # update wip queue
             app.wip_queue.append(next_path)
@@ -62,22 +62,11 @@ def done_from_processor():
             app.feed_queue_length -= 1
             app.done_queue_length += 1
             app.wip_queue_length -= 1
-            app.done_queue.append(d)  #("'" + d + "'")
+            app.done_queue.append(d)
 
         # update wip queue
         app.wip_queue = list(set(app.wip_queue) - set(data))
-        app.wip_queue_length = len(app.wip_queue)         
-
-        # # update wip queue
-        # updated_queue = queue.Queue()
-        # while not app.wip_queue.empty():
-        #     d = app.wip_queue.get()
-        #     if d.replace('"', '').replace("'", '') not in data:
-        #         print(d, flush=True)
-        #         updated_queue.put("'" + d + "'")
-
-        # replace existing wip qeue
-        # app.wip_queue = updated_queue
+        app.wip_queue_length = len(app.wip_queue)
 
         return jsonify("200")
     except Exception as e:

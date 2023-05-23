@@ -9,7 +9,8 @@ parent_directory = os.path.dirname(package_directory)
 # Add the parent directory to sys.path
 sys.path.append(parent_directory)
 
-from processor_app import app
+# standard imports
+from queue_app import app # noqa
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=False, port=80, threaded=True)

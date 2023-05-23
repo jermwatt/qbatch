@@ -17,7 +17,10 @@ def monitor_queue_app_containers(client):
     # run check_queue_app_containers until timeout
     while True and time.time() < timeout:
         # Get the list of running containers for the service
-        queue_app_containers = client.containers.list(filters={'label': 'com.docker.swarm.service.name=queue_app'})
+        queue_app_containers = \
+         client.containers.list(
+             filters={'label': 'com.docker.swarm.service.name=queue_app'})
+
         if len(queue_app_containers) > 0:
             print("SUCCESS: queue_app service is running.")
             return
@@ -34,7 +37,8 @@ def monitor_queue_app_containers(client):
 
 def get_current_queue_lengths(client):
     # Get the list of running containers for the service
-    queue_app_container = client.containers.list(filters={'label': 'com.docker.swarm.service.name=queue_app'})
+    queue_app_container = client.containers.list(
+        filters={'label': 'com.docker.swarm.service.name=queue_app'})
 
     # Assuming there is only one container for the service
     if queue_app_container:

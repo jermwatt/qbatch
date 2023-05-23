@@ -35,7 +35,7 @@ def build_processor_image(client, requirements_path, processor):
         shutil.copyfile(os.path.join(requirements_path), container_path)
     else:
         # create requirements file from processor
-        print('INFO: no valid requirements file, creating requirements file from processor')
+        print('INFO: no valid requirements file, creating from processor')
         make_requirements(processor, container_path)
 
     # create docker image for processor app - including user defined

@@ -9,5 +9,5 @@ queue:
 
 processor: 
   processor_path: /Users/wattjer/Desktop/quick_batch/tests/test_processors/processor.py
-  # requirements_path: /Users/wattjer/Desktop/quick_batch/tests/test_requirements/requirements.txt
+  # requirements_path: /Users/wattjer/Desktop/quick_batch/tests/test_requirements/requirements.txt # optional
   num_processors: 5
