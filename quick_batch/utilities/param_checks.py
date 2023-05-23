@@ -1,5 +1,6 @@
 import sys
 import os
+import ast
 import inspect
 import yaml
 import importlib.util
@@ -17,6 +18,8 @@ def check_config_data_paths(config_path):
     output_path = config["data"]["output"]["machine_path"]
     processor_path = config["processor"]["machine_path"]
     num_processors = config["processor"]["num_processors"]
+    requirements_path = config.get("processor", {}). \
+        get("requirements_path", "")
 
     # check that processor_path is file and exists
     if not os.path.isfile(processor_path):
@@ -58,7 +61,8 @@ def check_config_data_paths(config_path):
     else:
         print("SUCCESS: num_processors is an integer greater than 0")
 
-    return input_path, output_path, processor_path, num_processors
+    return input_path, output_path, processor_path, num_processors, \
+        requirements_path
 
 
 @log_exceptions
@@ -76,24 +80,21 @@ def check_config(config_path):
 @log_exceptions
 def check_processor(processor):
     # Module name to check for
-    module_name = 'processor'
+    module_file = processor
 
-    # Load the module dynamically
-    spec = importlib.util.spec_from_file_location(module_name, processor)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    with open(module_file, 'r') as file:
+        tree = ast.parse(file.read())
 
-    # Check if the 'processor' function is defined in the module
-    if 'processor' in dir(module):
-        # Get the 'processor' function object
-        processor_func = getattr(module, 'processor')
+    processor_found = False
 
-        # Check if it is a function
-        if inspect.isfunction(processor_func):
-            print(f"SUCCESS: The module '{module_name}' does contain a function named 'processor'.")
-        else:
-            print(f"FAILURE: The module '{module_name}' does NOT contain a function named 'processor'.")
-            sys.exit(1)
+    # Traverse the abstract syntax tree to find function definitions
+    for node in ast.walk(tree):
+        if isinstance(node, ast.FunctionDef) and node.name == 'processor':
+            processor_found = True
+            break
+
+    if processor_found:
+        print("SUCCESS: The module contains a function named 'processor'")
     else:
-        print(f"FAILURE: The module '{module_name}' does NOT contain a function named 'processor'.")
+        print("FAILURE: The module does not contain a function named 'processor'")
         sys.exit(1)

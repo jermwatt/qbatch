@@ -2,8 +2,8 @@ import shutil
 import os
 import docker
 from .progress_logger import log_exceptions
-from utilities import base_directory, processor_path, \
-    queue_path
+from utilities import queue_path, processor_path
+from .manage_requirements import make_requirements
 
 
 # create client for docker
@@ -12,13 +12,31 @@ def create_client():
     return docker.from_env()
 
 
+def check_requirements_file(requirements_path):
+    if not os.path.isfile(requirements_path):
+        return False  # The path is not a file
+
+    if os.path.getsize(requirements_path) == 0:
+        return False  # The file is empty
+
+    return True  # The file exists and is not empty
+
+
 # build processor_app docker image
 @log_exceptions
-def build_processor_image(client):
-    # copy processor requirements.txt to processor_app directory to roll into
-    # dockerfile
-    shutil.copyfile(os.path.join(base_directory, 'processor_requirements.txt'),
-                    os.path.join(processor_path, 'processor_requirements.txt'))
+def build_processor_image(client, requirements_path, processor):
+    # create container path for requirements
+    container_path = os.path.join(processor_path, 'processor_requirements.txt')
+
+    # check if requirements_path is valid and not empty,
+    # if so copy to container path
+    if check_requirements_file(requirements_path):
+        print('INFO: valid requirements file')
+        shutil.copyfile(os.path.join(requirements_path), container_path)
+    else:
+        # create requirements file from processor
+        print('INFO: no valid requirements file, creating requirements file from processor')
+        make_requirements(processor, container_path)
 
     # create docker image for processor app - including user defined
     # requirements
@@ -26,7 +44,7 @@ def build_processor_image(client):
                         quiet=False)
 
     # remove processor_requirements.txt from the processor_path directory
-    os.remove(os.path.join(processor_path, 'processor_requirements.txt'))
+    os.remove(container_path)
 
 
 @log_exceptions
@@ -34,3 +52,12 @@ def build_queue_image(client):
     # create docker image for queue app - including user defined requirements
     client.images.build(path=queue_path, tag='quick_batch_queue_app',
                         quiet=False)
+
+
+@log_exceptions
+def build_images(client, requirements_path, processor):
+    # build queue image
+    build_queue_image(client)
+
+    # build processor image
+    build_processor_image(client, requirements_path, processor)

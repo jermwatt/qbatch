@@ -1,7 +1,6 @@
 data:
   input: 
     machine_path: /Users/wattjer/Desktop/quick_batch/tests/test_data/input_data
-    file_type: .txt
   output:
     machine_path: /Users/wattjer/Desktop/quick_batch/tests/test_data/output_data
     
@@ -12,4 +11,5 @@ apps:
 
 processor: 
   machine_path: /Users/wattjer/Desktop/quick_batch/tests/test_processors/processor.py
+  # requirements_path: /Users/wattjer/Desktop/quick_batch/tests/test_requirements/requirements.txt
   num_processors: 5

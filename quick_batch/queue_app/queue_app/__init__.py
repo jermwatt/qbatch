@@ -28,7 +28,6 @@ def create():
 
     # extract required params
     app.path_to_feed = '/my_data/input'
-    app.file_type = config["data"]["input"]["file_type"]
     app.feed_rate = config["apps"]["feed_rate"]
     app.order_files = config["apps"]["queue"]["order_files"]
     app.empty_trigger = 0

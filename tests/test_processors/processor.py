@@ -1,7 +1,9 @@
 import time
+import numpy as np
+import pandas as pd
 
 
-def processor(app):
+def processor(app):    
     for file_path in app.file_paths_to_process:
         # read in data from .txt file
         with open(file_path, 'r') as f:

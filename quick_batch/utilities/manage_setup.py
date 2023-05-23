@@ -21,8 +21,8 @@ def setup_client(config):
     check_config(config)
 
     # check config data paths
-    input_path, output_path, processor, num_processors = \
-        check_config_data_paths(config)
+    input_path, output_path, processor, num_processors, \
+        requirements_path = check_config_data_paths(config)
 
     # check processor
     check_processor(processor)
@@ -31,7 +31,7 @@ def setup_client(config):
     client = manage_images.create_client()
 
     # build images
-    manage_images.build_processor_image(client)
+    manage_images.build_processor_image(client, requirements_path, processor)
     manage_images.build_queue_image(client)
 
     return client, input_path, output_path, processor, num_processors
