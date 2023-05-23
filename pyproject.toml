@@ -1,9 +1,17 @@
 [tool.poetry]
 name = "quick_batch"
 version = "0.1.0"
-description = ""
+description = "ultra simple python + docker scaling for quick batch processing"
 authors = ["Jeremy Watt <jermwatt@gmail.com>"]
 readme = "README.md"
+homepage = "https://github.com/jermwatt/quick_batch"
+license = "MIT"
+
+[tool.poetry.packages]
+include = ["quick_batch"]
+
+[tool.poetry.scripts]
+processor = "processor.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -22,6 +30,3 @@ ipykernel = "^6.22.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.scripts]
-processor = "processor.main:main"
