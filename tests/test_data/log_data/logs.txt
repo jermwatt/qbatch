@@ -6,10 +6,10 @@ SUCCESS: config output path exists
 SUCCESS: config input path is not empty
 SUCCESS: num_processors is an integer greater than 0
 SUCCESS: check_config_data_paths succeeded
-SUCCESS: The module contains a function named 'processor'
+SUCCESS: module contains a function named 'processor'
 SUCCESS: check_processor succeeded
 SUCCESS: create_client succeeded
-INFO: no valid requirements file, creating requirements file from processor
+INFO: no valid requirements file, creating from processor
 SUCCESS: make_requirements succeeded
 SUCCESS: build_processor_image succeeded
 SUCCESS: build_queue_image succeeded
@@ -31,7 +31,6 @@ SUCCESS: setup_workspace succeeded
 Scaling processor service to 5 instances...
 ...complete
 SUCCESS: scaleup_processor_service succeeded
-current feed_queue_length:  5
 current feed_queue_length:  0
 SUCCESS: feed_queue_length is 0, stopping services...
 SUCCESS: remove_all_services succeeded

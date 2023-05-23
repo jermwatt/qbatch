@@ -1,3 +1,4 @@
+import sys
 import fire
 from utilities.manage_setup import setup_client
 from utilities.manage_setup import reset_workspace
@@ -6,7 +7,11 @@ from utilities.manage_queue import monitor_queue
 from utilities.manage_services import scaleup_processor_service
 
 
-def main(config=""):
+def main(config=None):
+    # check config - used as script fire will not be used
+    if not config:
+        config = sys.argv[1]
+
     # setup
     client, input_path, output_path, processor, num_processors, \
         logger = setup_client(config)
