@@ -23,7 +23,7 @@ def scaleup_processor_service(client, num_processors):
 
             # update processor service scale
             processor_service.scale(min(i, num_processors))
-            time.sleep(60)
+            time.sleep(30)
 
             # report update complete
             print("...complete")
@@ -32,6 +32,7 @@ def scaleup_processor_service(client, num_processors):
             if i >= num_processors:
                 break
         return
+
 
 @log_exceptions
 def remove_service(client, service_name):

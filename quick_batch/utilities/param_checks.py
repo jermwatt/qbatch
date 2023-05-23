@@ -10,7 +10,7 @@ def setup_logger(config):
     # import log path
     with open(config, "r") as yaml_file:
         config = yaml.safe_load(yaml_file)
-    log_path = config["data"]["log"]["machine_path"]
+    log_path = config["data"]["log_path"]
 
     # delete log file if it exists
     if os.path.exists(log_path):
@@ -35,12 +35,16 @@ def check_config_data_paths(config_path):
         config = yaml.safe_load(yaml_file)
 
     # check that data paths in config file entries are valid
-    input_path = config["data"]["input"]["machine_path"]
-    output_path = config["data"]["output"]["machine_path"]
-    processor_path = config["processor"]["machine_path"]
+    input_path = config["data"]["input_path"]
+    output_path = config["data"]["output_path"]
+    processor_path = config["processor"]["processor_path"]
     num_processors = config["processor"]["num_processors"]
     requirements_path = config.get("processor", {}). \
         get("requirements_path", "")
+
+    # if requirements_path is not empty, check that it exists
+    if not os.path.isfile(requirements_path):
+        requirements_path = ""
 
     # check that processor_path is file and exists
     if not os.path.isfile(processor_path):
@@ -71,7 +75,7 @@ def check_config_data_paths(config_path):
         print("SUCCESS: config input path is not empty")
         # files = os.listdir(input_path)
         # print(f"SUCCESS: files in input path: {files}")
-        
+
     # check that num_processors is int greater than 0
     if not isinstance(num_processors, int):
         print("FAILURE: num_processors is not an integer")

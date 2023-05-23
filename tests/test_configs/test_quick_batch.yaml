@@ -1,17 +1,13 @@
 data:
-  input: 
-    machine_path: /Users/wattjer/Desktop/quick_batch/tests/test_data/input_data
-  output:
-    machine_path: /Users/wattjer/Desktop/quick_batch/tests/test_data/output_data
-  log:
-    machine_path: /Users/wattjer/Desktop/quick_batch/tests/test_data/log_data/logs.txt
+  input_path: /Users/wattjer/Desktop/quick_batch/tests/test_data/input_data
+  output_path: /Users/wattjer/Desktop/quick_batch/tests/test_data/output_data
+  log_path: /Users/wattjer/Desktop/quick_batch/tests/test_data/log_data/logs.txt
     
-apps:
+queue:
   feed_rate: 1
-  queue:
-    order_files: False
+  order_files: False
 
 processor: 
-  machine_path: /Users/wattjer/Desktop/quick_batch/tests/test_processors/processor.py
+  processor_path: /Users/wattjer/Desktop/quick_batch/tests/test_processors/processor.py
   # requirements_path: /Users/wattjer/Desktop/quick_batch/tests/test_requirements/requirements.txt
   num_processors: 5

@@ -24,7 +24,7 @@ def create_app():
     # extract required params
     app.path_to_feed = '/my_data/input'
     app.path_to_output = '/my_data/output'
-    app.feed_rate = config["apps"]["feed_rate"]
+    app.feed_rate = config["queue"]["feed_rate"]
 
     # boolean to indicate if most recent app processing was successful
     app.success = False
