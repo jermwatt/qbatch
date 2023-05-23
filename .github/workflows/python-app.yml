@@ -42,4 +42,4 @@ jobs:
         flake8 quick_batch --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        python -m poetry run pytest tests/test_model.py -s
+        python -m poetry run pytest tests/test_quick_batch.py -s
