@@ -7,10 +7,6 @@ readme = "README.md"
 homepage = "https://github.com/jermwatt/quick_batch"
 license = "MIT"
 
-[tool.poetry.packages]
-packages = [{include = "quick_batch"}]
-
-
 [tool.poetry.scripts]
 processor = "processor.main:main"
 
