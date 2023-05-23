@@ -7,7 +7,7 @@ sys.path.append(str(base_path))
 quick_path = str(base_path) + '/quick_batch'
 sys.path.append(quick_path)
 
-config_path = f'{base_path}/tests/test_configs/test_quick_batch.yaml'
+config_path = f'{base_path}/tests/test_configs/test_quick_batch_github.yaml'
 
 # delete contents of f'{base_path}/tests/test_data/output_data' but not folder
 for file_name in os.listdir(f'{base_path}/tests/test_data/output_data'):
