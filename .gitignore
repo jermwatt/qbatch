@@ -1,3 +1,9 @@
+# local 
+.DS_Store
+*.ipynb_checkpoints
+.lock
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
