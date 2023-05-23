@@ -1,6 +1,7 @@
 from utilities import base_directory, processor_path, \
     queue_path
-from .progress_logger import log_exceptions
+# from .progress_logger import log_exceptions
+from utilities import log_exceptions
 
 
 # remove all docker containers

@@ -1,6 +1,7 @@
 import ast
 import sys
-from utilities.progress_logger import log_exceptions
+# from utilities.progress_logger import log_exceptions
+from utilities import log_exceptions
 
 
 def get_processor_requirements(processor):

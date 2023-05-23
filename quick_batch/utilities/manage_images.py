@@ -1,9 +1,10 @@
 import shutil
 import os
 import docker
-from .progress_logger import log_exceptions
 from utilities import queue_path, processor_path
 from .manage_requirements import make_requirements
+# from .progress_logger import log_exceptions
+from utilities import log_exceptions
 
 
 # create client for docker

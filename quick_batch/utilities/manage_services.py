@@ -1,9 +1,10 @@
 
 import time
 import docker
-from .progress_logger import log_exceptions
 from utilities import processor_path, \
     queue_path
+# from .progress_logger import log_exceptions
+from utilities import log_exceptions
 
 
 @log_exceptions

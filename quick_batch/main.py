@@ -4,6 +4,7 @@ from utilities.manage_setup import reset_workspace
 from utilities.manage_setup import setup_workspace
 from utilities.manage_queue import monitor_queue
 from utilities.manage_services import scaleup_processor_service
+from utilities import logger
 
 
 def main(config=""):
@@ -22,6 +23,9 @@ def main(config=""):
 
     # monitor queue
     monitor_queue(client)
+
+    # close log
+    logger.close_log()
 
 
 if __name__ == '__main__':

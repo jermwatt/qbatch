@@ -1,8 +1,9 @@
 import time
+from utilities import log_exceptions
+from utilities import manage_images
 from utilities.param_checks import check_config
 from utilities.param_checks import check_config_data_paths
 from utilities.param_checks import check_processor
-from utilities import manage_images
 from utilities.manage_containers import remove_all_containers
 from utilities.manage_networks import remove_network
 from utilities.manage_services import remove_all_services
@@ -11,8 +12,8 @@ from utilities.manage_swarm import create_swarm
 from utilities.manage_networks import create_network
 from utilities.manage_services import create_queue_service
 from utilities.manage_services import create_processor_service
-from .progress_logger import log_exceptions
 from utilities.manage_queue import monitor_queue_app_containers
+# from .progress_logger import log_exceptions
 
 
 @log_exceptions
@@ -39,9 +40,12 @@ def setup_client(config):
 
 @log_exceptions
 def reset_workspace(client):
-    # remove all services
-    remove_all_services(client)
-    time.sleep(5)
+    try:
+        # remove all services
+        remove_all_services(client)
+        time.sleep(5)
+    except Exception as e:
+        print(f"Error removing services: {e}")
 
     # remove all containers
     remove_all_containers(client)

@@ -1,4 +1,5 @@
-from .progress_logger import log_exceptions
+# from .progress_logger import log_exceptions
+from utilities import log_exceptions
 
 
 # create docker network
