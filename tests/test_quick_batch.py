@@ -9,12 +9,13 @@ sys.path.append(str(base_path))
 
 config_path = f'{base_path}/tests/test_configs/test_quick_batch_github.yaml'
 
-# check if running on github server
-if os.path.exists('/home/runner/work/quick-batch/quick-batch'):
+if os.getenv('GITHUB_ACTIONS') == 'true':
+    print("Running on GitHub Actions")
     config_path = f'{base_path}/quick_batch/tests/test_configs/test_quick_batch_github.yaml'
-else:
-    config_path = f'{base_path}/tests/test_configs/test_quick_batch_local.yaml'
 
+else:
+    print("Running locally")
+    config_path = f'{base_path}/tests/test_configs/test_quick_batch_local.yaml'
 
 # delete contents of f'{base_path}/tests/test_data/output_data' but not folder
 for file_name in os.listdir(f'{base_path}/tests/test_data/output_data'):

@@ -15,25 +15,3 @@ SUCCESS: build_processor_image succeeded
 SUCCESS: build_queue_image succeeded
 SUCCESS: setup_client succeeded
 SUCCESS: remove_all_services succeeded
-SUCCESS: remove_all_containers succeeded
-SUCCESS: remove_network succeeded
-SUCCESS: leave_swarm succeeded
-SUCCESS: reset_workspace succeeded
-SUCCESS: create_swarm succeeded
-SUCCESS: create_network succeeded
-SUCCESS: remove_service succeeded
-SUCCESS: create_queue_service succeeded
-SUCCESS: queue_app service is running.
-SUCCESS: monitor_queue_app_containers succeeded
-SUCCESS: remove_service succeeded
-SUCCESS: create_processor_service succeeded
-SUCCESS: setup_workspace succeeded
-Scaling processor service to 5 instances...
-...complete
-SUCCESS: scaleup_processor_service succeeded
-current feed_queue_length:  0
-SUCCESS: feed_queue_length is 0, stopping services...
-SUCCESS: remove_all_services succeeded
-SUCCESS: remove_all_containers succeeded
-SUCCESS: remove_network succeeded
-SUCCESS: monitor_queue succeeded
