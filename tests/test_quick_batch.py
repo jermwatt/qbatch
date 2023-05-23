@@ -11,7 +11,7 @@ config_path = f'{base_path}/tests/test_configs/test_quick_batch_github.yaml'
 
 if os.getenv('GITHUB_ACTIONS') == 'true':
     print("Running on GitHub Actions")
-    config_path = f'{base_path}/quick_batch/tests/test_configs/test_quick_batch_github.yaml'
+    config_path = f'{base_path}/tests/test_configs/test_quick_batch_github.yaml'
 
 else:
     print("Running locally")
