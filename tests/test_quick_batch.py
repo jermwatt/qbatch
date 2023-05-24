@@ -22,7 +22,7 @@ for file_name in os.listdir(f'{base_path}/tests/test_data/output_data'):
 
 
 def test_quick_batch():
-    # rub quickbatch
+    # rub quick_batch
     from quick_batch import main
     main.main(config=config_path)
 
