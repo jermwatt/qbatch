@@ -1,18 +1,18 @@
-# qbatch
+# quickbatch
 
-qbatch is an ultra-simple command-line tool for docker-scaling batch processing of large-scale data transformations. It allows you to scale any `processor` function that needs to be run over a large set of input data, enabling batch/parallel processing of the input.
+quickbatch is an ultra-simple command-line tool for docker-scaling batch processing of large-scale data transformations. It allows you to scale any `processor` function that needs to be run over a large set of input data, enabling batch/parallel processing of the input.
 
 ## Installation
 
-To install qbatch, simply use `pip`:
+To install quickbatch, simply use `pip`:
 
 ```bash
-pip install qbatch
+pip install quickbatch
 ```
 
 ## Usage
 
-To use qbatch, you need to define a `processor.py` file and a `config.yaml` file containing the necessary paths and parameters.
+To use quickbatch, you need to define a `processor.py` file and a `config.yaml` file containing the necessary paths and parameters.
 
 ### `processor.py`
 
@@ -25,7 +25,7 @@ def processor(todos):
     # Processor code
 ```
 
-qbatch will essentially point your `processor.py` at the `input_path` in your `config.yaml` and process this input in parallel at a scale given by your choice of `num_processors`.  Output will be written to the `output_path` specified in the configuration file.
+quickbatch will essentially point your `processor.py` at the `input_path` in your `config.yaml` and process this input in parallel at a scale given by your choice of `num_processors`.  Output will be written to the `output_path` specified in the configuration file.
 
 ### `config.yaml`
 
@@ -46,19 +46,19 @@ processor:
   num_processors: <int - instances of processor to run in parallel>
 ```
 
-### Running qbatch
+### Running quickbatch
 
-qbatch uses Docker in the background, abstracting away the need to instantiate, scale up, and manage containers running your `processor` function. You can quickly start up your Dockerized parallel processing via Python, yet still monitor using familiar Docker command-line arguments (like `docker service ls`, `docker service logs`, etc.).
+quickbatch uses Docker in the background, abstracting away the need to instantiate, scale up, and manage containers running your `processor` function. You can quickly start up your Dockerized parallel processing via Python, yet still monitor using familiar Docker command-line arguments (like `docker service ls`, `docker service logs`, etc.).
 
 To run qbatch, execute the following command in your terminal:
 
 ```bash
-qbatch /path/to/your/config.yaml
+quickbatch /path/to/your/config.yaml
 ```
 
 ## Common Use Cases
 
-qbatch is particularly useful for:
+quickbatch is particularly useful for:
 
 - Data transformation tasks (e.g., deep learning inference) that need to be performed on a large set of distinct examples.
 - Deep learning inference on large datasets.

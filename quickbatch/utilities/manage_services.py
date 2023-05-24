@@ -84,14 +84,14 @@ def create_queue_service(client,
 
     # Define the service configuration
     service_config = {
-        'image': 'qbatch_queue_app',
+        'image': 'quickbatch_queue_app',
         'name': 'queue_app',
         'maxreplicas': 1,
         'log_driver': 'json-file',
         'log_driver_options': {'max-size': '10m', 'max-file': '3'},
         'restart_policy': {'Condition': 'none', 'MaxAttempts': 0},
         'mounts': mounts,
-        'networks': ['quick_batch_network'],
+        'networks': ['quickbatch_network'],
         'command': ['python', '/queue_app/run.py']
     }
 
@@ -144,13 +144,13 @@ def create_processor_service(client,
 
     # Define the service configuration
     service_config = {
-        'image': 'qbatch_processor_app',
+        'image': 'quickbatch_processor_app',
         'name': 'processor_app',
         'log_driver': 'json-file',
         'log_driver_options': {'max-size': '10m', 'max-file': '3'},
         'restart_policy': {'Condition': 'none', 'MaxAttempts': 0},
         'mounts': mounts,
-        'networks': ['quick_batch_network'],
+        'networks': ['quickbatch_network'],
         'command': ['python', '/processor_app/run.py'],
         # 'command': ['tail', '-f', '/dev/null'],
     }
