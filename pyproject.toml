@@ -15,7 +15,7 @@ quick_batch = "quick_batch.main:main"
 python = "^3.9"
 docker = "^6.1.2"
 fire = "^0.5.0"
-pyyaml = "^6.0"
+pyyaml = "<5.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

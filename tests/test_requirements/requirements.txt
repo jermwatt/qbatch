@@ -1,2 +1,5 @@
-numpy
 pandas
+numpy
+moviepy
+torch
+transformers
