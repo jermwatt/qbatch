@@ -84,7 +84,7 @@ def create_queue_service(client,
 
     # Define the service configuration
     service_config = {
-        'image': 'quick_batch_queue_app',
+        'image': 'qbatch_queue_app',
         'name': 'queue_app',
         'maxreplicas': 1,
         'log_driver': 'json-file',
@@ -144,7 +144,7 @@ def create_processor_service(client,
 
     # Define the service configuration
     service_config = {
-        'image': 'quick_batch_processor_app',
+        'image': 'qbatch_processor_app',
         'name': 'processor_app',
         'log_driver': 'json-file',
         'log_driver_options': {'max-size': '10m', 'max-file': '3'},
