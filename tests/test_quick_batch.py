@@ -6,15 +6,15 @@ base_path = str(Path(__file__).parent.parent)
 sys.path.append(str(base_path))
 
 
-config_path = f'{base_path}/tests/test_configs/test_quickbatch_github.yaml'
+config_path = f'{base_path}/tests/test_configs/test_quick_batch_github.yaml'
 
 if os.getenv('GITHUB_ACTIONS') == 'true':
     print("Running on GitHub Actions")
-    config_path = f'{base_path}/tests/test_configs/test_quickbatch_github.yaml'
+    config_path = f'{base_path}/tests/test_configs/test_quick_batch_github.yaml'
 
 else:
     print("Running locally")
-    config_path = f'{base_path}/tests/test_configs/test_quickbatch_local.yaml'
+    config_path = f'{base_path}/tests/test_configs/test_quick_batch_local.yaml'
 
 # delete contents of f'{base_path}/tests/test_data/output_data' but not folder
 for file_name in os.listdir(f'{base_path}/tests/test_data/output_data'):
@@ -23,7 +23,7 @@ for file_name in os.listdir(f'{base_path}/tests/test_data/output_data'):
 
 def test_quick_batch():
     # rub quickbatch
-    from quickbatch import main
+    from quick_batch import main
     main.main(config=config_path)
 
     # load in output data file names from

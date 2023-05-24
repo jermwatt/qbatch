@@ -11,8 +11,8 @@ base_directory = os.path.dirname(os.path.dirname(os.path.dirname(file_path)))
 sys.path.append(base_directory)
 
 # define paths to each app dockerfile location
-processor_path = os.path.join(base_directory, 'quickbatch', 'processor_app')
-queue_path = os.path.join(base_directory, 'quickbatch', 'queue_app')
+processor_path = os.path.join(base_directory, 'quick_batch', 'processor_app')
+queue_path = os.path.join(base_directory, 'quick_batch', 'queue_app')
 
 
 # instantiate progress logger
