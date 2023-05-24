@@ -1,4 +1,5 @@
 [![Python application](https://github.com/jermwatt/quick_batch/actions/workflows/python-app.yml/badge.svg)](https://github.com/jermwatt/quick_batch/actions/workflows/python-app.yml)
+[![Upload Python Package](https://github.com/jermwatt/quick_batch/actions/workflows/python-publish.yml/badge.svg)](https://github.com/jermwatt/quick_batch/actions/workflows/python-publish.yml)
 
 # quick_batch
 
