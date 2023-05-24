@@ -1,7 +1,12 @@
-# quick_batch 
+# qbatch 
+
+## Command line tool
+```python
+qbatch /path/to/config.yaml
+```
+
+## pythonic direct call
 
 ```python 
-python quick_batch --config=config.yaml
-
-python quick_batch/main.py --config=${PWD}/tests/test_configs/test_quick_batch.yaml
+python qbatch/main.py --config=/path/to/config.yaml
 ```

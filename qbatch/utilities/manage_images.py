@@ -40,7 +40,7 @@ def build_processor_image(client, requirements_path, processor):
 
     # create docker image for processor app - including user defined
     # requirements
-    client.images.build(path=processor_path, tag='quick_batch_processor_app',
+    client.images.build(path=processor_path, tag='qbatch_processor_app',
                         quiet=False)
 
     # remove processor_requirements.txt from the processor_path directory
@@ -50,7 +50,7 @@ def build_processor_image(client, requirements_path, processor):
 @log_exceptions
 def build_queue_image(client):
     # create docker image for queue app - including user defined requirements
-    client.images.build(path=queue_path, tag='quick_batch_queue_app',
+    client.images.build(path=queue_path, tag='qbatch_queue_app',
                         quiet=False)
 
 

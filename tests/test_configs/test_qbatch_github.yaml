@@ -1,0 +1,13 @@
+data:
+  input_path: /home/runner/work/qbatch/qbatch/tests/test_data/input_data
+  output_path: /home/runner/work/qbatch/qbatch/tests/test_data/output_data
+  log_path: /home/runner/work/qbatch/qbatch/tests/test_data/log_data/logs.txt
+    
+queue:
+  feed_rate: 1
+  order_files: False
+
+processor: 
+  processor_path: /home/runner/work/qbatch/qbatch/tests/test_processors/processor.py
+  # requirements_path: /Users/wattjer/Desktop/quick_batch/tests/test_requirements/requirements.txt # optional
+  num_processors: 5
