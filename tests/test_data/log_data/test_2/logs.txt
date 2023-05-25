@@ -18,12 +18,12 @@ INFO: building processor image...
 ===============================
 ===============================
 #1 [internal] load build definition from Dockerfile
-#1 sha256:d7b88f7905ce0856a097d6facd48dc2a87c49411129321ab760c1f5532feca77
+#1 sha256:985f75de0aacae18a13c00cff752c23954dcc28d46620e73825fad6cfbd826bc
 #1 transferring dockerfile: 335B done
 #1 DONE 0.0s
 
 #2 [internal] load .dockerignore
-#2 sha256:d18439b92f5d5e9eb74757b997ffe365ce164cb2f927a77ac0fc790ac37e588b
+#2 sha256:da58e86b9cc56f5bff8ad68a2d9b7174ec5751bc9643bdb3a652850eefc30d15
 #2 transferring context: 2B done
 #2 DONE 0.0s
 
@@ -36,48 +36,168 @@ INFO: building processor image...
 #4 DONE 0.0s
 
 #10 [internal] load build context
-#10 sha256:e334457a5fb775b5fa41911bdc8c19b5271f9fecac774d723f8f3eb37efac23c
+#10 sha256:b16ccc3d07ee077ed2e4af5091309c62250d63f5b0a75222d925687ecf8f6fef
 #10 transferring context: 103B done
 #10 DONE 0.0s
-
-#11 [7/9] COPY requirements.txt /usr/src/app
-#11 sha256:a14b9c3fb2ffcd43db178587efbf31bfbb4546bb4c24602757f6bafb84c0c4ba
-#11 CACHED
-
-#5 [2/9] RUN apt-get update
-#5 sha256:53cda8da17e63990ef6667751145a01061eef9d9e9491acbc9cb637439b1dfdf
-#5 CACHED
-
-#8 [5/9] RUN apt-get install -y ffmpeg
-#8 sha256:e12db20afb6c69d7b9206d1e9c5fae38c46e7046166f57955b4863c179d224dc
-#8 CACHED
 
 #6 [3/9] RUN apt-get install -y build-essential
 #6 sha256:8ae10628ace001b786e6d007279b2f7ca3f3640e987afdcc6debd15530b05566
 #6 CACHED
 
-#9 [6/9] RUN mkdir /usr/src/app
-#9 sha256:30420801f82e82a186f442fac62fdd111909a75d01f85b310196fbd910779cb2
-#9 CACHED
-
 #7 [4/9] RUN pip install --upgrade pip setuptools
 #7 sha256:0668e9a95de9e619fe6b92637b2398d893fa3bd3d302d0a15e6fe8528c25de6b
 #7 CACHED
 
+#8 [5/9] RUN apt-get install -y ffmpeg
+#8 sha256:e12db20afb6c69d7b9206d1e9c5fae38c46e7046166f57955b4863c179d224dc
+#8 CACHED
+
+#5 [2/9] RUN apt-get update
+#5 sha256:53cda8da17e63990ef6667751145a01061eef9d9e9491acbc9cb637439b1dfdf
+#5 CACHED
+
+#9 [6/9] RUN mkdir /usr/src/app
+#9 sha256:30420801f82e82a186f442fac62fdd111909a75d01f85b310196fbd910779cb2
+#9 CACHED
+
+#11 [7/9] COPY requirements.txt /usr/src/app
+#11 sha256:60f225a202a255aef0da71133c865ca1fa4adc405a30ef6ccab63cb46852bb40
+#11 DONE 0.0s
+
 #12 [8/9] RUN pip install -r /usr/src/app/requirements.txt
-#12 sha256:c25c7155cca9acdcecd9b26a78a74bd6e81dee0c1d59a98143325ef93cb14044
-#12 CACHED
+#12 sha256:212547870771665e11e9869ea9a1abc7cff3cd31a7e316d542700752b0fe3883
+#12 0.501 Collecting flask (from -r /usr/src/app/requirements.txt (line 1))
+#12 0.687   Downloading Flask-2.3.2-py3-none-any.whl (96 kB)
+#12 0.750      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 96.9/96.9 kB 1.5 MB/s eta 0:00:00
+#12 0.839 Collecting requests (from -r /usr/src/app/requirements.txt (line 2))
+#12 0.872   Downloading requests-2.31.0-py3-none-any.whl (62 kB)
+#12 0.888      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.6/62.6 kB 6.0 MB/s eta 0:00:00
+#12 0.971 Collecting pyyaml (from -r /usr/src/app/requirements.txt (line 3))
+#12 1.018   Downloading PyYAML-6.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (733 kB)
+#12 1.198      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 733.7/733.7 kB 4.1 MB/s eta 0:00:00
+#12 1.292 Collecting torch (from -r /usr/src/app/requirements.txt (line 4))
+#12 1.335   Downloading torch-2.0.1-cp310-cp310-manylinux2014_aarch64.whl (74.0 MB)
+#12 7.522      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 74.0/74.0 MB 8.6 MB/s eta 0:00:00
+#12 7.664 Collecting moviepy (from -r /usr/src/app/requirements.txt (line 5))
+#12 7.702   Downloading moviepy-1.0.3.tar.gz (388 kB)
+#12 7.748      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 388.3/388.3 kB 8.6 MB/s eta 0:00:00
+#12 7.773   Preparing metadata (setup.py): started
+#12 7.909   Preparing metadata (setup.py): finished with status 'done'
+#12 7.976 Collecting transformers (from -r /usr/src/app/requirements.txt (line 6))
+#12 8.011   Downloading transformers-4.29.2-py3-none-any.whl (7.1 MB)
+#12 8.675      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.1/7.1 MB 10.9 MB/s eta 0:00:00
+#12 8.754 Collecting accelerate (from -r /usr/src/app/requirements.txt (line 7))
+#12 8.798   Downloading accelerate-0.19.0-py3-none-any.whl (219 kB)
+#12 8.827      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 219.1/219.1 kB 8.0 MB/s eta 0:00:00
+#12 8.898 Collecting Werkzeug>=2.3.3 (from flask->-r /usr/src/app/requirements.txt (line 1))
+#12 8.933   Downloading Werkzeug-2.3.4-py3-none-any.whl (242 kB)
+#12 8.960      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 242.5/242.5 kB 10.7 MB/s eta 0:00:00
+#12 9.013 Collecting Jinja2>=3.1.2 (from flask->-r /usr/src/app/requirements.txt (line 1))
+#12 9.051   Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+#12 9.063      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 kB 13.2 MB/s eta 0:00:00
+#12 9.115 Collecting itsdangerous>=2.1.2 (from flask->-r /usr/src/app/requirements.txt (line 1))
+#12 9.155   Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+#12 9.221 Collecting click>=8.1.3 (from flask->-r /usr/src/app/requirements.txt (line 1))
+#12 9.259   Downloading click-8.1.3-py3-none-any.whl (96 kB)
+#12 9.272      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 96.6/96.6 kB 8.2 MB/s eta 0:00:00
+#12 9.320 Collecting blinker>=1.6.2 (from flask->-r /usr/src/app/requirements.txt (line 1))
+#12 9.359   Downloading blinker-1.6.2-py3-none-any.whl (13 kB)
+#12 9.481 Collecting charset-normalizer<4,>=2 (from requests->-r /usr/src/app/requirements.txt (line 2))
+#12 9.522   Downloading charset_normalizer-3.1.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (195 kB)
+#12 9.537      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 195.9/195.9 kB 14.4 MB/s eta 0:00:00
+#12 9.582 Collecting idna<4,>=2.5 (from requests->-r /usr/src/app/requirements.txt (line 2))
+#12 9.622   Downloading idna-3.4-py3-none-any.whl (61 kB)
+#12 9.630      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.5/61.5 kB 8.0 MB/s eta 0:00:00
+#12 9.693 Collecting urllib3<3,>=1.21.1 (from requests->-r /usr/src/app/requirements.txt (line 2))
+#12 9.743   Downloading urllib3-2.0.2-py3-none-any.whl (123 kB)
+#12 9.760      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 123.2/123.2 kB 8.7 MB/s eta 0:00:00
+#12 9.813 Collecting certifi>=2017.4.17 (from requests->-r /usr/src/app/requirements.txt (line 2))
+#12 9.849   Downloading certifi-2023.5.7-py3-none-any.whl (156 kB)
+#12 9.869      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 157.0/157.0 kB 8.8 MB/s eta 0:00:00
+#12 9.928 Collecting filelock (from torch->-r /usr/src/app/requirements.txt (line 4))
+#12 9.971   Downloading filelock-3.12.0-py3-none-any.whl (10 kB)
+#12 10.02 Collecting typing-extensions (from torch->-r /usr/src/app/requirements.txt (line 4))
+#12 10.05   Downloading typing_extensions-4.6.2-py3-none-any.whl (31 kB)
+#12 10.11 Collecting sympy (from torch->-r /usr/src/app/requirements.txt (line 4))
+#12 10.15   Downloading sympy-1.12-py3-none-any.whl (5.7 MB)
+#12 10.67      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.7/5.7 MB 11.2 MB/s eta 0:00:00
+#12 10.75 Collecting networkx (from torch->-r /usr/src/app/requirements.txt (line 4))
+#12 10.80   Downloading networkx-3.1-py3-none-any.whl (2.1 MB)
+#12 11.02      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 9.1 MB/s eta 0:00:00
+#12 11.10 Collecting decorator<5.0,>=4.0.2 (from moviepy->-r /usr/src/app/requirements.txt (line 5))
+#12 11.14   Downloading decorator-4.4.2-py2.py3-none-any.whl (9.2 kB)
+#12 11.25 Collecting tqdm<5.0,>=4.11.2 (from moviepy->-r /usr/src/app/requirements.txt (line 5))
+#12 11.29   Downloading tqdm-4.65.0-py3-none-any.whl (77 kB)
+#12 11.30      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 77.1/77.1 kB 7.9 MB/s eta 0:00:00
+#12 11.36 Collecting proglog<=1.0.0 (from moviepy->-r /usr/src/app/requirements.txt (line 5))
+#12 11.42   Downloading proglog-0.1.10-py3-none-any.whl (6.1 kB)
+#12 11.70 Collecting numpy>=1.17.3 (from moviepy->-r /usr/src/app/requirements.txt (line 5))
+#12 11.74   Downloading numpy-1.24.3-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (14.0 MB)
+#12 13.23      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.0/14.0 MB 9.4 MB/s eta 0:00:00
+#12 13.34 Collecting imageio<3.0,>=2.5 (from moviepy->-r /usr/src/app/requirements.txt (line 5))
+#12 13.38   Downloading imageio-2.29.0-py3-none-any.whl (3.4 MB)
+#12 13.82      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.4/3.4 MB 7.6 MB/s eta 0:00:00
+#12 13.88 Collecting imageio_ffmpeg>=0.2.0 (from moviepy->-r /usr/src/app/requirements.txt (line 5))
+#12 13.92   Downloading imageio_ffmpeg-0.4.8-py3-none-manylinux2014_aarch64.whl (22.9 MB)
+#12 16.82      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 22.9/22.9 MB 7.8 MB/s eta 0:00:00
+#12 17.08 Collecting huggingface-hub<1.0,>=0.14.1 (from transformers->-r /usr/src/app/requirements.txt (line 6))
+#12 17.12   Downloading huggingface_hub-0.14.1-py3-none-any.whl (224 kB)
+#12 17.15      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 224.5/224.5 kB 6.9 MB/s eta 0:00:00
+#12 17.21 Collecting packaging>=20.0 (from transformers->-r /usr/src/app/requirements.txt (line 6))
+#12 17.24   Downloading packaging-23.1-py3-none-any.whl (48 kB)
+#12 17.25      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.9/48.9 kB 3.8 MB/s eta 0:00:00
+#12 17.74 Collecting regex!=2019.12.17 (from transformers->-r /usr/src/app/requirements.txt (line 6))
+#12 17.80   Downloading regex-2023.5.5-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (768 kB)
+#12 17.95      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 769.0/769.0 kB 5.4 MB/s eta 0:00:00
+#12 18.13 Collecting tokenizers!=0.11.3,<0.14,>=0.11.1 (from transformers->-r /usr/src/app/requirements.txt (line 6))
+#12 18.19   Downloading tokenizers-0.13.3-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (7.5 MB)
+#12 19.34      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.5/7.5 MB 6.5 MB/s eta 0:00:00
+#12 19.51 Collecting psutil (from accelerate->-r /usr/src/app/requirements.txt (line 7))
+#12 19.55   Downloading psutil-5.9.5.tar.gz (493 kB)
+#12 19.61      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 493.5/493.5 kB 8.3 MB/s eta 0:00:00
+#12 19.65   Installing build dependencies: started
+#12 20.66   Installing build dependencies: finished with status 'done'
+#12 20.66   Getting requirements to build wheel: started
+#12 20.79   Getting requirements to build wheel: finished with status 'done'
+#12 20.79   Preparing metadata (pyproject.toml): started
+#12 20.92   Preparing metadata (pyproject.toml): finished with status 'done'
+#12 21.01 Collecting fsspec (from huggingface-hub<1.0,>=0.14.1->transformers->-r /usr/src/app/requirements.txt (line 6))
+#12 21.05   Downloading fsspec-2023.5.0-py3-none-any.whl (160 kB)
+#12 21.08      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 160.1/160.1 kB 5.1 MB/s eta 0:00:00
+#12 21.36 Collecting pillow>=8.3.2 (from imageio<3.0,>=2.5->moviepy->-r /usr/src/app/requirements.txt (line 5))
+#12 21.41   Downloading Pillow-9.5.0-cp310-cp310-manylinux_2_28_aarch64.whl (3.2 MB)
+#12 21.85      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 7.3 MB/s eta 0:00:00
+#12 21.93 Collecting MarkupSafe>=2.0 (from Jinja2>=3.1.2->flask->-r /usr/src/app/requirements.txt (line 1))
+#12 21.98   Downloading MarkupSafe-2.1.2-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (26 kB)
+#12 22.09 Collecting mpmath>=0.19 (from sympy->torch->-r /usr/src/app/requirements.txt (line 4))
+#12 22.14   Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+#12 22.22      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 6.4 MB/s eta 0:00:00
+#12 22.27 Building wheels for collected packages: moviepy, psutil
+#12 22.27   Building wheel for moviepy (setup.py): started
+#12 22.45   Building wheel for moviepy (setup.py): finished with status 'done'
+#12 22.45   Created wheel for moviepy: filename=moviepy-1.0.3-py3-none-any.whl size=110730 sha256=0c1fb47e836bbebdd5a667772677d42d1cddab982012ab25643979f90ea3b3b6
+#12 22.45   Stored in directory: /root/.cache/pip/wheels/96/32/2d/e10123bd88fbfc02fed53cc18c80a171d3c87479ed845fa7c1
+#12 22.45   Building wheel for psutil (pyproject.toml): started
+#12 23.16   Building wheel for psutil (pyproject.toml): finished with status 'done'
+#12 23.16   Created wheel for psutil: filename=psutil-5.9.5-cp310-abi3-linux_aarch64.whl size=283860 sha256=e33be906eb9010ed25d6f3e3f812f399e132bf67207a8e8def3b52042ca32fc0
+#12 23.16   Stored in directory: /root/.cache/pip/wheels/1f/3a/db/ba9717f3efd7f8da8910eca12dc9cd15d404035397af627e7c
+#12 23.16 Successfully built moviepy psutil
+#12 23.59 Installing collected packages: tokenizers, mpmath, urllib3, typing-extensions, tqdm, sympy, regex, pyyaml, psutil, pillow, packaging, numpy, networkx, MarkupSafe, itsdangerous, imageio_ffmpeg, idna, fsspec, filelock, decorator, click, charset-normalizer, certifi, blinker, Werkzeug, requests, proglog, Jinja2, imageio, torch, moviepy, huggingface-hub, flask, transformers, accelerate
+#12 34.74 Successfully installed Jinja2-3.1.2 MarkupSafe-2.1.2 Werkzeug-2.3.4 accelerate-0.19.0 blinker-1.6.2 certifi-2023.5.7 charset-normalizer-3.1.0 click-8.1.3 decorator-4.4.2 filelock-3.12.0 flask-2.3.2 fsspec-2023.5.0 huggingface-hub-0.14.1 idna-3.4 imageio-2.29.0 imageio_ffmpeg-0.4.8 itsdangerous-2.1.2 moviepy-1.0.3 mpmath-1.3.0 networkx-3.1 numpy-1.24.3 packaging-23.1 pillow-9.5.0 proglog-0.1.10 psutil-5.9.5 pyyaml-6.0 regex-2023.5.5 requests-2.31.0 sympy-1.12 tokenizers-0.13.3 torch-2.0.1 tqdm-4.65.0 transformers-4.29.2 typing-extensions-4.6.2 urllib3-2.0.2
+#12 34.74 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#12 DONE 35.5s
 
 #13 [9/9] RUN rm -r /usr/src/app
-#13 sha256:7b2791e8797d4ba0d20bf4c5f1a1f7c443f8014406b7c47d11947b6ee5fe2f62
-#13 CACHED
+#13 sha256:8c61431b15180e863ac9ba80459117cb035a8d6d356828cbfeddc855adea14c0
+#13 DONE 0.3s
 
 #14 exporting to image
 #14 sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00
-#14 exporting layers done
-#14 writing image sha256:0af4b06f2f7902066df1c44f5063a5dc1a0711b1102ca6291d42a16c4460959c done
+#14 exporting layers
+#14 exporting layers 1.8s done
+#14 writing image sha256:a5f12699c54ba68024655f663a69e9cf06da4c2921ee63aadc7acd1e7143c195 done
 #14 naming to docker.io/library/quick_batch_processor_app done
-#14 DONE 0.0s
+#14 DONE 1.8s
 SUCCESS: Image build completed successfully!
 ===============================
 ===============================
@@ -93,7 +213,6 @@ SUCCESS: create_swarm succeeded
 SUCCESS: create_network succeeded
 SUCCESS: remove_service succeeded
 SUCCESS: create_queue_service succeeded
-WARNING: queue_app service is not running yet...
 SUCCESS: queue_app service is running.
 SUCCESS: monitor_queue_app_containers succeeded
 SUCCESS: remove_service succeeded
@@ -104,11 +223,7 @@ current feed_queue_length:  4
 current feed_queue_length:  4
 current feed_queue_length:  4
 current feed_queue_length:  4
-current feed_queue_length:  4
-current feed_queue_length:  4
-current feed_queue_length:  4
-current feed_queue_length:  4
-current feed_queue_length:  4
+current feed_queue_length:  3
 current feed_queue_length:  3
 current feed_queue_length:  3
 current feed_queue_length:  3
@@ -117,7 +232,6 @@ current feed_queue_length:  2
 current feed_queue_length:  2
 current feed_queue_length:  2
 current feed_queue_length:  2
-current feed_queue_length:  1
 current feed_queue_length:  1
 current feed_queue_length:  1
 current feed_queue_length:  1

@@ -15,8 +15,9 @@ def processor(app):
             print(data)
 
             # save to output file
+            print('save path', app.path_to_output + '/' + file_path.split('/')[-1],flush=True)
             with open(app.path_to_output + '/' +
-                      file_path.split('.')[0], 'w') as f:
+                      file_path.split('/')[-1], 'w') as f:
                 f.write(data)
+                print(data, flush=True)
 
-            time.sleep(15)
