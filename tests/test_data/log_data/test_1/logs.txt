@@ -9,9 +9,7 @@ SUCCESS: check_config_data_paths succeeded
 SUCCESS: module contains a function named 'processor'
 SUCCESS: check_processor succeeded
 SUCCESS: create_client succeeded
-INFO: Pulling and tagging image...
-SUCCESS: Tagging local image successful!
-SUCCESS: pull_and_tag_image succeeded
+SUCCESS: build_queue_image succeeded
 INFO: Pulling and tagging image...
 SUCCESS: Tagging local image successful!
 SUCCESS: pull_and_tag_image succeeded

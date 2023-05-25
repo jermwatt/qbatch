@@ -39,12 +39,13 @@ def setup_client(config):
     # create docker client
     client = manage_images.create_client()
 
-    # try to pull and tag image
-    pull_success = pull_and_tag_image(client, 'jermwatt/quick_batch_queue_app', 'quick_batch_queue_app')
+    # # try to pull and tag image
+    # pull_success = pull_and_tag_image(client, 'jermwatt/quick_batch_queue_app', 'quick_batch_queue_app')
     
-    # if not successful, build image
-    if not pull_success:
-        manage_images.build_queue_image(client)
+    # # if not successful, build image
+    # if not pull_success:
+        
+    manage_images.build_queue_image(client)
     
     # try to pull and tag image
     pull_success = pull_and_tag_image(client, image_name, 'quick_batch_processor_app')
