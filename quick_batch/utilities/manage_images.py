@@ -18,16 +18,18 @@ def create_client():
 @log_exceptions
 def pull_and_tag_image(client, image_name, new_tag):
     try:
-        print('INFO: pulling and tagging image...')
-        # try tagging local image
-        image = client.images.get(image_name)
-        tag_success = image.tag(new_tag)
-        
-        if tag_success:
-            print('SUCCESS: tagging local image successful!')
-            return True
-    
-        print('INFO: pulling and tagging image...')
+        print('INFO: Pulling and tagging image...')
+
+        # Try tagging local image
+        try: 
+            image = client.images.get(image_name)
+            tag_success = image.tag(new_tag)
+            
+            if tag_success:
+                print('SUCCESS: Tagging local image successful!')
+                return True
+        except docker.errors.ImageNotFound:
+            pass
 
         # Pull the image
         pulled_image = client.images.pull(image_name)
@@ -35,9 +37,9 @@ def pull_and_tag_image(client, image_name, new_tag):
         # Tag the pulled image with a new name
         tagged_image = pulled_image.tag(new_tag)
         
-        print('SUCCESS: pulling and tagging image complete!')
-        
+        print('SUCCESS: Pulling and tagging image complete!')
         return True
+
     except docker.errors.APIError as e:
         print(f"FAILURE: Error occurred while pulling and tagging the image: {e}")
         return False
