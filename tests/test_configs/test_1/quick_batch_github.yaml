@@ -8,7 +8,7 @@ queue:
   order_files: False
 
 processor: 
-  dockerfile_path: /Users/wattjer/Desktop/quick_batch/tests/test_dockerfiles/test_1/Dockerfile
-  requirements_path: /Users/wattjer/Desktop/quick_batch/tests/test_requirements/test_1/requirements.txt 
+  dockerfile_path: /home/runner/work/quick_batch/quick_batch/tests/test_dockerfiles/test_1/Dockerfile
+  requirements_path: /home/runner/work/quick_batch/quick_batch/tests/test_requirements/test_1/requirements.txt 
   processor_path: /home/runner/work/quick_batch/quick_batch/tests/test_processors/test_1/processor.py
   num_processors: 5
