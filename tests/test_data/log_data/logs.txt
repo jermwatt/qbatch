@@ -14,12 +14,12 @@ INFO: building processor image...
 ===============================
 ===============================
 #1 [internal] load build definition from Dockerfile
-#1 sha256:5d8f924131e14df19e4d4bef5993542e08992ec72eccfe7fab02a976c7376876
+#1 sha256:efd28c5638fa074f7df9d4a3aad3fc91d2c0d82b2238ad87303eaa91bd602fd9
 #1 transferring dockerfile: 37B done
 #1 DONE 0.0s
 
 #2 [internal] load .dockerignore
-#2 sha256:16e1ee628f26754bf3b1aa6ee5aaa7e51e5283b986645a0da186424425bc91d1
+#2 sha256:83186ebd70dc79082498f4b56f5d9ef1ec9d71104856104431778f579d5fdba0
 #2 transferring context: 2B done
 #2 DONE 0.0s
 
@@ -27,49 +27,78 @@ INFO: building processor image...
 #3 sha256:8d24f53f4189c888dd8c43ce6211c414fc4548e3dc540856fb204a8ad8295641
 #3 DONE 0.0s
 
-#11 [1/8] FROM docker.io/library/python:3.10-slim-bullseye
-#11 sha256:a95083403ca41b3d99d396c3d93d9370f0e3254a1624630a6920242bf61c89c1
-#11 DONE 0.0s
+#4 [ 1/10] FROM docker.io/library/python:3.10-slim-bullseye
+#4 sha256:a95083403ca41b3d99d396c3d93d9370f0e3254a1624630a6920242bf61c89c1
+#4 DONE 0.0s
 
-#12 [internal] load build context
-#12 sha256:53525199130482831f8d183b1b8d8fd842b32c651fe224c4e7b6bb3ae898bfa3
-#12 transferring context: 127B done
-#12 DONE 0.0s
+#9 [internal] load build context
+#9 sha256:6826261ec6de67d2ad5dd3ddcd5966e3424f9cfe104f572d388dec1289fdc98a
+#9 transferring context: 100B done
+#9 DONE 0.0s
 
-#8 [6/8] COPY processor_requirements.txt /usr/src/app
-#8 sha256:9c558ec8bc47ba913cb41502a5e80b5f8868810e90b8ace304c3fc22211f9ba3
-#8 CACHED
-
-#5 [3/8] RUN mkdir /usr/src/app
-#5 sha256:82ea090a17193d0a767b04752ca7dd54a0932798445696f061ca53325d51b7b6
-#5 CACHED
-
-#4 [2/8] RUN apt-get update
-#4 sha256:53cda8da17e63990ef6667751145a01061eef9d9e9491acbc9cb637439b1dfdf
-#4 CACHED
-
-#6 [4/8] COPY requirements.txt /usr/src/app
-#6 sha256:a941965788389b262ac608f9b989570e286cc963fd8477214b7ef0762846ddb0
-#6 CACHED
-
-#7 [5/8] RUN pip install -r /usr/src/app/requirements.txt
-#7 sha256:e7c8cd0c5a129801c053272cffa94ddda982fb89799a5eb5e1d147e5cdffc026
+#7 [ 4/10] RUN pip install --upgrade pip setuptools
+#7 sha256:0668e9a95de9e619fe6b92637b2398d893fa3bd3d302d0a15e6fe8528c25de6b
 #7 CACHED
 
-#9 [7/8] RUN pip install -r /usr/src/app/processor_requirements.txt
-#9 sha256:9610a3bd90019fd9abde581dfea904f4e78f3907bb268fab0fcaf247f7581e1a
-#9 CACHED
+#8 [ 5/10] RUN mkdir /usr/src/app
+#8 sha256:3c98bc257de350b916af4d616cf003dc6534b3231c5c8d3f2cfcda76f3aae2f9
+#8 CACHED
 
-#10 [8/8] RUN rm -r /usr/src/app
-#10 sha256:8597fcc6844a131add4ee5414fbdf775701d336c4f60a221c011fc0c76308b9a
+#10 [ 6/10] COPY requirements.txt /usr/src/app
+#10 sha256:4b5c3b86e018f4d43568aa223389df0d423efc674e9db97b04da58cd88a155cf
 #10 CACHED
 
-#13 exporting to image
-#13 sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00
-#13 exporting layers done
-#13 writing image sha256:2e3234a802d8ea62d006808c7d442caf0d5772e34c89caad9c692875e9c13ace done
-#13 naming to docker.io/library/quick_batch_processor_app done
-#13 DONE 0.0s
+#5 [ 2/10] RUN apt-get update
+#5 sha256:53cda8da17e63990ef6667751145a01061eef9d9e9491acbc9cb637439b1dfdf
+#5 CACHED
+
+#6 [ 3/10] RUN apt-get install -y build-essential
+#6 sha256:8ae10628ace001b786e6d007279b2f7ca3f3640e987afdcc6debd15530b05566
+#6 CACHED
+
+#11 [ 7/10] RUN pip install -r /usr/src/app/requirements.txt
+#11 sha256:f61320d4cc9e671ec5d9a0153ed28871ee4da860fb72ffb1599c3946c3b4ad1e
+#11 CACHED
+
+#12 [ 8/10] COPY processor_requirements.txt /usr/src/app
+#12 sha256:da70d35eaaf6c95c6e6c3562912d9615875777e94bbc18d2bd8fe7613ecd7a4a
+#12 DONE 0.0s
+
+#13 [ 9/10] RUN pip install -r /usr/src/app/processor_requirements.txt
+#13 sha256:2ff20e3b8147f148c1cdfba733acbeeb726cf182f2d5c331c8a5fa1dd868cf3d
+#13 0.641 Collecting pandas (from -r /usr/src/app/processor_requirements.txt (line 1))
+#13 0.861   Downloading pandas-2.0.1-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (11.6 MB)
+#13 2.506      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.6/11.6 MB 7.8 MB/s eta 0:00:00
+#13 2.776 Collecting numpy (from -r /usr/src/app/processor_requirements.txt (line 2))
+#13 2.817   Downloading numpy-1.24.3-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (14.0 MB)
+#13 4.317      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.0/14.0 MB 9.5 MB/s eta 0:00:00
+#13 4.407 Collecting python-dateutil>=2.8.2 (from pandas->-r /usr/src/app/processor_requirements.txt (line 1))
+#13 4.457   Downloading python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+#13 4.480      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 247.7/247.7 kB 11.2 MB/s eta 0:00:00
+#13 4.581 Collecting pytz>=2020.1 (from pandas->-r /usr/src/app/processor_requirements.txt (line 1))
+#13 4.620   Downloading pytz-2023.3-py2.py3-none-any.whl (502 kB)
+#13 4.667      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 502.3/502.3 kB 10.7 MB/s eta 0:00:00
+#13 4.717 Collecting tzdata>=2022.1 (from pandas->-r /usr/src/app/processor_requirements.txt (line 1))
+#13 4.753   Downloading tzdata-2023.3-py2.py3-none-any.whl (341 kB)
+#13 4.789      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 341.8/341.8 kB 10.2 MB/s eta 0:00:00
+#13 4.845 Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas->-r /usr/src/app/processor_requirements.txt (line 1))
+#13 4.886   Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+#13 4.979 Installing collected packages: pytz, tzdata, six, numpy, python-dateutil, pandas
+#13 8.463 Successfully installed numpy-1.24.3 pandas-2.0.1 python-dateutil-2.8.2 pytz-2023.3 six-1.16.0 tzdata-2023.3
+#13 8.463 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#13 DONE 8.6s
+
+#14 [10/10] RUN rm -r /usr/src/app
+#14 sha256:28a74a01018023f973daa479a872b485ce0b0926ca589796ab82818443178226
+#14 DONE 0.3s
+
+#15 exporting to image
+#15 sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00
+#15 exporting layers
+#15 exporting layers 0.4s done
+#15 writing image sha256:7a8891513aea2cf1b1353e0aa00e7e3e3421815d3be5016ed654d0c8769f46f8 done
+#15 naming to docker.io/library/quick_batch_processor_app done
+#15 DONE 0.4s
 SUCCESS: Image build completed successfully!
 ===============================
 ===============================
@@ -94,7 +123,6 @@ SUCCESS: setup_workspace succeeded
 Scaling processor service to 5 instances...
 ...complete
 SUCCESS: scaleup_processor_service succeeded
-current feed_queue_length:  5
 current feed_queue_length:  0
 SUCCESS: feed_queue_length is 0, stopping services...
 SUCCESS: remove_all_services succeeded

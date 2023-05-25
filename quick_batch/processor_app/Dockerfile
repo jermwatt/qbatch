@@ -1,6 +1,8 @@
 FROM python:3.10-slim-bullseye
 
 RUN apt-get update
+RUN apt-get install -y build-essential
+RUN pip install --upgrade pip setuptools
 
 RUN mkdir /usr/src/app
 
