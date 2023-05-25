@@ -2,6 +2,7 @@
 from transformers import pipeline
 from moviepy.editor import VideoFileClip
 import os
+import time
 
 # create directory to store audio files called '/audio_files'
 audio_directory = '/audio_files'
@@ -39,3 +40,6 @@ def processor(todos):
         with open(todos.path_to_output + '/' +
                   video_file.split('/')[-1].split('.')[0] + '.txt', 'w') as f:
             f.write(output['text'])
+            
+        time.sleep(15)
+

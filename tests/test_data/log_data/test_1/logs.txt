@@ -18,12 +18,12 @@ INFO: building processor image...
 ===============================
 ===============================
 #1 [internal] load build definition from Dockerfile
-#1 sha256:deb59da5ddabcb8e1ae659fda6bbc4be3209f94c3c6288ef9c201dc8d17fdce0
+#1 sha256:57d75a01735400669737adfba85d355b4c5c6b320ddb375d9d165d7da96aa4f3
 #1 transferring dockerfile: 305B done
 #1 DONE 0.0s
 
 #2 [internal] load .dockerignore
-#2 sha256:39cacbeddb6a1cb28541ca40c8aa7d4ee3ac3ea6825aba913f4140e82d712d7e
+#2 sha256:bd8140acc22b26fb3366f6b96d0cab2314fae53269bfde93019f91f618e4d63c
 #2 transferring context: 2B done
 #2 DONE 0.0s
 
@@ -31,47 +31,47 @@ INFO: building processor image...
 #3 sha256:8d24f53f4189c888dd8c43ce6211c414fc4548e3dc540856fb204a8ad8295641
 #3 DONE 0.0s
 
-#4 [1/8] FROM docker.io/library/python:3.10-slim-bullseye
-#4 sha256:a95083403ca41b3d99d396c3d93d9370f0e3254a1624630a6920242bf61c89c1
-#4 DONE 0.0s
+#12 [1/8] FROM docker.io/library/python:3.10-slim-bullseye
+#12 sha256:a95083403ca41b3d99d396c3d93d9370f0e3254a1624630a6920242bf61c89c1
+#12 DONE 0.0s
 
-#9 [internal] load build context
-#9 sha256:1ec9e012956fcdf3b7ffcc1dd779f00d4f1e3e15e9a8ab281b5c3d6678b63272
-#9 transferring context: 78B done
-#9 DONE 0.0s
+#8 [internal] load build context
+#8 sha256:debe27a50fbe60990e4dd296b7f53dccb9f4a511712f5d66937b4e44c4dcd485
+#8 transferring context: 78B done
+#8 DONE 0.0s
 
-#8 [5/8] RUN mkdir /usr/src/app
-#8 sha256:3c98bc257de350b916af4d616cf003dc6534b3231c5c8d3f2cfcda76f3aae2f9
-#8 CACHED
-
-#10 [6/8] COPY requirements.txt /usr/src/app
-#10 sha256:6dfdf75aef5a19cbc5c6a2faed47b218eaf6d33e311c4ace76b2b1f2a759bf53
-#10 CACHED
-
-#6 [3/8] RUN apt-get install -y build-essential
-#6 sha256:8ae10628ace001b786e6d007279b2f7ca3f3640e987afdcc6debd15530b05566
-#6 CACHED
-
-#11 [7/8] RUN pip install -r /usr/src/app/requirements.txt
-#11 sha256:c3bae33663c52ba7c78ea25b805f9839837f5e0ac47156a6c977759da2bac2b7
-#11 CACHED
-
-#7 [4/8] RUN pip install --upgrade pip setuptools
-#7 sha256:0668e9a95de9e619fe6b92637b2398d893fa3bd3d302d0a15e6fe8528c25de6b
+#7 [5/8] RUN mkdir /usr/src/app
+#7 sha256:3c98bc257de350b916af4d616cf003dc6534b3231c5c8d3f2cfcda76f3aae2f9
 #7 CACHED
 
-#5 [2/8] RUN apt-get update
-#5 sha256:53cda8da17e63990ef6667751145a01061eef9d9e9491acbc9cb637439b1dfdf
+#4 [2/8] RUN apt-get update
+#4 sha256:53cda8da17e63990ef6667751145a01061eef9d9e9491acbc9cb637439b1dfdf
+#4 CACHED
+
+#6 [4/8] RUN pip install --upgrade pip setuptools
+#6 sha256:0668e9a95de9e619fe6b92637b2398d893fa3bd3d302d0a15e6fe8528c25de6b
+#6 CACHED
+
+#10 [7/8] RUN pip install -r /usr/src/app/requirements.txt
+#10 sha256:27867e5e58a9463f3de1243d0f90abef5b6ce2f3d9637531f46fe71b5e39c73b
+#10 CACHED
+
+#9 [6/8] COPY requirements.txt /usr/src/app
+#9 sha256:86e15ca8042179dad8f7be6aec6598eb6135c892c205098286801948bced55e4
+#9 CACHED
+
+#5 [3/8] RUN apt-get install -y build-essential
+#5 sha256:8ae10628ace001b786e6d007279b2f7ca3f3640e987afdcc6debd15530b05566
 #5 CACHED
 
-#12 [8/8] RUN rm -r /usr/src/app
-#12 sha256:51d7c45a4a19a9821c260c04d62a46c122de8a3e74ef42894dba251ef5127e9c
-#12 CACHED
+#11 [8/8] RUN rm -r /usr/src/app
+#11 sha256:32c909989bd24f0747410ce551280d0d3c8f84223db047e482b8c16f43980510
+#11 CACHED
 
 #13 exporting to image
 #13 sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00
 #13 exporting layers done
-#13 writing image sha256:679cc8287a9e0af861c0f365d13a1366dcf9806ee94c90895bc073ff66a4e032 done
+#13 writing image sha256:b28f1d7749753a9eb6ce9daf58bd37172902f515e2cba357a74be4a037d6de5f done
 #13 naming to docker.io/library/quick_batch_processor_app done
 #13 DONE 0.0s
 SUCCESS: Image build completed successfully!
