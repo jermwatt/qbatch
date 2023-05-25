@@ -147,7 +147,10 @@ def create_processor_service(client,
         'image': 'quick_batch_processor_app',
         'name': 'processor_app',
         'log_driver': 'json-file',
-        'log_driver_options': {'max-size': '10m', 'max-file': '3'},
+        'log_driver_options': {
+            'max-size': '10m', 
+            'max-file': '3'
+        },
         'restart_policy': {'Condition': 'none', 'MaxAttempts': 0},
         'mounts': mounts,
         'user': 'root',

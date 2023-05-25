@@ -18,12 +18,12 @@ INFO: building processor image...
 ===============================
 ===============================
 #1 [internal] load build definition from Dockerfile
-#1 sha256:007192043887d1517601169ff8b1663be930afc0ea6a8a648816b1f0e9f00ec7
+#1 sha256:0a59d1ef0985dc522f2bad02b6515f2a2dcc08051acace2289c754b3cadd5696
 #1 transferring dockerfile: 305B done
 #1 DONE 0.0s
 
 #2 [internal] load .dockerignore
-#2 sha256:c245d2d1b44f95dcc47d77831363d65c58e7416c067d2f6d7b1b9c333367f635
+#2 sha256:214eced7b6351910992aa05e728689bc28b71b739c97c8b13d8dcda031faef02
 #2 transferring context: 2B done
 #2 DONE 0.0s
 
@@ -36,36 +36,36 @@ INFO: building processor image...
 #4 DONE 0.0s
 
 #9 [internal] load build context
-#9 sha256:706fe0cbbbe1b14903751eadec36806c4c78b897d4a2d7fcf9aad2a15ff464c6
+#9 sha256:3ccdbf1b9c91ba5bd911de9ea8ac52984225a414d287438a1860170577bc843d
 #9 transferring context: 78B done
 #9 DONE 0.0s
+
+#11 [7/8] RUN pip install -r /usr/src/app/requirements.txt
+#11 sha256:042c4b7f58fe533d7c096a0d5baa2468619bb6473f646ab3d50ceee297bc783c
+#11 CACHED
+
+#10 [6/8] COPY requirements.txt /usr/src/app
+#10 sha256:d9e367ec36341c547e3ea23ebbfda4bd66a540e4e0afa14892a7d482a394723e
+#10 CACHED
 
 #7 [4/8] RUN pip install --upgrade pip setuptools
 #7 sha256:0668e9a95de9e619fe6b92637b2398d893fa3bd3d302d0a15e6fe8528c25de6b
 #7 CACHED
 
-#6 [3/8] RUN apt-get install -y build-essential
-#6 sha256:8ae10628ace001b786e6d007279b2f7ca3f3640e987afdcc6debd15530b05566
-#6 CACHED
-
 #8 [5/8] RUN mkdir /usr/src/app
 #8 sha256:3c98bc257de350b916af4d616cf003dc6534b3231c5c8d3f2cfcda76f3aae2f9
 #8 CACHED
+
+#6 [3/8] RUN apt-get install -y build-essential
+#6 sha256:8ae10628ace001b786e6d007279b2f7ca3f3640e987afdcc6debd15530b05566
+#6 CACHED
 
 #5 [2/8] RUN apt-get update
 #5 sha256:53cda8da17e63990ef6667751145a01061eef9d9e9491acbc9cb637439b1dfdf
 #5 CACHED
 
-#10 [6/8] COPY requirements.txt /usr/src/app
-#10 sha256:040e777510bf5e77ab64e3c492c6878543ed24f36013488981a3425e85df83b7
-#10 CACHED
-
-#11 [7/8] RUN pip install -r /usr/src/app/requirements.txt
-#11 sha256:05f11c3ef8ec064a23e6ca3daea4462a6397ff50af819a02f90f2f18e3f2c954
-#11 CACHED
-
 #12 [8/8] RUN rm -r /usr/src/app
-#12 sha256:f9ec49a39e4016966d815d9d89ee50fd0fe71fc2a9813e973ffee3c3ca1861a9
+#12 sha256:fd7442b54baf388f4633c7babbccbb411ea593fb451e1f8159bcdab5e5aaf962
 #12 CACHED
 
 #13 exporting to image
