@@ -41,12 +41,16 @@ def activate(app):
         # print progress
         print('FINISHED: with', str(app.file_paths_to_process), flush=True)
 
-        if app.success:
-            # send report to queue_app
-            api_connects.send_done_report(app)
+        # send report to queue_app
+        api_connects.send_done_report(app)
 
-            # reset success flag
-            app.success = False
+        # WIP: send different report based on processor success
+        # if app.success:
+        #     # send report to queue_app
+        #     api_connects.send_done_report(app)
+
+        #     # reset success flag
+        #     app.success = False
 
     # if reaching the lifetime end signal to orchestator
     # that a new container be built

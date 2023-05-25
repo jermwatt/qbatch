@@ -29,6 +29,7 @@ def send_object_paths():
 
             # update counters
             app.wip_queue_length += 1
+            app.feed_queue_length -= 1
 
         return jsonify({'object_paths': object_paths,
                         'queue_message': f"{app.feed_queue_length} objects "
@@ -59,7 +60,6 @@ def done_from_processor():
 
         # update counters
         for d in data:
-            app.feed_queue_length -= 1
             app.done_queue_length += 1
             app.wip_queue_length -= 1
             app.done_queue.append(d)

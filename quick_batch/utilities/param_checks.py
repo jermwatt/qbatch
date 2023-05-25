@@ -2,6 +2,7 @@ import sys
 import os
 import ast
 import yaml
+from dockerfile_parse import DockerfileParser
 from utilities import log_exceptions
 from utilities.manage_loggers import Logger
 
@@ -37,6 +38,7 @@ def check_config_data_paths(config_path):
     # check that data paths in config file entries are valid
     input_path = config["data"]["input_path"]
     output_path = config["data"]["output_path"]
+    dockerfile_path = config["processor"]["dockerfile_path"]
     processor_path = config["processor"]["processor_path"]
     num_processors = config["processor"]["num_processors"]
     requirements_path = config.get("processor", {}). \
@@ -87,7 +89,7 @@ def check_config_data_paths(config_path):
         print("SUCCESS: num_processors is an integer greater than 0")
 
     return input_path, output_path, processor_path, num_processors, \
-        requirements_path
+        dockerfile_path, requirements_path
 
 
 @log_exceptions
@@ -123,3 +125,20 @@ def check_processor(processor):
     else:
         print("FAILURE: module does not contain a function named 'processor'")
         sys.exit(1)
+
+
+# check dockerfile validity
+@log_exceptions
+def check_dockerfile(dockerfile):
+    def validate_dockerfile(dockerfile_path):
+        try:
+            parser = DockerfileParser()
+            parser.content = open(dockerfile_path, 'r').read()
+            return True
+        except Exception:
+            return False
+
+    if validate_dockerfile(dockerfile):
+        print("INFO: Dockerfile is valid!")
+    else:
+        print("INFO: Dockerfile is NOT valid.")

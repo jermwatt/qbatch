@@ -30,13 +30,31 @@ def get_processor_requirements(processor):
 
 
 def write_requirements(required_modules, file_path):
+    base_requirements = ['flask', 'requests', 'pyyaml']
     with open(file_path, 'w') as file:
-        for module in required_modules:
+        for module in base_requirements:
+            file.write(module + '\n')
+
+        for module in set(required_modules) - set(base_requirements):
             file.write(module + '\n')
 
 
 @log_exceptions
-def make_requirements(processor, container_path):
+def make_requirements(requirements_path, container_requirements_path):
+    # read contents of the requirements file
+    with open(requirements_path, 'r') as file:
+        contents = file.readlines()
+
+    # Clean up the contents by removing leading/trailing
+    # whitespace and newlines
+    modules_to_install = [line.strip() for line in contents]
+
+    # write requirements to file
+    write_requirements(modules_to_install, container_requirements_path)
+
+
+@log_exceptions
+def infer_requirements(processor, container_path):
     # get requirements for processor.py
     installed_modules = get_processor_requirements(processor)
 
