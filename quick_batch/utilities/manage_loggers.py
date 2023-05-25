@@ -52,11 +52,15 @@ class Logger(object):
     def write(self, message):
         self.terminal.write(message)
         self.terminal.flush()  # Flush the terminal output
-        self.log.write(message)
-        self.log.flush()  # Flush the log file output
+        if self.log is not None:
+            self.log.write(message)
+            self.log.flush()  # Flush the log file output
 
     def flush(self):
         pass
 
     def close_log(self):
-        self.log.close()
+        if self.log is not None:
+            self.log.close()
+            self.log = None  # Set log attribute to None to prevent further writing
+

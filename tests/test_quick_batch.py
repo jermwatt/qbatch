@@ -1,7 +1,7 @@
 from pathlib import Path
 import sys
 import os
-
+import time
 base_path = str(Path(__file__).parent.parent)
 sys.path.append(str(base_path))
 
@@ -10,11 +10,9 @@ def test_quick_batch_test_1():
     config_path = f'{base_path}/tests/test_configs/test_1/quick_batch_github.yaml'
 
     if os.getenv('GITHUB_ACTIONS') == 'true':
-        print("Running on GitHub Actions")
         config_path = f'{base_path}/tests/test_configs/test_1/quick_batch_github.yaml'
 
     else:
-        print("Running locally")
         config_path = f'{base_path}/tests/test_configs/test_1/quick_batch_local.yaml'
 
     # delete contents of f'{base_path}/tests/test_data/output_data' but not folder
@@ -52,11 +50,9 @@ def test_quick_batch_test_2():
     config_path = f'{base_path}/tests/test_configs/test_2/quick_batch_github.yaml'
 
     if os.getenv('GITHUB_ACTIONS') == 'true':
-        print("Running on GitHub Actions")
         config_path = f'{base_path}/tests/test_configs/test_2/quick_batch_github.yaml'
 
     else:
-        print("Running locally")
         config_path = f'{base_path}/tests/test_configs/test_2/quick_batch_local.yaml'
 
     # delete contents of f'{base_path}/tests/test_data/output_data' but not folder

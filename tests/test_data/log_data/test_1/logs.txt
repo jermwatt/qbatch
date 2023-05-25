@@ -18,12 +18,12 @@ INFO: building processor image...
 ===============================
 ===============================
 #1 [internal] load build definition from Dockerfile
-#1 sha256:554c4e9e78a75402ada941323b25a613cd2ada6199b8d8851488ce242d869381
+#1 sha256:deb59da5ddabcb8e1ae659fda6bbc4be3209f94c3c6288ef9c201dc8d17fdce0
 #1 transferring dockerfile: 305B done
 #1 DONE 0.0s
 
 #2 [internal] load .dockerignore
-#2 sha256:7f2f6289eba6764bbbd5fc26890d0cd4203ed80ee23c0f0fbc29553648afd103
+#2 sha256:39cacbeddb6a1cb28541ca40c8aa7d4ee3ac3ea6825aba913f4140e82d712d7e
 #2 transferring context: 2B done
 #2 DONE 0.0s
 
@@ -36,36 +36,36 @@ INFO: building processor image...
 #4 DONE 0.0s
 
 #9 [internal] load build context
-#9 sha256:6a5883e41c5331be0ca5f2afe093d62a65f4655ebf06e8cabc3523c9f7f16630
+#9 sha256:1ec9e012956fcdf3b7ffcc1dd779f00d4f1e3e15e9a8ab281b5c3d6678b63272
 #9 transferring context: 78B done
 #9 DONE 0.0s
 
-#11 [7/8] RUN pip install -r /usr/src/app/requirements.txt
-#11 sha256:b3f9f271b16d14d177c5547659b171649a73b4e5b7a0c2c299c88f482d9f7bb8
-#11 CACHED
+#8 [5/8] RUN mkdir /usr/src/app
+#8 sha256:3c98bc257de350b916af4d616cf003dc6534b3231c5c8d3f2cfcda76f3aae2f9
+#8 CACHED
 
 #10 [6/8] COPY requirements.txt /usr/src/app
-#10 sha256:1b362e18965e56b1a91e687e1b7580015fec9fd6244f35b05bad768672b5e83b
+#10 sha256:6dfdf75aef5a19cbc5c6a2faed47b218eaf6d33e311c4ace76b2b1f2a759bf53
 #10 CACHED
 
 #6 [3/8] RUN apt-get install -y build-essential
 #6 sha256:8ae10628ace001b786e6d007279b2f7ca3f3640e987afdcc6debd15530b05566
 #6 CACHED
 
+#11 [7/8] RUN pip install -r /usr/src/app/requirements.txt
+#11 sha256:c3bae33663c52ba7c78ea25b805f9839837f5e0ac47156a6c977759da2bac2b7
+#11 CACHED
+
 #7 [4/8] RUN pip install --upgrade pip setuptools
 #7 sha256:0668e9a95de9e619fe6b92637b2398d893fa3bd3d302d0a15e6fe8528c25de6b
 #7 CACHED
-
-#8 [5/8] RUN mkdir /usr/src/app
-#8 sha256:3c98bc257de350b916af4d616cf003dc6534b3231c5c8d3f2cfcda76f3aae2f9
-#8 CACHED
 
 #5 [2/8] RUN apt-get update
 #5 sha256:53cda8da17e63990ef6667751145a01061eef9d9e9491acbc9cb637439b1dfdf
 #5 CACHED
 
 #12 [8/8] RUN rm -r /usr/src/app
-#12 sha256:086c82af6efa2b9960905ae88b40af7d7f7493f24f7e7de7ae6f97ff1d56f05c
+#12 sha256:51d7c45a4a19a9821c260c04d62a46c122de8a3e74ef42894dba251ef5127e9c
 #12 CACHED
 
 #13 exporting to image
