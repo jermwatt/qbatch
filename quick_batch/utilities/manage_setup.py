@@ -32,9 +32,9 @@ def setup_client(config):
 
     # check processor
     check_processor(processor)
-
-    # check dockerfile
-    check_dockerfile(dockerfile_path)
+    
+    # check dockerfile - seems to save a copy local to the project - not using for now
+    # check_dockerfile(dockerfile_path)
 
     # create docker client
     client = manage_images.create_client()

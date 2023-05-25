@@ -8,14 +8,12 @@ SUCCESS: num_processors is an integer greater than 0
 SUCCESS: check_config_data_paths succeeded
 SUCCESS: module contains a function named 'processor'
 SUCCESS: check_processor succeeded
-INFO: Dockerfile is valid!
-SUCCESS: check_dockerfile succeeded
 SUCCESS: create_client succeeded
-INFO: pulling and tagging image...
-SUCCESS: tagging local image successful!
+INFO: Pulling and tagging image...
+SUCCESS: Tagging local image successful!
 SUCCESS: pull_and_tag_image succeeded
-INFO: pulling and tagging image...
-SUCCESS: tagging local image successful!
+INFO: Pulling and tagging image...
+SUCCESS: Tagging local image successful!
 SUCCESS: pull_and_tag_image succeeded
 SUCCESS: setup_client succeeded
 SUCCESS: remove_all_services succeeded

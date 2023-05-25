@@ -135,7 +135,8 @@ def check_dockerfile(dockerfile):
     def validate_dockerfile(dockerfile_path):
         try:
             parser = DockerfileParser()
-            parser.content = open(dockerfile_path, 'r').read()
+            with open(dockerfile_path, 'r') as file:
+                parser.content = file.read()
             return True
         except Exception:
             return False
