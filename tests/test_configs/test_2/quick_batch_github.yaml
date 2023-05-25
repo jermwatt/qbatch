@@ -1,0 +1,14 @@
+data:
+  input_path: /home/runner/work/quick_batch/quick_batch/tests/test_data/input_data/test_1
+  output_path: /home/runner/work/quick_batch/quick_batch/tests/test_data/output_data/test_1
+  log_path: /home/runner/work/quick_batch/quick_batch/tests/test_data/log_data/test_1/logs.txt
+    
+queue:
+  feed_rate: 1
+  order_files: False
+
+processor: 
+  dockerfile_path: /Users/wattjer/Desktop/quick_batch/tests/test_dockerfiles/test_1/Dockerfile
+  requirements_path: /Users/wattjer/Desktop/quick_batch/tests/test_requirements/test_1/requirements.txt 
+  processor_path: /home/runner/work/quick_batch/quick_batch/tests/test_processors/test_1/processor.py
+  num_processors: 5

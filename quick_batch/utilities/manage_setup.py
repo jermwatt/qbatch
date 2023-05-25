@@ -5,6 +5,7 @@ from utilities.param_checks import setup_logger
 from utilities.param_checks import check_config
 from utilities.param_checks import check_config_data_paths
 from utilities.param_checks import check_processor
+from utilities.param_checks import check_dockerfile
 from utilities.manage_containers import remove_all_containers
 from utilities.manage_networks import remove_network
 from utilities.manage_services import remove_all_services
@@ -26,17 +27,25 @@ def setup_client(config):
 
     # check config data paths
     input_path, output_path, processor, num_processors, \
-        requirements_path = check_config_data_paths(config)
+        dockerfile_path, requirements_path = check_config_data_paths(config)
 
     # check processor
     check_processor(processor)
 
+    # check dockerfile
+    check_dockerfile(dockerfile_path)
+
     # create docker client
     client = manage_images.create_client()
 
-    # build images
-    manage_images.build_processor_image(client, requirements_path, processor)
+    # build queue image
     manage_images.build_queue_image(client)
+
+    # build processor image
+    manage_images.build_processor_image(client,
+                                        dockerfile_path,
+                                        requirements_path,
+                                        processor)
 
     return client, input_path, output_path, processor, num_processors, logger
 

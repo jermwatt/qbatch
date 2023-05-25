@@ -341,6 +341,18 @@ websocket-client = ">=0.32.0"
 ssh = ["paramiko (>=2.4.3)"]
 
 [[package]]
+name = "dockerfile-parse"
+version = "2.0.0"
+description = "Python library for Dockerfile manipulation"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "dockerfile-parse-2.0.0.tar.gz", hash = "sha256:21fe7d510642f2b61a999d45c3d9745f950e11fe6ba2497555b8f63782b78e45"},
+    {file = "dockerfile_parse-2.0.0-py2.py3-none-any.whl", hash = "sha256:d8d9100f8255914378bc0524ffaad68ef043885b0fb40a6936b1bba458f40c3f"},
+]
+
+[[package]]
 name = "executing"
 version = "1.2.0"
 description = "Get the currently executing AST node of a frame, and other information"
@@ -1270,4 +1282,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "c52cea746a884a0c375fab2e8a3712097f7f2852151d3be7cd0c37ab15bd371f"
+content-hash = "47545bee750c09855070abda8edc593128445c9f2ad5b2809689a9655d8c597e"

@@ -1,9 +1,10 @@
 import shutil
 import os
-import sys
 import docker
 from utilities import queue_path, processor_path
 from .manage_requirements import make_requirements
+from .manage_requirements import infer_requirements
+from .manage_dockerfile import check_requirements_copy_and_install
 from utilities import log_exceptions
 import subprocess
 
@@ -26,21 +27,36 @@ def check_requirements_file(requirements_path):
 
 # build processor_app docker image
 @log_exceptions
-def build_processor_image(client, requirements_path, processor):
+def build_processor_image(client,
+                          dockerfile_path,
+                          requirements_path,
+                          processor):
+
+    # create container path for dockerfile
+    container_dockerfile_path = os.path.join(processor_path, 'Dockerfile')
+
+    # copy dockerfile to processor_path directory
+    shutil.copy(dockerfile_path, container_dockerfile_path)
+
+    # check if requirements.txt is being copied and installed in dockerfile
+    check_requirements_copy_and_install(container_dockerfile_path)
+
     # create container path for requirements
-    container_path = os.path.join(processor_path, 'processor_requirements.txt')
+    container_requirements_path = os.path.join(processor_path,
+                                               'requirements.txt')
 
     # check if requirements_path is valid and not empty,
     # if so copy to container path
     if check_requirements_file(requirements_path):
         print('INFO: valid requirements file')
-        shutil.copyfile(os.path.join(requirements_path), container_path)
+        make_requirements(requirements_path, container_requirements_path)
     else:
         # create requirements file from processor
-        print('INFO: no valid requirements file, creating from processor')
-        make_requirements(processor, container_path)
+        print('INFO: no valid requirements file, attempting to create '
+              'from processor')
+        infer_requirements(processor, container_requirements_path)
 
-    # create docker image for processor app - including user defined    
+    # create docker image for processor app - including user defined
     def stream_build_logs(path, tag):
         command = ["docker", "build", "-t", tag, path]
         process = subprocess.Popen(
@@ -71,43 +87,14 @@ def build_processor_image(client, requirements_path, processor):
     print('===============================')
     print('===============================')
 
-    
-    # try:
-    #     # Set quiet=False to print the build output
-    #     build_output = client.images.build(path=processor_path, tag='quick_batch_processor_app',
-    #                     quiet=False)
-            
-    #     # Print the build output
-    #     for line in build_output[1]:
-    #         if 'stream' in line:
-    #             print(line['stream'], end='')
-    #             sys.stdout.flush() 
-
-    #     # Build completed successfully
-    #     print("Image build completed!")
-        
-    # except docker.errors.BuildError as e:
-    #     # Handle build errors
-    #     print("Build failed!")
-    #     print("Error message:", e.msg)
-        
-    # except docker.errors.APIError as e:
-    #     # Handle API errors
-    #     print("API error occurred during build!")
-    #     print("Error message:", e)
-
-    # except Exception as e:
-    #     # Handle other exceptions
-    #     print("An unexpected error occurred during build:", str(e))
-        
-        
-        
-        
     # Build completed
     print("INFO: ... processor image build completed!")
 
+    # remove dockerfile from the processor_path directory
+    os.remove(container_dockerfile_path)
+
     # remove processor_requirements.txt from the processor_path directory
-    os.remove(container_path)
+    os.remove(container_requirements_path)
 
 
 @log_exceptions

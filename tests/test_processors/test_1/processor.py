@@ -16,7 +16,7 @@ def processor(app):
 
             # save to output file
             with open(app.path_to_output + '/' +
-                      file_path.split('/')[-1], 'w') as f:
+                      file_path.split('.')[0], 'w') as f:
                 f.write(data)
 
             time.sleep(15)

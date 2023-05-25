@@ -1,0 +1,4 @@
+moviepy
+torch
+transformers
+accelerate
