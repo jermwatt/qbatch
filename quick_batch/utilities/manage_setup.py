@@ -15,6 +15,7 @@ from utilities.manage_networks import create_network
 from utilities.manage_services import create_queue_service
 from utilities.manage_services import create_processor_service
 from utilities.manage_queue import monitor_queue_app_containers
+from utilities.manage_images import pull_and_tag_image
 
 
 @log_exceptions
@@ -27,7 +28,7 @@ def setup_client(config):
 
     # check config data paths
     input_path, output_path, processor, num_processors, \
-        dockerfile_path, requirements_path = check_config_data_paths(config)
+        dockerfile_path, requirements_path, image_name = check_config_data_paths(config)
 
     # check processor
     check_processor(processor)
@@ -38,14 +39,22 @@ def setup_client(config):
     # create docker client
     client = manage_images.create_client()
 
-    # build queue image
-    manage_images.build_queue_image(client)
-
-    # build processor image
-    manage_images.build_processor_image(client,
-                                        dockerfile_path,
-                                        requirements_path,
-                                        processor)
+    # try to pull and tag image
+    pull_success = pull_and_tag_image(client, 'jermwatt/quick_batch_queue_app', 'quick_batch_queue_app')
+    
+    # if not successful, build image
+    if not pull_success:
+        manage_images.build_queue_image(client)
+    
+    # try to pull and tag image
+    pull_success = pull_and_tag_image(client, image_name, 'quick_batch_processor_app')
+    
+    # if not successful, build image
+    if not pull_success:
+        manage_images.build_processor_image(client,
+                                            dockerfile_path,
+                                            requirements_path,
+                                            processor)
 
     return client, input_path, output_path, processor, num_processors, logger
 

@@ -43,6 +43,8 @@ def check_config_data_paths(config_path):
     num_processors = config["processor"]["num_processors"]
     requirements_path = config.get("processor", {}). \
         get("requirements_path", "")
+    image_name = config.get("processor", {}). \
+        get("image_name", "")
 
     # if requirements_path is not empty, check that it exists
     if not os.path.isfile(requirements_path):
@@ -89,7 +91,7 @@ def check_config_data_paths(config_path):
         print("SUCCESS: num_processors is an integer greater than 0")
 
     return input_path, output_path, processor_path, num_processors, \
-        dockerfile_path, requirements_path
+        dockerfile_path, requirements_path, image_name
 
 
 @log_exceptions

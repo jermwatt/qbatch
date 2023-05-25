@@ -8,6 +8,7 @@ queue:
   order_files: False
 
 processor: 
+  image_name: jermwatt/quick_batch_processor_app_test_2
   dockerfile_path: /home/runner/work/quick_batch/quick_batch/tests/test_dockerfiles/test_2/Dockerfile
   requirements_path: /home/runner/work/quick_batch/quick_batch/tests/test_requirements/test_2/requirements.txt 
   processor_path: /home/runner/work/quick_batch/quick_batch/tests/test_processors/test_2/processor.py
