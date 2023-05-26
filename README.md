@@ -20,7 +20,6 @@ All you need to scale batch transformations with `quick_batch` is a
 - transformation function(s) in a `processor.py` file
 - `Dockerfile` containing a container build appropriate to y our processor
 - an optional `requirements.txt` file containing required python modules
-  - custom `requirements.txt` require `flask`, `requests`, and `pyyaml`
 
 Document paths to these objects as well as other parameters in a `config.yaml` config file of the form below
 
