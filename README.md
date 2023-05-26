@@ -35,7 +35,6 @@ queue:
   order_files: <boolean - whether or not to order input files by size>
 
 processor:
-  image_name: <pre-built-image-name>
   dockerfile_path: /path/to/your/Dockerfile
   requirements_path: /path/to/your/requirements.txt
   processor_path: /path/to/your/processor/processor.py
