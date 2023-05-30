@@ -1,14 +1,8 @@
-import sys
-import fire
 from utilities.manage_client import create_client
 from utilities.manage_services import scaleup_processor_service
 
 
-def main(num_processors=None):
-    # check num_processors - used as script fire will not be used
-    if not num_processors:
-        num_processors = int(sys.argv[1])
-
+def scaler(num_processors=None):
     # check num_processors is an integer
     try:
         num_processors = int(num_processors)
@@ -31,7 +25,3 @@ def main(num_processors=None):
 
     # print update
     print("INFO: ...complete")
-
-
-if __name__ == '__main__':
-    fire.Fire(main)

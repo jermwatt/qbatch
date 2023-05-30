@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "quick_batch"
-version = "0.1.6"
+version = "0.1.7"
 description = "ultra simple command line tool for docker-scaling batch processing"
 authors = ["Jeremy Watt <jermwatt@gmail.com>"]
 readme = "README.md"
@@ -9,7 +9,6 @@ license = "MIT"
 
 [tool.poetry.scripts]
 quick_batch = "quick_batch.main:main"
-qb_scale = "quick_batch.manual_scaler:main"
 
 [tool.poetry.dependencies]
 python = "^3.9"

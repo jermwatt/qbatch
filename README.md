@@ -9,6 +9,7 @@
 - [quick\_batch](#quick_batch)
 - [Getting started](#getting-started)
   - [Usage](#usage)
+  - [Scaling](#scaling)
   - [Installation](#installation)
   - [The `processor.py` file](#the-processorpy-file)
 - [Why use quick\_batch](#why-use-quick_batch)
@@ -51,11 +52,23 @@ You can see `tests/config_files` for examples of valid configs.
 
 ## Usage
 
-With your `config.yaml` defined you can use `quick_batch` at the terminal by typing
+To start processing with your `config.yaml` use `quick_batch`'s `config` command at the terminal by typing
 
 ```bash
-quick_batch /path/to/your/config.yaml
+quick_batch config /path/to/your/config.yaml
 ```
+
+This will start the build and deploy process for processing your data as defined in your `config.yaml`.
+
+## Scaling
+
+Use the `scale` commoand to manually scale the number of processors / containers running your process
+
+```bash
+quick_batch scale <num_processors> 
+```
+
+Here `<num_processors>` is an integer >= 1.   For example, to scale to 3 parallel processors / containers: `quick_batch scale 3`
 
 ## Installation
 

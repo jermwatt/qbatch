@@ -1,35 +1,22 @@
 import sys
 import fire
-from utilities.manage_setup import setup_client
-from utilities.manage_setup import reset_workspace
-from utilities.manage_setup import setup_workspace
-from utilities.manage_queue import monitor_queue
-from utilities.manage_services import scaleup_processor_service
+import runner
+import manual_scaler
 
 
 def main(config=None):
     # check config - used as script fire will not be used
     if not config:
-        config = sys.argv[1]
+        # check argument provided - config or num_processors
+        if sys.argv[1] == 'config':
+            config = sys.argv[2]
+            runner.run(config)
+        elif sys.argv[1] == 'scale':
+            num_processors = int(sys.argv[2])
+            manual_scaler.scaler(num_processors)
 
-    # setup
-    client, input_path, output_path, processor, num_processors, \
-        logger = setup_client(config)
-
-    # reset workspace
-    reset_workspace(client)
-
-    # create workspace
-    setup_workspace(client, config,  processor, input_path, output_path)
-
-    # scale up processor service
-    scaleup_processor_service(client, num_processors)
-
-    # monitor queue
-    monitor_queue(client)
-
-    # close log
-    logger.close_log()
+    # check config - used as script fire will be used
+    runner.run(config)
 
 
 if __name__ == '__main__':

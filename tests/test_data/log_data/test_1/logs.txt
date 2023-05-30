@@ -16,12 +16,12 @@ INFO: building processor image...
 ===============================
 ===============================
 #1 [internal] load build definition from Dockerfile
-#1 sha256:e4bdaa294f0c5fb20258a9dabf151df2d69a2a0d32b931d5ba336134b313d30b
+#1 sha256:99c88f93a8df57e37629771269fa00d1ca0a6d62fd5475ef781d03f02bef6b79
 #1 transferring dockerfile: 305B done
 #1 DONE 0.0s
 
 #2 [internal] load .dockerignore
-#2 sha256:152cd2f59c7aee82f7895e8ca0bc6134bab35656d780bb8f6f863255952682c4
+#2 sha256:39bef342aa4767b4f2bc895b1d6e05b340b1deb5027dad6b49ec508b3aa92894
 #2 transferring context: 2B done
 #2 DONE 0.0s
 
@@ -29,106 +29,49 @@ INFO: building processor image...
 #3 sha256:8d24f53f4189c888dd8c43ce6211c414fc4548e3dc540856fb204a8ad8295641
 #3 DONE 0.0s
 
-#12 [1/8] FROM docker.io/library/python:3.10-slim-bullseye
-#12 sha256:a95083403ca41b3d99d396c3d93d9370f0e3254a1624630a6920242bf61c89c1
-#12 DONE 0.0s
+#4 [1/8] FROM docker.io/library/python:3.10-slim-bullseye
+#4 sha256:a95083403ca41b3d99d396c3d93d9370f0e3254a1624630a6920242bf61c89c1
+#4 DONE 0.0s
 
-#8 [internal] load build context
-#8 sha256:31fd92d18c40f607ae75e0177d6cbb36ba1ca12c0bdcc2a1c18467fcf7495ca5
-#8 transferring context: 78B done
-#8 DONE 0.0s
-
-#5 [3/8] RUN apt-get install -y build-essential
-#5 sha256:8ae10628ace001b786e6d007279b2f7ca3f3640e987afdcc6debd15530b05566
-#5 CACHED
-
-#4 [2/8] RUN apt-get update
-#4 sha256:53cda8da17e63990ef6667751145a01061eef9d9e9491acbc9cb637439b1dfdf
-#4 CACHED
-
-#6 [4/8] RUN pip install --upgrade pip setuptools
-#6 sha256:0668e9a95de9e619fe6b92637b2398d893fa3bd3d302d0a15e6fe8528c25de6b
-#6 CACHED
-
-#7 [5/8] RUN mkdir /usr/src/app
-#7 sha256:3c98bc257de350b916af4d616cf003dc6534b3231c5c8d3f2cfcda76f3aae2f9
-#7 CACHED
-
-#9 [6/8] COPY requirements.txt /usr/src/app
-#9 sha256:b6bbcf4fe97004630712bb0a229716587574872318077d0a386c91f11249b4ad
+#9 [internal] load build context
+#9 sha256:4f78449a6320b9c5c2b26ec34eed0e6159daff3e3adde5d2e9167b4c507d4a7e
+#9 transferring context: 78B done
 #9 DONE 0.0s
 
-#10 [7/8] RUN pip install -r /usr/src/app/requirements.txt
-#10 sha256:426595972197034fff4c2ba8e6ca9b46fcb08259b519eecfddd5ffddd10f9e39
-#10 0.483 Collecting flask (from -r /usr/src/app/requirements.txt (line 1))
-#10 0.688   Downloading Flask-2.3.2-py3-none-any.whl (96 kB)
-#10 0.752      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 96.9/96.9 kB 1.5 MB/s eta 0:00:00
-#10 0.827 Collecting requests (from -r /usr/src/app/requirements.txt (line 2))
-#10 0.868   Downloading requests-2.31.0-py3-none-any.whl (62 kB)
-#10 0.896      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.6/62.6 kB 2.0 MB/s eta 0:00:00
-#10 0.965 Collecting pyyaml (from -r /usr/src/app/requirements.txt (line 3))
-#10 1.005   Downloading PyYAML-6.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (733 kB)
-#10 1.315      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 733.7/733.7 kB 2.4 MB/s eta 0:00:00
-#10 1.655 Collecting numpy (from -r /usr/src/app/requirements.txt (line 4))
-#10 1.706   Downloading numpy-1.24.3-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (14.0 MB)
-#10 3.744      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.0/14.0 MB 10.1 MB/s eta 0:00:00
-#10 3.909 Collecting pandas (from -r /usr/src/app/requirements.txt (line 5))
-#10 3.950   Downloading pandas-2.0.2-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (11.6 MB)
-#10 4.940      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.6/11.6 MB 11.7 MB/s eta 0:00:00
-#10 5.019 Collecting Werkzeug>=2.3.3 (from flask->-r /usr/src/app/requirements.txt (line 1))
-#10 5.056   Downloading Werkzeug-2.3.4-py3-none-any.whl (242 kB)
-#10 5.078      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 242.5/242.5 kB 12.1 MB/s eta 0:00:00
-#10 5.124 Collecting Jinja2>=3.1.2 (from flask->-r /usr/src/app/requirements.txt (line 1))
-#10 5.162   Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
-#10 5.178      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 kB 8.6 MB/s eta 0:00:00
-#10 5.218 Collecting itsdangerous>=2.1.2 (from flask->-r /usr/src/app/requirements.txt (line 1))
-#10 5.260   Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
-#10 5.321 Collecting click>=8.1.3 (from flask->-r /usr/src/app/requirements.txt (line 1))
-#10 5.370   Downloading click-8.1.3-py3-none-any.whl (96 kB)
-#10 5.375      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 96.6/96.6 kB 22.5 MB/s eta 0:00:00
-#10 5.422 Collecting blinker>=1.6.2 (from flask->-r /usr/src/app/requirements.txt (line 1))
-#10 5.466   Downloading blinker-1.6.2-py3-none-any.whl (13 kB)
-#10 5.574 Collecting charset-normalizer<4,>=2 (from requests->-r /usr/src/app/requirements.txt (line 2))
-#10 5.616   Downloading charset_normalizer-3.1.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (195 kB)
-#10 5.631      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 195.9/195.9 kB 14.0 MB/s eta 0:00:00
-#10 5.673 Collecting idna<4,>=2.5 (from requests->-r /usr/src/app/requirements.txt (line 2))
-#10 5.731   Downloading idna-3.4-py3-none-any.whl (61 kB)
-#10 5.737      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.5/61.5 kB 12.2 MB/s eta 0:00:00
-#10 5.809 Collecting urllib3<3,>=1.21.1 (from requests->-r /usr/src/app/requirements.txt (line 2))
-#10 5.847   Downloading urllib3-2.0.2-py3-none-any.whl (123 kB)
-#10 5.853      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 123.2/123.2 kB 20.9 MB/s eta 0:00:00
-#10 5.905 Collecting certifi>=2017.4.17 (from requests->-r /usr/src/app/requirements.txt (line 2))
-#10 5.942   Downloading certifi-2023.5.7-py3-none-any.whl (156 kB)
-#10 5.956      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 157.0/157.0 kB 17.0 MB/s eta 0:00:00
-#10 6.045 Collecting python-dateutil>=2.8.2 (from pandas->-r /usr/src/app/requirements.txt (line 5))
-#10 6.096   Downloading python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
-#10 6.117      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 247.7/247.7 kB 13.4 MB/s eta 0:00:00
-#10 6.201 Collecting pytz>=2020.1 (from pandas->-r /usr/src/app/requirements.txt (line 5))
-#10 6.238   Downloading pytz-2023.3-py2.py3-none-any.whl (502 kB)
-#10 6.286      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 502.3/502.3 kB 12.0 MB/s eta 0:00:00
-#10 6.339 Collecting tzdata>=2022.1 (from pandas->-r /usr/src/app/requirements.txt (line 5))
-#10 6.383   Downloading tzdata-2023.3-py2.py3-none-any.whl (341 kB)
-#10 6.406      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 341.8/341.8 kB 15.9 MB/s eta 0:00:00
-#10 6.489 Collecting MarkupSafe>=2.0 (from Jinja2>=3.1.2->flask->-r /usr/src/app/requirements.txt (line 1))
-#10 6.531   Downloading MarkupSafe-2.1.2-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (26 kB)
-#10 6.577 Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas->-r /usr/src/app/requirements.txt (line 5))
-#10 6.609   Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
-#10 6.708 Installing collected packages: pytz, urllib3, tzdata, six, pyyaml, numpy, MarkupSafe, itsdangerous, idna, click, charset-normalizer, certifi, blinker, Werkzeug, requests, python-dateutil, Jinja2, pandas, flask
-#10 10.58 Successfully installed Jinja2-3.1.2 MarkupSafe-2.1.2 Werkzeug-2.3.4 blinker-1.6.2 certifi-2023.5.7 charset-normalizer-3.1.0 click-8.1.3 flask-2.3.2 idna-3.4 itsdangerous-2.1.2 numpy-1.24.3 pandas-2.0.2 python-dateutil-2.8.2 pytz-2023.3 pyyaml-6.0 requests-2.31.0 six-1.16.0 tzdata-2023.3 urllib3-2.0.2
-#10 10.58 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
-#10 DONE 10.9s
+#11 [7/8] RUN pip install -r /usr/src/app/requirements.txt
+#11 sha256:6b61de0c102c48f3a095a31553c9eaf55b3c4d270502674c206d6e7ebc184e43
+#11 CACHED
 
-#11 [8/8] RUN rm -r /usr/src/app
-#11 sha256:2dec4de0b1341812aefc49c9006d6335bd4ccb8661c61acca8d4e11d5720dd00
-#11 DONE 0.2s
+#5 [2/8] RUN apt-get update
+#5 sha256:53cda8da17e63990ef6667751145a01061eef9d9e9491acbc9cb637439b1dfdf
+#5 CACHED
+
+#6 [3/8] RUN apt-get install -y build-essential
+#6 sha256:8ae10628ace001b786e6d007279b2f7ca3f3640e987afdcc6debd15530b05566
+#6 CACHED
+
+#7 [4/8] RUN pip install --upgrade pip setuptools
+#7 sha256:0668e9a95de9e619fe6b92637b2398d893fa3bd3d302d0a15e6fe8528c25de6b
+#7 CACHED
+
+#8 [5/8] RUN mkdir /usr/src/app
+#8 sha256:3c98bc257de350b916af4d616cf003dc6534b3231c5c8d3f2cfcda76f3aae2f9
+#8 CACHED
+
+#10 [6/8] COPY requirements.txt /usr/src/app
+#10 sha256:311a9106a69cc09e35db3764e674e45be54f72e63995c88ed54a326947f76c2c
+#10 CACHED
+
+#12 [8/8] RUN rm -r /usr/src/app
+#12 sha256:12d06720599b70dc2d3696938f4537f99a9aced58294c0919453b9ae7e8f1a3f
+#12 CACHED
 
 #13 exporting to image
 #13 sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00
-#13 exporting layers
-#13 exporting layers 0.5s done
+#13 exporting layers done
 #13 writing image sha256:d7c99f65ba1e6e5ee4c9633864ed766cc10f5a10f4ba393981cae41b80d7bdaf done
 #13 naming to docker.io/library/quick_batch_processor_app done
-#13 DONE 0.5s
+#13 DONE 0.0s
 SUCCESS: Image build completed successfully!
 ===============================
 ===============================
