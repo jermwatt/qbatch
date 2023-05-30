@@ -95,7 +95,7 @@ def create_queues(app):
         feed_counter += 1
 
     print('done loading feeder queue!', flush=True)
-    print(app.feeder_queue, flush=True)
+    # print(app.feeder_queue, flush=True)
 
     # init queue counters
     app.feed_queue_length = feed_counter
