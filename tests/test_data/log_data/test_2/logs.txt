@@ -10,9 +10,77 @@ SUCCESS: module contains a function named 'processor'
 SUCCESS: check_processor succeeded
 SUCCESS: create_client succeeded
 SUCCESS: build_queue_image succeeded
-INFO: Pulling and tagging image...
-SUCCESS: Tagging local image successful!
-SUCCESS: pull_and_tag_image succeeded
+INFO: valid requirements file
+SUCCESS: make_requirements succeeded
+INFO: building processor image...
+===============================
+===============================
+#1 [internal] load build definition from Dockerfile
+#1 sha256:fa464d0951ea6ca538aab4b62c448ba70bf841b41a13678c85fa2db42856dd04
+#1 transferring dockerfile: 335B done
+#1 DONE 0.0s
+
+#2 [internal] load .dockerignore
+#2 sha256:d21c941175769dc7854830d26bdea9104e6ea26560ae25440c83f0bf92a3ff11
+#2 transferring context: 2B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.10-slim-bullseye
+#3 sha256:8d24f53f4189c888dd8c43ce6211c414fc4548e3dc540856fb204a8ad8295641
+#3 DONE 0.0s
+
+#4 [1/9] FROM docker.io/library/python:3.10-slim-bullseye
+#4 sha256:a95083403ca41b3d99d396c3d93d9370f0e3254a1624630a6920242bf61c89c1
+#4 DONE 0.0s
+
+#10 [internal] load build context
+#10 sha256:e6e1e241189867f4af3674664772e86d71e3498b7a1b28feb52424365613581c
+#10 transferring context: 103B done
+#10 DONE 0.0s
+
+#8 [5/9] RUN apt-get install -y ffmpeg
+#8 sha256:e12db20afb6c69d7b9206d1e9c5fae38c46e7046166f57955b4863c179d224dc
+#8 CACHED
+
+#9 [6/9] RUN mkdir /usr/src/app
+#9 sha256:30420801f82e82a186f442fac62fdd111909a75d01f85b310196fbd910779cb2
+#9 CACHED
+
+#7 [4/9] RUN pip install --upgrade pip setuptools
+#7 sha256:0668e9a95de9e619fe6b92637b2398d893fa3bd3d302d0a15e6fe8528c25de6b
+#7 CACHED
+
+#12 [8/9] RUN pip install -r /usr/src/app/requirements.txt
+#12 sha256:b4f59e57f7831f02cd63482754d48c6497e2e711e957c46695e477cf50e0f49b
+#12 CACHED
+
+#11 [7/9] COPY requirements.txt /usr/src/app
+#11 sha256:72ad1390023c64a3c39ccd472591584ff6975534ed4c5d5acd542a34a8c84a06
+#11 CACHED
+
+#6 [3/9] RUN apt-get install -y build-essential
+#6 sha256:8ae10628ace001b786e6d007279b2f7ca3f3640e987afdcc6debd15530b05566
+#6 CACHED
+
+#5 [2/9] RUN apt-get update
+#5 sha256:53cda8da17e63990ef6667751145a01061eef9d9e9491acbc9cb637439b1dfdf
+#5 CACHED
+
+#13 [9/9] RUN rm -r /usr/src/app
+#13 sha256:0823ce44d325e639b97dc175b5f0d0479f6c6788b90de547eb1243c4f7b594eb
+#13 CACHED
+
+#14 exporting to image
+#14 sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00
+#14 exporting layers done
+#14 writing image sha256:7d57371cecab8325989e792f36d19f42abb87ddbf2212d1a5d205995f4a5d351 done
+#14 naming to docker.io/library/quick_batch_processor_app done
+#14 DONE 0.0s
+SUCCESS: Image build completed successfully!
+===============================
+===============================
+INFO: ... processor image build completed!
+SUCCESS: build_processor_image succeeded
 SUCCESS: setup_client succeeded
 SUCCESS: remove_all_services succeeded
 SUCCESS: remove_all_containers succeeded
@@ -35,19 +103,6 @@ current feed_queue_length:  4
 current feed_queue_length:  4
 current feed_queue_length:  3
 current feed_queue_length:  3
-current feed_queue_length:  3
-current feed_queue_length:  3
-current feed_queue_length:  2
-current feed_queue_length:  2
-current feed_queue_length:  2
 current feed_queue_length:  2
 current feed_queue_length:  1
 current feed_queue_length:  1
-current feed_queue_length:  1
-current feed_queue_length:  1
-current feed_queue_length:  0
-SUCCESS: feed_queue_length is 0, stopping services...
-SUCCESS: remove_all_services succeeded
-SUCCESS: remove_all_containers succeeded
-SUCCESS: remove_network succeeded
-SUCCESS: monitor_queue succeeded

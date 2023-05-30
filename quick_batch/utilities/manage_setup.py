@@ -1,11 +1,11 @@
 import time
 from utilities import log_exceptions
 from utilities import manage_images
+from utilities.manage_client import create_client
 from utilities.param_checks import setup_logger
 from utilities.param_checks import check_config
 from utilities.param_checks import check_config_data_paths
 from utilities.param_checks import check_processor
-from utilities.param_checks import check_dockerfile
 from utilities.manage_containers import remove_all_containers
 from utilities.manage_networks import remove_network
 from utilities.manage_services import remove_all_services
@@ -15,7 +15,6 @@ from utilities.manage_networks import create_network
 from utilities.manage_services import create_queue_service
 from utilities.manage_services import create_processor_service
 from utilities.manage_queue import monitor_queue_app_containers
-from utilities.manage_images import pull_and_tag_image
 
 
 @log_exceptions
@@ -28,28 +27,29 @@ def setup_client(config):
 
     # check config data paths
     input_path, output_path, processor, num_processors, \
-        dockerfile_path, requirements_path, image_name = check_config_data_paths(config)
+        dockerfile_path, requirements_path, image_name =\
+        check_config_data_paths(config)
 
     # check processor
     check_processor(processor)
-    
+
     # check dockerfile - seems to save a copy local to the project - not using for now
     # check_dockerfile(dockerfile_path)
 
     # create docker client
-    client = manage_images.create_client()
+    client = create_client()
 
     # # try to pull and tag image
     # pull_success = pull_and_tag_image(client, 'jermwatt/quick_batch_queue_app', 'quick_batch_queue_app')
-    
+
     # # if not successful, build image
     # if not pull_success:
-        
+
     manage_images.build_queue_image(client)
-    
+
     # # try to pull and tag image
     # pull_success = pull_and_tag_image(client, image_name, 'quick_batch_processor_app')
-    
+
     # # if not successful, build image
     # if not pull_success:
     manage_images.build_processor_image(client,
