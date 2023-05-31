@@ -1,37 +1,23 @@
 
-import time
 import docker
 from utilities import processor_path, \
     queue_path
 from utilities import log_exceptions
+import subprocess
 
 
 @log_exceptions
-def scaleup_processor_service(client, num_processors):
-    # get processor_service from client
-    processor_service = client.services.get('processor_app')
+def update_processor_service(num_processors):
+    process = subprocess.run(['docker', 'service', 'update', '--replicas',
+                             str(num_processors), 'processor_app'],
+                             stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                             check=True)
 
-    # if num_processors < 5 scale up immeadiately
-    if num_processors < 5:
-        processor_service.scale(num_processors)
-        return
-    else:
-        # scale up processor service to num_processors in increments of 5
-        for i in range(5, num_processors + 1, 5):
-            # report scale update in progress
-            print(f"Scaling processor service to {i} instances...")
+    # Print the command output and error
+    print(process.stdout.decode('utf-8'))
+    print(process.stderr.decode('utf-8'))
 
-            # update processor service scale
-            processor_service.scale(min(i, num_processors))
-            time.sleep(30)
-
-            # report update complete
-            print("...complete")
-
-            # break if i >= num_processors
-            if i >= num_processors:
-                break
-        return
+    return
 
 
 @log_exceptions

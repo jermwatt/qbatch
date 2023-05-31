@@ -1,7 +1,6 @@
 from pathlib import Path
 import sys
 import os
-import time
 base_path = str(Path(__file__).parent.parent)
 sys.path.append(str(base_path))
 

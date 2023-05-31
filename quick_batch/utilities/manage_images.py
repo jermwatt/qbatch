@@ -36,7 +36,7 @@ def pull_and_tag_image(client, image_name, new_tag):
 
         # Tag the pulled image with a new name
         tagged_image = pulled_image.tag(new_tag)
-        
+
         print('SUCCESS: Pulling and tagging image complete!')
         return True
 
@@ -57,8 +57,7 @@ def check_requirements_file(requirements_path):
 
 # build processor_app docker image
 @log_exceptions
-def build_processor_image(client,
-                          dockerfile_path,
+def build_processor_image(dockerfile_path,
                           requirements_path,
                           processor):
 

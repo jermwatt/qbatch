@@ -2,7 +2,7 @@ from utilities.manage_setup import setup_client
 from utilities.manage_setup import reset_workspace
 from utilities.manage_setup import setup_workspace
 from utilities.manage_queue import monitor_queue
-from utilities.manage_services import scaleup_processor_service
+from utilities.manage_services import update_processor_service
 
 
 def run(config):
@@ -17,7 +17,7 @@ def run(config):
     setup_workspace(client, config,  processor, input_path, output_path)
 
     # scale up processor service
-    scaleup_processor_service(client, num_processors)
+    update_processor_service(num_processors)
 
     # monitor queue
     monitor_queue(client)
