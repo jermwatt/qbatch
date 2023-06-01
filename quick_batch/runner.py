@@ -17,7 +17,7 @@ def run(config):
     setup_workspace(client, config,  processor, input_path, output_path)
 
     # scale up processor service
-    update_processor_service(num_processors)
+    update_processor_service(client, num_processors)
 
     # monitor queue
     monitor_queue(client)

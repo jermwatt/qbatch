@@ -1,5 +1,7 @@
 import functools
 import sys
+import datetime
+import re
 
 
 class LogExceptions:
@@ -12,7 +14,7 @@ class LogExceptions:
         def wrapper(*args, **kwargs):
             func_name = func.__name__
             try:
-                result = func(*args, **kwargs)
+                result = func(*args, **kwargs)           
             except Exception as e:
                 # with open(self.file_path, 'a') as file:
                 #     file.write(f"FAILURE: {func_name} failed: {e}\n")
@@ -45,16 +47,28 @@ class Logger(object):
         self.terminal = sys.stdout
         self.log_file = log_file
         self.log = None
+        self.previous_message = ""
 
     def open_log(self):
         self.log = open(self.log_file, "a")
 
     def write(self, message):
-        self.terminal.write(message)
+        timestamp = datetime.datetime.now().replace(microsecond=0)  # Ignore milliseconds
+        message_lines = message.splitlines()
+        
+        if self.previous_message.endswith("\n"):
+            message_with_timestamp = "\n".join(f"{timestamp} - {line}" for line in message_lines)
+        else:
+            message_with_timestamp = "\n".join(f"\n{timestamp} - {line}" for line in message_lines)
+            
+        self.previous_message = message_with_timestamp
+        self.terminal.write(message_with_timestamp)
         self.terminal.flush()  # Flush the terminal output
         if self.log is not None:
-            self.log.write(message)
+            self.log.write(message_with_timestamp)
             self.log.flush()  # Flush the log file output
+
+
 
     def flush(self):
         pass
@@ -63,4 +77,3 @@ class Logger(object):
         if self.log is not None:
             self.log.close()
             self.log = None  # Set log attribute to None to prevent further writing
-

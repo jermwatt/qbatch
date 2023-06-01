@@ -11,4 +11,4 @@ processor:
   dockerfile_path: /Users/wattjer/Desktop/quick_batch/tests/test_dockerfiles/test_1/Dockerfile
   requirements_path: /Users/wattjer/Desktop/quick_batch/tests/test_requirements/test_1/requirements.txt 
   processor_path: /Users/wattjer/Desktop/quick_batch/tests/test_processors/test_1/processor.py
-  num_processors: 2  
+  num_processors: 5  

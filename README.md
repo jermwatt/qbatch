@@ -47,7 +47,7 @@ processor:
 
 Output will be written to the `output_path` specified in the configuration file.
 
-You can see `tests/config_files` for examples of valid configs.
+You can see the `examples` directory for examples of valid configs, processors, requirements, and dockerfiles.
 
 
 ## Usage

@@ -3,19 +3,23 @@ import docker
 from utilities import processor_path, \
     queue_path
 from utilities import log_exceptions
-import subprocess
+import time
 
 
 @log_exceptions
-def update_processor_service(num_processors):
-    process = subprocess.run(['docker', 'service', 'update', '--replicas',
-                             str(num_processors), 'processor_app'],
-                             stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                             check=True)
+def update_processor_service(client, num_processors):
+    # get processor_service from client
+    processor_service = client.services.get('processor_app')
 
-    # Print the command output and error
-    print(process.stdout.decode('utf-8'))
-    print(process.stderr.decode('utf-8'))
+    # report scale update in progress
+    print(f"Scaling processor service to {num_processors} instances...")
+
+    # update processor service scale
+    processor_service.scale(num_processors)
+    time.sleep(5)
+
+    # report update complete
+    print("...complete")
 
     return
 
@@ -134,10 +138,10 @@ def create_processor_service(client,
         'name': 'processor_app',
         'log_driver': 'json-file',
         'log_driver_options': {
-            'max-size': '10m', 
+            'max-size': '10m',
             'max-file': '3'
         },
-        'restart_policy': {'Condition': 'none', 'MaxAttempts': 0},
+        'restart_policy': {'Condition': 'on-failure', 'MaxAttempts': 0},
         'mounts': mounts,
         'user': 'root',
         'networks': ['quick_batch_network'],
