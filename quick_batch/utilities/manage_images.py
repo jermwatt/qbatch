@@ -7,7 +7,6 @@ from .manage_requirements import infer_requirements
 from .manage_dockerfile import check_requirements_copy_and_install
 from utilities import log_exceptions
 import subprocess
-import sys
 
 
 # create client for docker

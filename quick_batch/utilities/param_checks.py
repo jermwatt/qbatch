@@ -2,7 +2,6 @@ import sys
 import os
 import ast
 import yaml
-from dockerfile_parse import DockerfileParser
 from utilities import log_exceptions
 from utilities.manage_loggers import Logger
 
@@ -127,21 +126,3 @@ def check_processor(processor):
     else:
         print("FAILURE: module does not contain a function named 'processor'")
         sys.exit(1)
-
-
-# check dockerfile validity
-@log_exceptions
-def check_dockerfile(dockerfile):
-    def validate_dockerfile(dockerfile_path):
-        try:
-            parser = DockerfileParser()
-            with open(dockerfile_path, 'r') as file:
-                parser.content = file.read()
-            return True
-        except Exception:
-            return False
-
-    if validate_dockerfile(dockerfile):
-        print("INFO: Dockerfile is valid!")
-    else:
-        print("INFO: Dockerfile is NOT valid.")
