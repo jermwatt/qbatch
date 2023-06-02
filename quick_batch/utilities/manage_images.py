@@ -7,6 +7,7 @@ from .manage_requirements import infer_requirements
 from .manage_dockerfile import check_requirements_copy_and_install
 from utilities import log_exceptions
 import subprocess
+import sys
 
 
 # create client for docker
@@ -24,7 +25,7 @@ def pull_and_tag_image(client, image_name, new_tag):
         try: 
             image = client.images.get(image_name)
             tag_success = image.tag(new_tag)
-            
+ 
             if tag_success:
                 print('SUCCESS: Tagging local image successful!')
                 return True

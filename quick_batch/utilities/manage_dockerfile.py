@@ -1,23 +1,21 @@
-from dockerfile_parse import DockerfileParser
 
 
 def check_requirements_copy_and_install(dockerfile_path):
-    parser = DockerfileParser()
-    parser.content = open(dockerfile_path, 'r').read()
+    # Read the Dockerfile
+    with open(dockerfile_path, 'r') as file:
+        dockerfile_lines = file.readlines()
 
     # Check if requirements.txt is being copied
     requirements_copied = False
-    for instruction in parser.structure:
-        if instruction['instruction'] == 'COPY' and \
-         'requirements.txt' in instruction['value']:
+    for line in dockerfile_lines:
+        if 'COPY' in line and 'requirements.txt' in line:
             requirements_copied = True
             break
 
     # Check if requirements.txt is being pip installed
     requirements_installed = False
-    for instruction in parser.structure:
-        if instruction['instruction'] == 'RUN' and \
-         'requirements.txt' in instruction['value']:
+    for line in dockerfile_lines:
+        if 'RUN' in line and 'requirements.txt' in line:
             requirements_installed = True
             break
 

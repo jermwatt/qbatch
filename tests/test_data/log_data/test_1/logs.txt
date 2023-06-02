@@ -1,152 +1,152 @@
 
-2023-06-01 10:00:11 - SUCCESS: config_path file exists
-2023-06-01 10:00:11 - 
-2023-06-01 10:00:11 - SUCCESS: check_config succeeded
-2023-06-01 10:00:11 - 
-2023-06-01 10:00:11 - SUCCESS: processor_path exists
-2023-06-01 10:00:11 - 
-2023-06-01 10:00:11 - SUCCESS: config input path exists
-2023-06-01 10:00:11 - 
-2023-06-01 10:00:11 - SUCCESS: config output path exists
-2023-06-01 10:00:11 - 
-2023-06-01 10:00:11 - SUCCESS: config input path is not empty
-2023-06-01 10:00:11 - 
-2023-06-01 10:00:11 - SUCCESS: num_processors is an integer greater than 0
-2023-06-01 10:00:11 - 
-2023-06-01 10:00:11 - SUCCESS: check_config_data_paths succeeded
-2023-06-01 10:00:11 - 
-2023-06-01 10:00:11 - SUCCESS: module contains a function named 'processor'
-2023-06-01 10:00:11 - 
-2023-06-01 10:00:11 - SUCCESS: check_processor succeeded
-2023-06-01 10:00:11 - 
-2023-06-01 10:00:11 - SUCCESS: create_client succeeded
-2023-06-01 10:00:11 - 
-2023-06-01 10:00:12 - SUCCESS: build_queue_image succeeded
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - INFO: valid requirements file
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - SUCCESS: make_requirements succeeded
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - INFO: building processor image...
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - ===============================
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - ===============================
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - #1 [internal] load build definition from Dockerfile
-2023-06-01 10:00:12 - #1 sha256:b43f644c9b935b3d5f25cca28db9c104bcf80119cd942fdd4bf78073ad184f9c
-2023-06-01 10:00:12 - #1 transferring dockerfile: 305B done
-2023-06-01 10:00:12 - #1 DONE 0.0s
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - #2 [internal] load .dockerignore
-2023-06-01 10:00:12 - #2 sha256:05c5cc3f4f1e793ee330398e24f8b248c9e9636450e4e05224c144552a2aad6a
-2023-06-01 10:00:12 - #2 transferring context: 2B done
-2023-06-01 10:00:12 - #2 DONE 0.0s
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - #3 [internal] load metadata for docker.io/library/python:3.10-slim-bullseye
-2023-06-01 10:00:12 - #3 sha256:8d24f53f4189c888dd8c43ce6211c414fc4548e3dc540856fb204a8ad8295641
-2023-06-01 10:00:12 - #3 DONE 0.0s
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - #12 [1/8] FROM docker.io/library/python:3.10-slim-bullseye
-2023-06-01 10:00:12 - #12 sha256:a95083403ca41b3d99d396c3d93d9370f0e3254a1624630a6920242bf61c89c1
-2023-06-01 10:00:12 - #12 DONE 0.0s
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - #8 [internal] load build context
-2023-06-01 10:00:12 - #8 sha256:fb7859be2385a588e7da8b5dafc3c22639f930c7aa2c1fa63242859185c63859
-2023-06-01 10:00:12 - #8 transferring context: 78B done
-2023-06-01 10:00:12 - #8 DONE 0.0s
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - #6 [4/8] RUN pip install --upgrade pip setuptools
-2023-06-01 10:00:12 - #6 sha256:0668e9a95de9e619fe6b92637b2398d893fa3bd3d302d0a15e6fe8528c25de6b
-2023-06-01 10:00:12 - #6 CACHED
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - #4 [2/8] RUN apt-get update
-2023-06-01 10:00:12 - #4 sha256:53cda8da17e63990ef6667751145a01061eef9d9e9491acbc9cb637439b1dfdf
-2023-06-01 10:00:12 - #4 CACHED
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - #5 [3/8] RUN apt-get install -y build-essential
-2023-06-01 10:00:12 - #5 sha256:8ae10628ace001b786e6d007279b2f7ca3f3640e987afdcc6debd15530b05566
-2023-06-01 10:00:12 - #5 CACHED
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - #10 [7/8] RUN pip install -r /usr/src/app/requirements.txt
-2023-06-01 10:00:12 - #10 sha256:b2749666ef572c5c04a3aac96a0f50bfeab2ae5c8e31eac72f91a842cb6b7706
-2023-06-01 10:00:12 - #10 CACHED
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - #9 [6/8] COPY requirements.txt /usr/src/app
-2023-06-01 10:00:12 - #9 sha256:5f1abb2d8079b879dbe746264408ee78ea19e386d1c9f2d68634405087c4af38
-2023-06-01 10:00:12 - #9 CACHED
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - #7 [5/8] RUN mkdir /usr/src/app
-2023-06-01 10:00:12 - #7 sha256:3c98bc257de350b916af4d616cf003dc6534b3231c5c8d3f2cfcda76f3aae2f9
-2023-06-01 10:00:12 - #7 CACHED
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - #11 [8/8] RUN rm -r /usr/src/app
-2023-06-01 10:00:12 - #11 sha256:70cb175faa41072acf60c57abe9aad5cd10399439741ea7752b642221f3c3d59
-2023-06-01 10:00:12 - #11 CACHED
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - #13 exporting to image
-2023-06-01 10:00:12 - #13 sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00
-2023-06-01 10:00:12 - #13 exporting layers done
-2023-06-01 10:00:12 - #13 writing image sha256:2750de4aba6a95a51ad2288604d4eb770b7baf5e4e44c83f1bce4a0e6a5977af done
-2023-06-01 10:00:12 - #13 naming to docker.io/library/quick_batch_processor_app done
-2023-06-01 10:00:12 - #13 DONE 0.0s
-2023-06-01 10:00:12 - SUCCESS: Image build completed successfully!
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - ===============================
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - ===============================
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - INFO: ... processor image build completed!
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - SUCCESS: build_processor_image succeeded
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - SUCCESS: setup_client succeeded
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:12 - SUCCESS: remove_all_services succeeded
-2023-06-01 10:00:12 - 
-2023-06-01 10:00:17 - SUCCESS: remove_all_containers succeeded
-2023-06-01 10:00:17 - 
-2023-06-01 10:00:17 - SUCCESS: remove_network succeeded
-2023-06-01 10:00:17 - 
-2023-06-01 10:00:17 - SUCCESS: leave_swarm succeeded
-2023-06-01 10:00:17 - 
-2023-06-01 10:00:17 - SUCCESS: reset_workspace succeeded
-2023-06-01 10:00:17 - 
-2023-06-01 10:00:18 - SUCCESS: create_swarm succeeded
-2023-06-01 10:00:18 - 
-2023-06-01 10:00:18 - SUCCESS: create_network succeeded
-2023-06-01 10:00:18 - 
-2023-06-01 10:00:23 - SUCCESS: remove_service succeeded
-2023-06-01 10:00:23 - 
-2023-06-01 10:00:23 - SUCCESS: create_queue_service succeeded
-2023-06-01 10:00:23 - 
-2023-06-01 10:00:28 - SUCCESS: queue_app service is running.
-2023-06-01 10:00:28 - 
-2023-06-01 10:00:28 - SUCCESS: monitor_queue_app_containers succeeded
-2023-06-01 10:00:28 - 
-2023-06-01 10:00:38 - SUCCESS: remove_service succeeded
-2023-06-01 10:00:38 - 
-2023-06-01 10:00:38 - SUCCESS: create_processor_service succeeded
-2023-06-01 10:00:38 - 
-2023-06-01 10:00:38 - SUCCESS: setup_workspace succeeded
-2023-06-01 10:00:38 - 
-2023-06-01 10:00:38 - Scaling processor service to 2 instances...
-2023-06-01 10:00:38 - 
-2023-06-01 10:00:43 - ...complete
-2023-06-01 10:00:43 - 
-2023-06-01 10:00:43 - SUCCESS: update_processor_service succeeded
-2023-06-01 10:00:43 - 
-2023-06-01 10:00:49 - current feed_queue_length: 
-2023-06-01 10:00:49 -  
-2023-06-01 10:00:49 - 0
-2023-06-01 10:00:49 - 
-2023-06-01 10:00:49 - SUCCESS: feed_queue_length is 0, stopping services...
-2023-06-01 10:00:49 - 
-2023-06-01 10:00:49 - SUCCESS: remove_all_services succeeded
-2023-06-01 10:00:49 - 
-2023-06-01 10:00:49 - SUCCESS: remove_all_containers succeeded
-2023-06-01 10:00:49 - 
-2023-06-01 10:00:49 - SUCCESS: remove_network succeeded
-2023-06-01 10:00:49 - 
-2023-06-01 10:00:49 - SUCCESS: monitor_queue succeeded
-2023-06-01 10:00:49 - 
+2023-06-02 06:51:40 - SUCCESS: config_path file exists
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - SUCCESS: check_config succeeded
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - SUCCESS: processor_path exists
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - SUCCESS: config input path exists
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - SUCCESS: config output path exists
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - SUCCESS: config input path is not empty
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - SUCCESS: num_processors is an integer greater than 0
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - SUCCESS: check_config_data_paths succeeded
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - SUCCESS: module contains a function named 'processor'
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - SUCCESS: check_processor succeeded
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - SUCCESS: create_client succeeded
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - SUCCESS: build_queue_image succeeded
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - INFO: valid requirements file
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - SUCCESS: make_requirements succeeded
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - INFO: building processor image...
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - ===============================
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - ===============================
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - #1 [internal] load build definition from Dockerfile
+2023-06-02 06:51:40 - #1 sha256:d1803568d76e00ca2bc7e2b53228e0a999a96361f8a5f17aaa5f967a65607760
+2023-06-02 06:51:40 - #1 transferring dockerfile: 305B done
+2023-06-02 06:51:40 - #1 DONE 0.0s
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - #2 [internal] load .dockerignore
+2023-06-02 06:51:40 - #2 sha256:633d414e3be464c5283048b53730176975ee693e149b27563470970579c8b582
+2023-06-02 06:51:40 - #2 transferring context: 2B done
+2023-06-02 06:51:40 - #2 DONE 0.0s
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - #3 [internal] load metadata for docker.io/library/python:3.10-slim-bullseye
+2023-06-02 06:51:40 - #3 sha256:8d24f53f4189c888dd8c43ce6211c414fc4548e3dc540856fb204a8ad8295641
+2023-06-02 06:51:40 - #3 DONE 0.0s
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - #11 [1/8] FROM docker.io/library/python:3.10-slim-bullseye
+2023-06-02 06:51:40 - #11 sha256:a95083403ca41b3d99d396c3d93d9370f0e3254a1624630a6920242bf61c89c1
+2023-06-02 06:51:40 - #11 DONE 0.0s
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - #12 [internal] load build context
+2023-06-02 06:51:40 - #12 sha256:0157f0c2facc363ffaa455bcbc54a05201e6b03e7633f86f4598540e679ae717
+2023-06-02 06:51:40 - #12 transferring context: 78B done
+2023-06-02 06:51:40 - #12 DONE 0.0s
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - #5 [3/8] RUN apt-get install -y build-essential
+2023-06-02 06:51:40 - #5 sha256:8ae10628ace001b786e6d007279b2f7ca3f3640e987afdcc6debd15530b05566
+2023-06-02 06:51:40 - #5 CACHED
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - #4 [2/8] RUN apt-get update
+2023-06-02 06:51:40 - #4 sha256:53cda8da17e63990ef6667751145a01061eef9d9e9491acbc9cb637439b1dfdf
+2023-06-02 06:51:40 - #4 CACHED
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - #9 [7/8] RUN pip install -r /usr/src/app/requirements.txt
+2023-06-02 06:51:40 - #9 sha256:e676122da540130bdad9655b5b69829003dad08ec314fb1d0c32c37ce1ded868
+2023-06-02 06:51:40 - #9 CACHED
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - #7 [5/8] RUN mkdir /usr/src/app
+2023-06-02 06:51:40 - #7 sha256:3c98bc257de350b916af4d616cf003dc6534b3231c5c8d3f2cfcda76f3aae2f9
+2023-06-02 06:51:40 - #7 CACHED
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - #6 [4/8] RUN pip install --upgrade pip setuptools
+2023-06-02 06:51:40 - #6 sha256:0668e9a95de9e619fe6b92637b2398d893fa3bd3d302d0a15e6fe8528c25de6b
+2023-06-02 06:51:40 - #6 CACHED
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - #8 [6/8] COPY requirements.txt /usr/src/app
+2023-06-02 06:51:40 - #8 sha256:4f89ed87a24724d241f8e8bb1182d35382f73e2c2f9ad50351dd10aec72dd1d4
+2023-06-02 06:51:40 - #8 CACHED
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - #10 [8/8] RUN rm -r /usr/src/app
+2023-06-02 06:51:40 - #10 sha256:e170a7ba06bf8b1140a46c1f43773f5e7ccdce624dcad5937d9adb54646b3ff6
+2023-06-02 06:51:40 - #10 CACHED
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - #13 exporting to image
+2023-06-02 06:51:40 - #13 sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00
+2023-06-02 06:51:40 - #13 exporting layers done
+2023-06-02 06:51:40 - #13 writing image sha256:2750de4aba6a95a51ad2288604d4eb770b7baf5e4e44c83f1bce4a0e6a5977af done
+2023-06-02 06:51:40 - #13 naming to docker.io/library/quick_batch_processor_app done
+2023-06-02 06:51:40 - #13 DONE 0.0s
+2023-06-02 06:51:40 - SUCCESS: Image build completed successfully!
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - ===============================
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - ===============================
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - INFO: ... processor image build completed!
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - SUCCESS: build_processor_image succeeded
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - SUCCESS: setup_client succeeded
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:40 - SUCCESS: remove_all_services succeeded
+2023-06-02 06:51:40 - 
+2023-06-02 06:51:45 - SUCCESS: remove_all_containers succeeded
+2023-06-02 06:51:45 - 
+2023-06-02 06:51:45 - SUCCESS: remove_network succeeded
+2023-06-02 06:51:45 - 
+2023-06-02 06:51:45 - SUCCESS: leave_swarm succeeded
+2023-06-02 06:51:45 - 
+2023-06-02 06:51:45 - SUCCESS: reset_workspace succeeded
+2023-06-02 06:51:45 - 
+2023-06-02 06:51:46 - SUCCESS: create_swarm succeeded
+2023-06-02 06:51:46 - 
+2023-06-02 06:51:46 - SUCCESS: create_network succeeded
+2023-06-02 06:51:46 - 
+2023-06-02 06:51:51 - SUCCESS: remove_service succeeded
+2023-06-02 06:51:51 - 
+2023-06-02 06:51:51 - SUCCESS: create_queue_service succeeded
+2023-06-02 06:51:51 - 
+2023-06-02 06:51:56 - SUCCESS: queue_app service is running.
+2023-06-02 06:51:56 - 
+2023-06-02 06:51:56 - SUCCESS: monitor_queue_app_containers succeeded
+2023-06-02 06:51:56 - 
+2023-06-02 06:52:06 - SUCCESS: remove_service succeeded
+2023-06-02 06:52:06 - 
+2023-06-02 06:52:07 - SUCCESS: create_processor_service succeeded
+2023-06-02 06:52:07 - 
+2023-06-02 06:52:07 - SUCCESS: setup_workspace succeeded
+2023-06-02 06:52:07 - 
+2023-06-02 06:52:07 - Scaling processor service to 2 instances...
+2023-06-02 06:52:07 - 
+2023-06-02 06:52:12 - ...complete
+2023-06-02 06:52:12 - 
+2023-06-02 06:52:12 - SUCCESS: update_processor_service succeeded
+2023-06-02 06:52:12 - 
+2023-06-02 06:52:17 - current feed_queue_length: 
+2023-06-02 06:52:17 -  
+2023-06-02 06:52:17 - 0
+2023-06-02 06:52:17 - 
+2023-06-02 06:52:17 - SUCCESS: feed_queue_length is 0, stopping services...
+2023-06-02 06:52:17 - 
+2023-06-02 06:52:17 - SUCCESS: remove_all_services succeeded
+2023-06-02 06:52:17 - 
+2023-06-02 06:52:17 - SUCCESS: remove_all_containers succeeded
+2023-06-02 06:52:17 - 
+2023-06-02 06:52:17 - SUCCESS: remove_network succeeded
+2023-06-02 06:52:17 - 
+2023-06-02 06:52:17 - SUCCESS: monitor_queue succeeded
+2023-06-02 06:52:17 - 
