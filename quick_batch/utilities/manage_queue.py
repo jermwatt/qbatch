@@ -40,8 +40,7 @@ def monitor_queue_app_containers(client):
                             'logs',
                             'queue_app'],
                            check=True)
-            
-            
+
         time.sleep(5)
 
         if time.time() > timeout:
