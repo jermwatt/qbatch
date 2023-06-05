@@ -1,93 +1,89 @@
 
-2023-06-05 10:42:42 - SUCCESS: config_path file exists
-2023-06-05 10:42:42 - 
-2023-06-05 10:42:42 - SUCCESS: check_config succeeded
-2023-06-05 10:42:42 - 
-2023-06-05 10:42:42 - SUCCESS: processor_path exists
-2023-06-05 10:42:42 - 
-2023-06-05 10:42:42 - SUCCESS: config input path exists
-2023-06-05 10:42:42 - 
-2023-06-05 10:42:42 - SUCCESS: config output path exists
-2023-06-05 10:42:42 - 
-2023-06-05 10:42:42 - SUCCESS: config input path is not empty
-2023-06-05 10:42:42 - 
-2023-06-05 10:42:42 - SUCCESS: num_processors is an integer greater than 0
-2023-06-05 10:42:42 - 
-2023-06-05 10:42:42 - SUCCESS: check_config_data_paths succeeded
-2023-06-05 10:42:42 - 
-2023-06-05 10:42:42 - SUCCESS: module contains a function named 'processor'
-2023-06-05 10:42:42 - 
-2023-06-05 10:42:42 - SUCCESS: check_processor succeeded
-2023-06-05 10:42:42 - 
-2023-06-05 10:42:42 - SUCCESS: create_client succeeded
-2023-06-05 10:42:42 - 
-2023-06-05 10:42:42 - INFO: Pulling and tagging image...
-2023-06-05 10:42:42 - 
-2023-06-05 10:42:42 - INFO: Local image not found, pulling from DockerHub...
-2023-06-05 10:42:42 - 
-2023-06-05 10:42:45 - SUCCESS: Pulling and tagging image complete!
-2023-06-05 10:42:45 - 
-2023-06-05 10:42:45 - SUCCESS: pull_and_tag_image succeeded
-2023-06-05 10:42:45 - 
-2023-06-05 10:42:45 - INFO: Current images on machine: [<Image: 'jermwatt/quick_batch_queue_app:latest', 'quick_batch_queue_app:latest'>]
-2023-06-05 10:42:45 - 
-2023-06-05 10:42:45 - INFO: Pulling and tagging image...
-2023-06-05 10:42:45 - 
-2023-06-05 10:42:45 - INFO: Local image not found, pulling from DockerHub...
-2023-06-05 10:42:45 - 
-2023-06-05 10:42:47 - SUCCESS: Pulling and tagging image complete!
-2023-06-05 10:42:47 - 
-2023-06-05 10:42:47 - SUCCESS: pull_and_tag_image succeeded
-2023-06-05 10:42:47 - 
-2023-06-05 10:42:47 - INFO: Current images on machine: [<Image: 'jermwatt/quick_batch_queue_app:latest', 'quick_batch_queue_app:latest'>, <Image: 'jermwatt/quick_batch_processor_app_test_1:latest', 'quick_batch_processor_app:latest'>]
-2023-06-05 10:42:47 - 
-2023-06-05 10:42:47 - SUCCESS: setup_client succeeded
-2023-06-05 10:42:47 - 
-2023-06-05 10:42:47 - SUCCESS: remove_all_services succeeded
-2023-06-05 10:42:47 - 
-2023-06-05 10:42:52 - SUCCESS: remove_all_containers succeeded
-2023-06-05 10:42:52 - 
-2023-06-05 10:42:52 - SUCCESS: remove_network succeeded
-2023-06-05 10:42:52 - 
-2023-06-05 10:42:53 - SUCCESS: leave_swarm succeeded
-2023-06-05 10:42:53 - 
-2023-06-05 10:42:53 - SUCCESS: reset_workspace succeeded
-2023-06-05 10:42:53 - 
-2023-06-05 10:42:53 - SUCCESS: create_swarm succeeded
-2023-06-05 10:42:53 - 
-2023-06-05 10:42:53 - SUCCESS: create_network succeeded
-2023-06-05 10:42:53 - 
-2023-06-05 10:42:58 - SUCCESS: remove_service succeeded
-2023-06-05 10:42:58 - 
-2023-06-05 10:42:58 - SUCCESS: create_queue_service succeeded
-2023-06-05 10:42:58 - 
-2023-06-05 10:43:04 - SUCCESS: queue_app service is running.
-2023-06-05 10:43:04 - 
-2023-06-05 10:43:04 - SUCCESS: monitor_queue_app_containers succeeded
-2023-06-05 10:43:04 - 
-2023-06-05 10:43:14 - SUCCESS: remove_service succeeded
-2023-06-05 10:43:14 - 
-2023-06-05 10:43:14 - SUCCESS: create_processor_service succeeded
-2023-06-05 10:43:14 - 
-2023-06-05 10:43:14 - SUCCESS: setup_workspace succeeded
-2023-06-05 10:43:14 - 
-2023-06-05 10:43:14 - Scaling processor service to 2 instances...
-2023-06-05 10:43:14 - 
-2023-06-05 10:43:19 - ...complete
-2023-06-05 10:43:19 - 
-2023-06-05 10:43:19 - SUCCESS: update_processor_service succeeded
-2023-06-05 10:43:19 - 
-2023-06-05 10:43:24 - current feed_queue_length: 
-2023-06-05 10:43:24 -  
-2023-06-05 10:43:24 - 0
-2023-06-05 10:43:24 - 
-2023-06-05 10:43:24 - SUCCESS: feed_queue_length is 0, stopping services...
-2023-06-05 10:43:24 - 
-2023-06-05 10:43:24 - SUCCESS: remove_all_services succeeded
-2023-06-05 10:43:24 - 
-2023-06-05 10:43:24 - SUCCESS: remove_all_containers succeeded
-2023-06-05 10:43:24 - 
-2023-06-05 10:43:24 - SUCCESS: remove_network succeeded
-2023-06-05 10:43:24 - 
-2023-06-05 10:43:24 - SUCCESS: monitor_queue succeeded
-2023-06-05 10:43:24 - 
+2023-06-05 10:58:15 - SUCCESS: config_path file exists
+2023-06-05 10:58:15 - 
+2023-06-05 10:58:15 - SUCCESS: check_config succeeded
+2023-06-05 10:58:15 - 
+2023-06-05 10:58:15 - SUCCESS: processor_path exists
+2023-06-05 10:58:15 - 
+2023-06-05 10:58:15 - SUCCESS: config input path exists
+2023-06-05 10:58:15 - 
+2023-06-05 10:58:15 - SUCCESS: config output path exists
+2023-06-05 10:58:15 - 
+2023-06-05 10:58:15 - SUCCESS: config input path is not empty
+2023-06-05 10:58:15 - 
+2023-06-05 10:58:15 - SUCCESS: num_processors is an integer greater than 0
+2023-06-05 10:58:15 - 
+2023-06-05 10:58:15 - SUCCESS: check_config_data_paths succeeded
+2023-06-05 10:58:15 - 
+2023-06-05 10:58:15 - SUCCESS: module contains a function named 'processor'
+2023-06-05 10:58:15 - 
+2023-06-05 10:58:15 - SUCCESS: check_processor succeeded
+2023-06-05 10:58:15 - 
+2023-06-05 10:58:15 - SUCCESS: create_client succeeded
+2023-06-05 10:58:15 - 
+2023-06-05 10:58:15 - INFO: Pulling and tagging image...
+2023-06-05 10:58:15 - 
+2023-06-05 10:58:16 - SUCCESS: Tagging local image successful!
+2023-06-05 10:58:16 - 
+2023-06-05 10:58:16 - SUCCESS: pull_and_tag_image succeeded
+2023-06-05 10:58:16 - 
+2023-06-05 10:58:16 - INFO: Current images on machine: [<Image: 'jermwatt/quick_batch_queue_app:latest', 'quick_batch_queue_app:latest'>, <Image: 'jermwatt/quick_batch_processor_app_test_1:latest', 'quick_batch_processor_app:latest'>]
+2023-06-05 10:58:16 - 
+2023-06-05 10:58:16 - INFO: Pulling and tagging image...
+2023-06-05 10:58:16 - 
+2023-06-05 10:58:16 - SUCCESS: Tagging local image successful!
+2023-06-05 10:58:16 - 
+2023-06-05 10:58:16 - SUCCESS: pull_and_tag_image succeeded
+2023-06-05 10:58:16 - 
+2023-06-05 10:58:16 - INFO: Current images on machine: [<Image: 'jermwatt/quick_batch_queue_app:latest', 'quick_batch_queue_app:latest'>, <Image: 'jermwatt/quick_batch_processor_app_test_1:latest', 'quick_batch_processor_app:latest'>]
+2023-06-05 10:58:16 - 
+2023-06-05 10:58:16 - SUCCESS: setup_client succeeded
+2023-06-05 10:58:16 - 
+2023-06-05 10:58:16 - SUCCESS: remove_all_services succeeded
+2023-06-05 10:58:16 - 
+2023-06-05 10:58:21 - SUCCESS: remove_all_containers succeeded
+2023-06-05 10:58:21 - 
+2023-06-05 10:58:21 - SUCCESS: remove_network succeeded
+2023-06-05 10:58:21 - 
+2023-06-05 10:58:21 - SUCCESS: leave_swarm succeeded
+2023-06-05 10:58:21 - 
+2023-06-05 10:58:21 - SUCCESS: reset_workspace succeeded
+2023-06-05 10:58:21 - 
+2023-06-05 10:58:22 - SUCCESS: create_swarm succeeded
+2023-06-05 10:58:22 - 
+2023-06-05 10:58:22 - SUCCESS: create_network succeeded
+2023-06-05 10:58:22 - 
+2023-06-05 10:58:27 - SUCCESS: remove_service succeeded
+2023-06-05 10:58:27 - 
+2023-06-05 10:58:27 - SUCCESS: create_queue_service succeeded
+2023-06-05 10:58:27 - 
+2023-06-05 10:58:32 - SUCCESS: queue_app service is running.
+2023-06-05 10:58:32 - 
+2023-06-05 10:58:32 - SUCCESS: monitor_queue_app_containers succeeded
+2023-06-05 10:58:32 - 
+2023-06-05 10:58:42 - SUCCESS: remove_service succeeded
+2023-06-05 10:58:42 - 
+2023-06-05 10:58:42 - SUCCESS: create_processor_service succeeded
+2023-06-05 10:58:42 - 
+2023-06-05 10:58:42 - SUCCESS: setup_workspace succeeded
+2023-06-05 10:58:42 - 
+2023-06-05 10:58:42 - Scaling processor service to 2 instances...
+2023-06-05 10:58:42 - 
+2023-06-05 10:58:47 - ...complete
+2023-06-05 10:58:47 - 
+2023-06-05 10:58:47 - SUCCESS: update_processor_service succeeded
+2023-06-05 10:58:47 - 
+2023-06-05 10:58:52 - current feed_queue_length: 
+2023-06-05 10:58:52 -  
+2023-06-05 10:58:52 - 0
+2023-06-05 10:58:52 - 
+2023-06-05 10:58:52 - SUCCESS: feed_queue_length is 0, stopping services...
+2023-06-05 10:58:52 - 
+2023-06-05 10:58:52 - SUCCESS: remove_all_services succeeded
+2023-06-05 10:58:52 - 
+2023-06-05 10:58:53 - SUCCESS: remove_all_containers succeeded
+2023-06-05 10:58:53 - 
+2023-06-05 10:58:53 - SUCCESS: remove_network succeeded
+2023-06-05 10:58:53 - 
+2023-06-05 10:58:53 - SUCCESS: monitor_queue succeeded
+2023-06-05 10:58:53 - 
