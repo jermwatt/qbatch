@@ -43,7 +43,7 @@ def check_config_data_paths(config_path):
     requirements_path = config.get("processor", {}). \
         get("requirements_path", "")
     image_name = config.get("processor", {}). \
-        get("image_name", "")
+        get("image_name", None)
 
     # if requirements_path is not empty, check that it exists
     if not os.path.isfile(requirements_path):

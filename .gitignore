@@ -8,6 +8,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+reinstall.sh
 
 # C extensions
 *.so

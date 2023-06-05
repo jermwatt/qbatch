@@ -11,4 +11,5 @@ processor:
   dockerfile_path: /Users/wattjer/Desktop/quick_batch/tests/test_dockerfiles/test_1/Dockerfile
   requirements_path: /Users/wattjer/Desktop/quick_batch/tests/test_requirements/test_1/requirements.txt 
   processor_path: /Users/wattjer/Desktop/quick_batch/tests/test_processors/test_1/processor.py
+  image_name: jermwatt/quick_batch_processor_app_test_1
   num_processors: 2  

@@ -22,7 +22,9 @@ All you need to scale batch transformations with `quick_batch` is a
 - `Dockerfile` containing a container build appropriate to y our processor
 - an optional `requirements.txt` file containing required python modules
 
-Document paths to these objects as well as other parameters in a `config.yaml` config file of the form below
+Document paths to these objects as well as other parameters in a `config.yaml` config file of the form below.  
+
+Under `processor` you can either define a `dockerfile_path` to your Dockerfile or an `image_name` to a pre-built image to be pulled. 
 
 
 ```yaml
@@ -36,7 +38,8 @@ queue:
   order_files: <boolean - whether or not to order input files by size>
 
 processor:
-  dockerfile_path: /path/to/your/Dockerfile
+  dockerfile_path: /path/to/your/Dockerfile OR
+  image_name: <image_name_to_pull>
   requirements_path: /path/to/your/requirements.txt
   processor_path: /path/to/your/processor/processor.py
   num_processors: <int - instances of processor to run in parallel>

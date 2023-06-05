@@ -21,28 +21,69 @@ def pull_and_tag_image(client, image_name, new_tag):
         print('INFO: Pulling and tagging image...')
 
         # Try tagging local image
-        try: 
-            image = client.images.get(image_name)
-            tag_success = image.tag(new_tag)
- 
-            if tag_success:
-                print('SUCCESS: Tagging local image successful!')
-                return True
-        except docker.errors.ImageNotFound:
+        try:            
+            subprocess.run(['docker',
+                            'image',
+                            'tag',
+                            image_name,
+                            f'{new_tag}'],
+                           check=True)
+
+            print('SUCCESS: Tagging local image successful!')
+            return True
+        except subprocess.CalledProcessError:
+            print('INFO: Local image not found, pulling from DockerHub...')
             pass
 
         # Pull the image
-        pulled_image = client.images.pull(image_name)
+        subprocess.run(['docker',
+                        'pull',
+                        image_name],
+                       check=True)
 
         # Tag the pulled image with a new name
-        tagged_image = pulled_image.tag(new_tag)
+        subprocess.run(['docker',
+                        'image',
+                        'tag',
+                        image_name,
+                        f'{new_tag}'],
+                       check=True)
 
         print('SUCCESS: Pulling and tagging image complete!')
         return True
 
-    except docker.errors.APIError as e:
+    except subprocess.CalledProcessError as e:
         print(f"FAILURE: Error occurred while pulling and tagging the image: {e}")
         return False
+
+# @log_exceptions
+# def pull_and_tag_image(client, image_name, new_tag):
+#     try:
+#         print('INFO: Pulling and tagging image...')
+
+#         # Try tagging local image
+#         try: 
+#             image = client.images.get(image_name)
+#             tag_success = image.tag(new_tag)
+
+#             if tag_success:
+#                 print('SUCCESS: Tagging local image successful!')
+#                 return True
+#         except docker.errors.ImageNotFound:
+#             pass
+
+#         # Pull the image
+#         pulled_image = client.images.pull(image_name)
+
+#         # Tag the pulled image with a new name
+#         tagged_image = pulled_image.tag(new_tag)
+
+#         print('SUCCESS: Pulling and tagging image complete!')
+#         return True
+
+#     except docker.errors.APIError as e:
+#         print(f"FAILURE: Error occurred while pulling and tagging the image: {e}")
+#         return False
 
 
 def check_requirements_file(requirements_path):
