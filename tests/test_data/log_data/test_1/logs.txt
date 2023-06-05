@@ -1,89 +1,93 @@
 
-2023-06-05 10:08:32 - SUCCESS: config_path file exists
-2023-06-05 10:08:32 - 
-2023-06-05 10:08:32 - SUCCESS: check_config succeeded
-2023-06-05 10:08:32 - 
-2023-06-05 10:08:32 - SUCCESS: processor_path exists
-2023-06-05 10:08:32 - 
-2023-06-05 10:08:32 - SUCCESS: config input path exists
-2023-06-05 10:08:32 - 
-2023-06-05 10:08:32 - SUCCESS: config output path exists
-2023-06-05 10:08:32 - 
-2023-06-05 10:08:32 - SUCCESS: config input path is not empty
-2023-06-05 10:08:32 - 
-2023-06-05 10:08:32 - SUCCESS: num_processors is an integer greater than 0
-2023-06-05 10:08:32 - 
-2023-06-05 10:08:32 - SUCCESS: check_config_data_paths succeeded
-2023-06-05 10:08:32 - 
-2023-06-05 10:08:32 - SUCCESS: module contains a function named 'processor'
-2023-06-05 10:08:32 - 
-2023-06-05 10:08:32 - SUCCESS: check_processor succeeded
-2023-06-05 10:08:32 - 
-2023-06-05 10:08:32 - SUCCESS: create_client succeeded
-2023-06-05 10:08:32 - 
-2023-06-05 10:08:32 - INFO: Pulling and tagging image...
-2023-06-05 10:08:32 - 
-2023-06-05 10:08:32 - INFO: Local image not found, pulling from DockerHub...
-2023-06-05 10:08:32 - 
-2023-06-05 10:08:36 - SUCCESS: Pulling and tagging image complete!
-2023-06-05 10:08:36 - 
-2023-06-05 10:08:36 - SUCCESS: pull_and_tag_image succeeded
-2023-06-05 10:08:36 - 
-2023-06-05 10:08:36 - INFO: Pulling and tagging image...
-2023-06-05 10:08:36 - 
-2023-06-05 10:08:36 - INFO: Local image not found, pulling from DockerHub...
-2023-06-05 10:08:36 - 
-2023-06-05 10:08:38 - SUCCESS: Pulling and tagging image complete!
-2023-06-05 10:08:38 - 
-2023-06-05 10:08:38 - SUCCESS: pull_and_tag_image succeeded
-2023-06-05 10:08:38 - 
-2023-06-05 10:08:38 - SUCCESS: setup_client succeeded
-2023-06-05 10:08:38 - 
-2023-06-05 10:08:38 - SUCCESS: remove_all_services succeeded
-2023-06-05 10:08:38 - 
-2023-06-05 10:08:43 - SUCCESS: remove_all_containers succeeded
-2023-06-05 10:08:43 - 
-2023-06-05 10:08:43 - SUCCESS: remove_network succeeded
-2023-06-05 10:08:43 - 
-2023-06-05 10:08:43 - SUCCESS: leave_swarm succeeded
-2023-06-05 10:08:43 - 
-2023-06-05 10:08:43 - SUCCESS: reset_workspace succeeded
-2023-06-05 10:08:43 - 
-2023-06-05 10:08:44 - SUCCESS: create_swarm succeeded
-2023-06-05 10:08:44 - 
-2023-06-05 10:08:44 - SUCCESS: create_network succeeded
-2023-06-05 10:08:44 - 
-2023-06-05 10:08:49 - SUCCESS: remove_service succeeded
-2023-06-05 10:08:49 - 
-2023-06-05 10:08:49 - SUCCESS: create_queue_service succeeded
-2023-06-05 10:08:49 - 
-2023-06-05 10:08:54 - SUCCESS: queue_app service is running.
-2023-06-05 10:08:54 - 
-2023-06-05 10:08:54 - SUCCESS: monitor_queue_app_containers succeeded
-2023-06-05 10:08:54 - 
-2023-06-05 10:09:04 - SUCCESS: remove_service succeeded
-2023-06-05 10:09:04 - 
-2023-06-05 10:09:04 - SUCCESS: create_processor_service succeeded
-2023-06-05 10:09:04 - 
-2023-06-05 10:09:04 - SUCCESS: setup_workspace succeeded
-2023-06-05 10:09:04 - 
-2023-06-05 10:09:04 - Scaling processor service to 2 instances...
-2023-06-05 10:09:04 - 
-2023-06-05 10:09:09 - ...complete
-2023-06-05 10:09:09 - 
-2023-06-05 10:09:09 - SUCCESS: update_processor_service succeeded
-2023-06-05 10:09:09 - 
-2023-06-05 10:09:14 - current feed_queue_length: 
-2023-06-05 10:09:14 -  
-2023-06-05 10:09:14 - 0
-2023-06-05 10:09:14 - 
-2023-06-05 10:09:14 - SUCCESS: feed_queue_length is 0, stopping services...
-2023-06-05 10:09:14 - 
-2023-06-05 10:09:14 - SUCCESS: remove_all_services succeeded
-2023-06-05 10:09:14 - 
-2023-06-05 10:09:15 - SUCCESS: remove_all_containers succeeded
-2023-06-05 10:09:15 - 
-2023-06-05 10:09:15 - SUCCESS: remove_network succeeded
-2023-06-05 10:09:15 - 
-2023-06-05 10:09:15 - SUCCESS: monitor_queue succeeded
-2023-06-05 10:09:15 - 
+2023-06-05 10:42:42 - SUCCESS: config_path file exists
+2023-06-05 10:42:42 - 
+2023-06-05 10:42:42 - SUCCESS: check_config succeeded
+2023-06-05 10:42:42 - 
+2023-06-05 10:42:42 - SUCCESS: processor_path exists
+2023-06-05 10:42:42 - 
+2023-06-05 10:42:42 - SUCCESS: config input path exists
+2023-06-05 10:42:42 - 
+2023-06-05 10:42:42 - SUCCESS: config output path exists
+2023-06-05 10:42:42 - 
+2023-06-05 10:42:42 - SUCCESS: config input path is not empty
+2023-06-05 10:42:42 - 
+2023-06-05 10:42:42 - SUCCESS: num_processors is an integer greater than 0
+2023-06-05 10:42:42 - 
+2023-06-05 10:42:42 - SUCCESS: check_config_data_paths succeeded
+2023-06-05 10:42:42 - 
+2023-06-05 10:42:42 - SUCCESS: module contains a function named 'processor'
+2023-06-05 10:42:42 - 
+2023-06-05 10:42:42 - SUCCESS: check_processor succeeded
+2023-06-05 10:42:42 - 
+2023-06-05 10:42:42 - SUCCESS: create_client succeeded
+2023-06-05 10:42:42 - 
+2023-06-05 10:42:42 - INFO: Pulling and tagging image...
+2023-06-05 10:42:42 - 
+2023-06-05 10:42:42 - INFO: Local image not found, pulling from DockerHub...
+2023-06-05 10:42:42 - 
+2023-06-05 10:42:45 - SUCCESS: Pulling and tagging image complete!
+2023-06-05 10:42:45 - 
+2023-06-05 10:42:45 - SUCCESS: pull_and_tag_image succeeded
+2023-06-05 10:42:45 - 
+2023-06-05 10:42:45 - INFO: Current images on machine: [<Image: 'jermwatt/quick_batch_queue_app:latest', 'quick_batch_queue_app:latest'>]
+2023-06-05 10:42:45 - 
+2023-06-05 10:42:45 - INFO: Pulling and tagging image...
+2023-06-05 10:42:45 - 
+2023-06-05 10:42:45 - INFO: Local image not found, pulling from DockerHub...
+2023-06-05 10:42:45 - 
+2023-06-05 10:42:47 - SUCCESS: Pulling and tagging image complete!
+2023-06-05 10:42:47 - 
+2023-06-05 10:42:47 - SUCCESS: pull_and_tag_image succeeded
+2023-06-05 10:42:47 - 
+2023-06-05 10:42:47 - INFO: Current images on machine: [<Image: 'jermwatt/quick_batch_queue_app:latest', 'quick_batch_queue_app:latest'>, <Image: 'jermwatt/quick_batch_processor_app_test_1:latest', 'quick_batch_processor_app:latest'>]
+2023-06-05 10:42:47 - 
+2023-06-05 10:42:47 - SUCCESS: setup_client succeeded
+2023-06-05 10:42:47 - 
+2023-06-05 10:42:47 - SUCCESS: remove_all_services succeeded
+2023-06-05 10:42:47 - 
+2023-06-05 10:42:52 - SUCCESS: remove_all_containers succeeded
+2023-06-05 10:42:52 - 
+2023-06-05 10:42:52 - SUCCESS: remove_network succeeded
+2023-06-05 10:42:52 - 
+2023-06-05 10:42:53 - SUCCESS: leave_swarm succeeded
+2023-06-05 10:42:53 - 
+2023-06-05 10:42:53 - SUCCESS: reset_workspace succeeded
+2023-06-05 10:42:53 - 
+2023-06-05 10:42:53 - SUCCESS: create_swarm succeeded
+2023-06-05 10:42:53 - 
+2023-06-05 10:42:53 - SUCCESS: create_network succeeded
+2023-06-05 10:42:53 - 
+2023-06-05 10:42:58 - SUCCESS: remove_service succeeded
+2023-06-05 10:42:58 - 
+2023-06-05 10:42:58 - SUCCESS: create_queue_service succeeded
+2023-06-05 10:42:58 - 
+2023-06-05 10:43:04 - SUCCESS: queue_app service is running.
+2023-06-05 10:43:04 - 
+2023-06-05 10:43:04 - SUCCESS: monitor_queue_app_containers succeeded
+2023-06-05 10:43:04 - 
+2023-06-05 10:43:14 - SUCCESS: remove_service succeeded
+2023-06-05 10:43:14 - 
+2023-06-05 10:43:14 - SUCCESS: create_processor_service succeeded
+2023-06-05 10:43:14 - 
+2023-06-05 10:43:14 - SUCCESS: setup_workspace succeeded
+2023-06-05 10:43:14 - 
+2023-06-05 10:43:14 - Scaling processor service to 2 instances...
+2023-06-05 10:43:14 - 
+2023-06-05 10:43:19 - ...complete
+2023-06-05 10:43:19 - 
+2023-06-05 10:43:19 - SUCCESS: update_processor_service succeeded
+2023-06-05 10:43:19 - 
+2023-06-05 10:43:24 - current feed_queue_length: 
+2023-06-05 10:43:24 -  
+2023-06-05 10:43:24 - 0
+2023-06-05 10:43:24 - 
+2023-06-05 10:43:24 - SUCCESS: feed_queue_length is 0, stopping services...
+2023-06-05 10:43:24 - 
+2023-06-05 10:43:24 - SUCCESS: remove_all_services succeeded
+2023-06-05 10:43:24 - 
+2023-06-05 10:43:24 - SUCCESS: remove_all_containers succeeded
+2023-06-05 10:43:24 - 
+2023-06-05 10:43:24 - SUCCESS: remove_network succeeded
+2023-06-05 10:43:24 - 
+2023-06-05 10:43:24 - SUCCESS: monitor_queue succeeded
+2023-06-05 10:43:24 - 

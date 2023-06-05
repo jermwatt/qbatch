@@ -45,18 +45,26 @@ def setup_client(config):
     if not pull_success:
         manage_images.build_queue_image(client)
 
+    # list out current images on machine
+    list_images = [image for image in client.images.list() if image.tags]
+    print(f"INFO: Current images on machine: {list_images}")
+
     # try to pull and tag image
     pull_success = False
     if image_name:
         pull_success = pull_and_tag_image(client,
-                                        image_name,
-                                        'quick_batch_processor_app')
+                                          image_name,
+                                          'quick_batch_processor_app')
 
     # if not successful, build image
     if not pull_success:
         manage_images.build_processor_image(dockerfile_path,
                                             requirements_path,
                                             processor)
+
+    # list out current images on machine
+    list_images = [image for image in client.images.list() if image.tags]
+    print(f"INFO: Current images on machine: {list_images}")
 
     return client, input_path, output_path, processor, num_processors, logger
 
