@@ -5,6 +5,7 @@ from .manage_containers import remove_all_containers
 from .manage_networks import remove_network
 from .manage_services import remove_all_services
 from utilities import log_exceptions
+import subprocess
 
 
 @log_exceptions
@@ -26,6 +27,13 @@ def monitor_queue_app_containers(client):
             return
         else:
             print("WARNING: queue_app service is not running yet...")
+            # print queue_app service ps logs
+            subprocess.run(['docker',
+                            'service',
+                            'ps',
+                            'queue_app'],
+                           check=True)
+            
         time.sleep(5)
 
         if time.time() > timeout:
