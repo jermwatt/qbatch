@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "quick_batch"
-version = "0.1.12"
+version = "0.1.13"
 description = "ultra simple command line tool for docker-scaling batch processing"
 authors = ["Jeremy Watt <jermwatt@gmail.com>"]
 readme = "README.md"
