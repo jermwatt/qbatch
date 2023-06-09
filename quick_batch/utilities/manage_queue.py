@@ -73,14 +73,17 @@ def monitor_queue(client):
     time.sleep(5)
     while True:
         response = get_current_queue_lengths(client)
+        original_feed_queue_length = response['original_feed_queue_length']
         feed_queue_length = response['feed_queue_length']
+        wip_queue_length = response['wip_queue_length']
+        done_queue_length = response['done_queue_length']
 
         # print current feed_queue_length
-        print('current feed_queue_length: ', feed_queue_length, flush=True)
+        print(f'original_feed_queue_length={original_feed_queue_length}, feed_queue_length={feed_queue_length}, wip_queue_length={wip_queue_length}, done_queue_length={done_queue_length}' , flush=True)
 
         # check if feed_queue_length is 0
-        if feed_queue_length == 0:
-            print('SUCCESS: feed_queue_length is 0, stopping services...',
+        if original_feed_queue_length == done_queue_length:
+            print('SUCCESS: original_feed_queue_length==done_queue_length, stopping services...',
                   flush=True)
             remove_all_services(client)
             remove_all_containers(client)
